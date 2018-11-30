@@ -14,6 +14,9 @@ const tools = require('./functions.js');
 const OwnerID = '444384280152637441';
 const prefix = 'd!';
 
+//Ready Event -- This will run whenever the bot turns on
+client.on('ready', () => console.log('Launched!'));
+
 //Listener Events
 client.on('message', message => {
       //This is run whenever a new message is created in a channel the bot has access to
@@ -51,41 +54,32 @@ client.on('message', message => {
           console.log(`${message.author.username} ran the command: ${cmd}`)
 
       }
-
-});
-
-//Ready Event -- This will run whenever the bot turns on
-client.on('ready', () => console.log('Launched!'));
-
-//Discord Login 
-client.login(config.token)
-
-
+    });
+    
+      client.on("message", (message) => {
+        //message.content.toLowerCase();
+        if (message.content.toLowerCase().startsWith("my milk")) {
+          message.channel.send("IS HARD!");
+        }
+          if (message.isMentioned(client.user) && message.content.includes("prefix")) {
+    message.channel.send("My prefix is `d!`, now stop tagging me.");
+  }
+      
+}); 
 
 /*
-const Discord = require("discord.js");
-const client = new Discord.Client();
-const fs = require("fs");
-const { Client, RichEmbed } = require('discord.js');
-const config = require("./config.json"); 
+client.on("message", async message => {
+  var UserID = client.user.id;
+  const prefixMention = new RegExp(/<@!?${UserID}> /);
+ //   const prefix = message.content.match(prefixMention) ? message.content.match(prefixMention)[0] : 'd!';
+  if(message.content === prefixMention + "prefix") {
+    message.reply("My prefix is `d!`, now stop tagging me.")
+  }
 
-// This loop reads the /events/ folder and attaches each event file to the appropriate event.
-fs.readdir("./events/", (err, files) => {
-  if (err) return console.error(err);
-  files.forEach(file => {
-    let eventFunction = require(`./${file}`);
-    let eventName = file.split(".")[0];
-    // super-secret recipe to call events with all their proper arguments *after* the `client` var.
-    client.on(eventName, (...args) => eventFunction.run(client, ...args));
-  });
 });
+*/
 
 // client.on('',''=>{});
-
-
-client.on('guildDelete',guild=>{
-  console.log(`I have left ${guild.name} at ${new Date()}`)
-});
 
 client.on('guildCreate', guild => {
   const channel = guild.channels.find(ch => ch.name === 'general');
@@ -95,69 +89,21 @@ client.on('guildCreate', guild => {
   console.log(`I have joined ${guild.name} at ${new Date()}`)
 });
 
-client.on("message", (message) => {
-  //message.content.toLowerCase();
-  if (message.content.toLowerCase().startsWith("my milk")) {
-    message.channel.send("IS HARD!");
-  }
-
-//  if (message.content.toLowerCase().includes("data", "prefix")) {
-//    message.channel.send("My prefix is `d!`");
-//  }
-//  if (message.content.toLowerCase().startsWith("maxy")) {
-//    message.channel.send("Is the best.");
-//  }
-  if (message.content.toLowerCase().includes("twitch prime")) {
-    message.channel.send("Did you know that you can link your Amazon Prime account to Twitch and subscribe to me FOR FREE? Learn more here: https://help.twitch.tv/customer/portal/articles/2572060-twitch-prime-guide");
-  }
-//  if (message.isMentioned(client.user) && message.content.includes("prefix")) {
-//    message.channel.send("My prefix is `d!`, now stop tagging me.");
-//  }
-
-});  
-  
-
-    client.on("message", async message => {
-    var UserID = client.user.id;
-    const prefixMention = new RegExp(/<@!?${UserID}> /);
-   //   const prefix = message.content.match(prefixMention) ? message.content.match(prefixMention)[0] : 'd!';
-    if(message.content === prefixMention + "prefix") {
-      message.reply("My prefix is `d!`, now stop tagging me.")
-    }
-  
+client.on('guildDelete',guild=>{
+  console.log(`I have left ${guild.name} at ${new Date()}`)
 });
-
-
 
 //listener event: User joining the discord server.
 client.on('guildMemberAdd', member => {
-    console.log('User ' + member.user.username + 'has joined the server!') //sends a message in console that someone joined
-    var role = member.guild.roles.find('name', 'Members')
-    member.addRole(role)
+  console.log('User ' + member.user.username + 'has joined the server!') //sends a message in console that someone joined
+  var role = member.guild.roles.find('name', 'Members')
+  member.addRole(role)
 });
 
 //client.on("messageDelete", (messageDelete) => {
 //  messageDelete.channel.send(`The message: "${messageDelete.content}" by ${messageDelete.author.tag} was deleted.`)
 //});
 
-client.on("message", message => {
-  if (message.author.bot) return;
-  if(message.content.indexOf(config.prefix) !== 0) return;
-
-  // This is the best way to define args. Trust me.
-  const args = message.content.slice(config.prefix.length).trim().split(/ +/g);
-  const command = args.shift().toLowerCase();
-
-  // The list of if/else is replaced with those simple 2 lines:
-  try {
-    let commandFile = require(`./commands/${command}.js`);
-    commandFile.run(client, message, args);
-  } catch (err) {
-    console.error(err);
-  }
-  
-  
-});
 const clean = text => {
   if (typeof(text) === "string")
     return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
@@ -165,5 +111,16 @@ const clean = text => {
       return text;
 }
 
+//listener event: User joining the discord server.
+client.on('guildMemberAdd', member => {
+  console.log('User ' + member.user.username + 'has joined the server!') //sends a message in console that someone joined
+  var role = member.guild.roles.find('name', 'Members')
+  member.addRole(role)
+});
+
+//client.on("messageDelete", (messageDelete) => {
+//  messageDelete.channel.send(`The message: "${messageDelete.content}" by ${messageDelete.author.tag} was deleted.`)
+//});
+
+//Discord Login 
 client.login(config.token);
-*/

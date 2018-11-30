@@ -40,5 +40,11 @@
         "group":"Admins",
         "desc":"Reloads a command on the bot",
         "usage":"reload <command name>"
+    },
+    "Subreddit": {
+        "name":"Subreddit",
+        "group":"Users",
+        "desc":"gets a random image from a subreddit.",
+        "usage":"subreddit <subreddit>"
     }
 }
