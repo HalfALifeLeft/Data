@@ -1,4 +1,4 @@
-exports.run = (client, message, args, prefix, length) => {
+exports.run = (client, message, args, prefix, length, DataHexcode) => {
 
      const { Client, RichEmbed } = require('discord.js');
      //const config = require("C:/DiscordBot/config.json"); <- old version
@@ -21,7 +21,7 @@ exports.run = (client, message, args, prefix, length) => {
         const embed = new RichEmbed()
         .setAuthor(message.author.username + "#" + message.author.discriminator, message.author.avatarURL)
         .setThumbnail(client.user.avatarURL)
-        .setColor(0xf2c300)
+        .setColor(DataHexcode)
         .addField("Input 📥 ", `\`\`\`${evaled}\`\`\``)
         .addField("Output 📤 ", `\`\`\`${evaledCode}\`\`\``)
           message.channel.send(embed)
@@ -31,7 +31,7 @@ exports.run = (client, message, args, prefix, length) => {
         const embed = new RichEmbed()
         .setAuthor(message.author.username + "#" + message.author.discriminator, message.author.avatarURL)
         .setThumbnail(client.user.avatarURL)
-        .setColor(0xf2c300)
+        .setColor(DataHexcode)
         .addField("Evaled Command 📥 ", `\`\`\`${evaled}\`\`\``)
         .addField("Error ❌ ", `\`\`\`${err}\`\`\``)
           message.channel.send(embed)

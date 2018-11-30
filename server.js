@@ -13,6 +13,7 @@ const tools = require('./functions.js');
 //Bot Settings
 const OwnerID = '444384280152637441';
 const prefix = 'd!';
+const DataHexcode = 0xf2c300;
 
 //Ready Event -- This will run whenever the bot turns on
 client.on('ready', () => console.log('Launched!'));
@@ -43,7 +44,7 @@ client.on('message', message => {
         }
 
           let commandFile = require(`./commands/${cmd}.js`); //this will require a file in the commands folder
-          commandFile.run(client, message, args, ops, tools, msg, cmd, sender); //this will pass these variables into the file
+          commandFile.run(client, message, args, ops, tools, msg, cmd, sender, DataHexcode); //this will pass these variables into the file
 
       } catch(e) { //this will catch any errors, either in code or if command doesn't exist
 

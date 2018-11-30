@@ -7,7 +7,7 @@ const { Client, RichEmbed } = require('discord.js');
                     .setFooter(`/r/memes`)
                     .setDescription(`:joy: [memes are life](${url})`)
                     .setImage(url)
-                    .setColor('0xf2c300')
+                    .setColor(DataHexcode)
                 return message.channel.send({ embed })
             })
   }

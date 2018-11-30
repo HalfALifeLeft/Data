@@ -8,7 +8,7 @@ exports.run = (client, message, args) => {
                     const embed = new RichEmbed()
                         .setFooter(`/r/${subreddit}`)
                         .setImage(url)
-                        .setColor('0xf2c300')
+                        .setColor(DataHexcode)
                     return message.channel.send({ embed })
                 })
       }
