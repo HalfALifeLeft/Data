@@ -24,5 +24,5 @@ exports.run = (client, message, args) => {
        * Blank field, useful to create some space.
        */
     //  .addField("Invite me to your server!", "[here](https://discordapp.com/oauth2/authorize?client_id=494001612822675458&scope=bot)", true)
-      .setImage("https://i.imgur.com/ysVtDyb.jpg")
+      .setThumbnail("https://i.imgur.com/ysVtDyb.jpg")
       message.channel.send({embed})};

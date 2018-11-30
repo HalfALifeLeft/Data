@@ -19,11 +19,11 @@ client.on('message', message => {
       //This is run whenever a new message is created in a channel the bot has access to
 
       //Variables
+      let msg = message.content.toLowerCase();
+      let sender = message.author;
       let args = message.content.slice(prefix.length).trim().split(' ');
       let cmd = args.shift().toLowerCase();
-      let sender = message.author;
-      let msg = message.content.toLowerCase();
-      
+
       //Return Statements
       if (message.author.bot) return; //this will ignore all bots
       if (!message.content.toLowerCase().startsWith(prefix)) return; //this will return if the message doesn't start with prefix
@@ -40,9 +40,16 @@ client.on('message', message => {
         }
 
           let commandFile = require(`./commands/${cmd}.js`); //this will require a file in the commands folder
-          commandFile.run(client, message, args, ops, tools); //this will pass these variables into the file
+          commandFile.run(client, message, args, ops, tools, msg, cmd, sender); //this will pass these variables into the file
+
       } catch(e) { //this will catch any errors, either in code or if command doesn't exist
+
           console.log(e.stack);
+
+      } finally {
+
+          console.log(`${message.author.username} ran the command: ${cmd}`)
+
       }
 
 });

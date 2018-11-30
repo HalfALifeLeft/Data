@@ -1,25 +1,25 @@
 {
     "Help": {
         "name":"Help",
-        "group":"user",
+        "group":"Users",
         "desc":"Displays a list of commands.",
         "usage":"help [group OR command]"
     },
     "Info": {
         "name":"Info",
-        "group":"user",
+        "group":"Users",
         "desc":"A background on Data.",
         "usage":"info"
     },
     "Kitty": {
         "name":"Kitty",
-        "group":"user",
+        "group":"Users",
         "desc":"Displays a random picture of a cat.",
         "usage":"kitty"
     },
     "Meme": {
         "name":"Meme",
-        "group":"user",
+        "group":"Users",
         "desc":"Displays a random meme from /r/memes.",
         "usage":"meme"
     },
@@ -37,7 +37,7 @@
     },
     "Reload": {
         "name":"Reload",
-        "group":"Owner",
+        "group":"Admins",
         "desc":"Reloads a command on the bot",
         "usage":"reload <command name>"
     }
