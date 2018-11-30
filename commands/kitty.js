@@ -1,0 +1,13 @@
+exports.run = (client, message, args) => { 
+const { Client, RichEmbed } = require('discord.js');
+  const randomPuppy = require('random-puppy');
+    randomPuppy('cats')
+            .then(url => {
+                const embed = new RichEmbed()
+                    .setFooter(`/r/cats`)
+                    .setDescription(`Meow meow mothermeowers`)
+                    .setImage(url)
+                    .setColor('0xe6e600')
+                return message.channel.send({ embed })
+            })
+  }

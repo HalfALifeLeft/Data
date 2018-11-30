@@ -1,0 +1,44 @@
+{
+    "Help": {
+        "name":"Help",
+        "group":"user",
+        "desc":"Displays a list of commands.",
+        "usage":"help [group OR command]"
+    },
+    "Info": {
+        "name":"Info",
+        "group":"user",
+        "desc":"A background on Data.",
+        "usage":"info"
+    },
+    "Kitty": {
+        "name":"Kitty",
+        "group":"user",
+        "desc":"Displays a random picture of a cat.",
+        "usage":"kitty"
+    },
+    "Meme": {
+        "name":"Meme",
+        "group":"user",
+        "desc":"Displays a random meme from /r/memes.",
+        "usage":"meme"
+    },
+    "Ping": {
+        "name":"Ping",
+        "group":"Mods",
+        "desc":"Displays a list of commands.",
+        "usage":"ping"
+    },
+    "Purge": {
+        "name":"Purge",
+        "group":"Mods",
+        "desc":"Purges the chat of `#+1` messages.",
+        "usage":"purge <#>"
+    },
+    "Reload": {
+        "name":"Reload",
+        "group":"Owner",
+        "desc":"Reloads a command on the bot",
+        "usage":"reload <command name>"
+    }
+}
