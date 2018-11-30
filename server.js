@@ -41,7 +41,6 @@ client.on('message', message => {
 
           let commandFile = require(`./commands/${cmd}.js`); //this will require a file in the commands folder
           commandFile.run(client, message, args, ops, tools); //this will pass these variables into the file
-
       } catch(e) { //this will catch any errors, either in code or if command doesn't exist
           console.log(e.stack);
       }
