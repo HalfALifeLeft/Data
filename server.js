@@ -8,7 +8,8 @@ const commands = JSON.parse(fs.readFileSync('Storage/commands.json', 'utf8'));
 const config = require("./config.json");
 
 //Global Functions
-const tools = require('./functions.js');
+var tools = require("./functions.js");
+//import { dataHexcode } from './functions.js';
 
 //Bot Settings
 const OwnerID = '444384280152637441';

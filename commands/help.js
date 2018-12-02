@@ -4,7 +4,7 @@ exports.run = (client, message, args, msg, cmd, sender, config, tools, DataHexco
   const commands = JSON.parse(fs.readFileSync('Storage/commands.json', 'utf8'));
   const Discord = require('discord.js');
   if (msg === `${prefix}help`) { // If they only type this, lets ONLY show the commands for regular users
-     // Start of the embed
+    // Start of the embed
      const embed = new Discord.RichEmbed() 
          .setColor(DataHexcode) 
      // Variables
