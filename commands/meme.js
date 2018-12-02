@@ -1,4 +1,4 @@
-exports.run = (client, message, args) => { 
+exports.run = (client, message, args,  func) => { 
 const { Client, RichEmbed } = require('discord.js');
   const randomPuppy = require('random-puppy');
     randomPuppy('memes')
@@ -7,7 +7,7 @@ const { Client, RichEmbed } = require('discord.js');
                     .setFooter(`/r/memes`)
                     .setDescription(`:joy: [memes are life](${url})`)
                     .setImage(url)
-                    .setColor('0xf2c300')
+                    .setColor(func.dataHexcode())
                 return message.channel.send({ embed })
             })
   }

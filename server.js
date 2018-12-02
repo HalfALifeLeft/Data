@@ -8,7 +8,7 @@ const commands = JSON.parse(fs.readFileSync('Storage/commands.json', 'utf8'));
 const config = require("./config.json");
 
 //Global Functions
-var tools = require("./functions.js");
+var func = require("./functions.js");
 //import { dataHexcode } from './functions.js';
 
 //Bot Settings
@@ -45,7 +45,7 @@ client.on('message', message => {
         }
 
           let commandFile = require(`./commands/${cmd}.js`); //this will require a file in the commands folder
-          commandFile.run(client, message, args, ops, tools, msg, cmd, sender, DataHexcode); //this will pass these variables into the file
+          commandFile.run(client, message, args, func, DataHexcode, msg, cmd, sender, ops,); //this will pass these variables into the file
 
       } catch(e) { //this will catch any errors, either in code or if command doesn't exist
 

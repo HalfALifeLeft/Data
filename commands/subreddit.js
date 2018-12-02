@@ -1,4 +1,4 @@
-exports.run = (client, message, args) => { 
+exports.run = (client, message, args,  func) => { 
     const { Client, RichEmbed } = require('discord.js');
       const randomPuppy = require('random-puppy');
       var subreddit = args[0]
@@ -8,7 +8,7 @@ exports.run = (client, message, args) => {
                     const embed = new RichEmbed()
                         .setFooter(`/r/${subreddit}`)
                         .setImage(url)
-                        .setColor('0xf2c300')
+                        .setColor(func.dataHexcode())
                     return message.channel.send({ embed })
                 })
       }
