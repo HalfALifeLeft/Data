@@ -1,7 +1,7 @@
-exports.run = (client, message, args, ops) => {
+exports.run = (client, message, config, sender, args) => {
 
   //Check if the bot owner is the author
-  if (message.author.id !== ops.ownerID) return message.channel.send('**You lack the required permissions to use this command.**');
+  if (sender.id !== config.ownerID) return message.channel.send('**You lack the required permissions to use this command.**');
   //if owner isnt the one sending the message it replies with no perms
 
   //Delete from cache

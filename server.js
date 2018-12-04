@@ -1,62 +1,45 @@
 //Calling Packages
 const Discord = require('discord.js');
-const client = new Discord.Client();
+const Enmap = require("enmap");
 const fs = require('fs');
 
-//Calling json here
+const client = new Discord.Client();
 const commands = JSON.parse(fs.readFileSync('Storage/commands.json', 'utf8'));
 const config = require("./config.json");
+
+client.config = config;
 
 //Global Functions
 var func = require("./functions.js");
 //import { dataHexcode } from './functions.js';
 
-//Bot Settings
-const OwnerID = '444384280152637441';
-const prefix = 'd!';
+fs.readdir("./events/", (err, files) => {
+  if (err) return console.error(err);
+  files.forEach(file => {
+    const event = require(`./events/${file}`);
+    let eventName = file.split(".")[0];
+    client.on(eventName, event.bind(null, client));
+  });
+})
 
-//Ready Event -- This will run whenever the bot turns on
-client.on('ready', () => console.log('Launched!'));
+client.commands = new Enmap();
 
-//Listener Events
-client.on('message', message => {
-      //This is run whenever a new message is created in a channel the bot has access to
+fs.readdir("./commands/", (err, files) => {
+  if (err) return console.error(err);
+  files.forEach(file => {
+    if (!file.endsWith(".js")) return;
+    let props = require(`./commands/${file}`);
+    let commandName = file.split(".")[0];
+    console.log(`Attempting to load command ${commandName}`);
+    client.commands.set(commandName, props);
+  });
+});
 
-      //Variables
-      let msg = message.content.toLowerCase();
-      let sender = message.author;
-      let args = message.content.slice(prefix.length).trim().split(' ');
-      let cmd = args.shift().toLowerCase();
 
-      //Return Statements
-      if (message.author.bot) return; //this will ignore all bots
-      if (!message.content.toLowerCase().startsWith(prefix)) return; //this will return if the message doesn't start with prefix
+//SPLIT 
 
-      //Command Handler
-      try {
 
-        // Reload Command (move to separate file eventually)
-        delete require.cache[require.resolve(`./commands/${cmd}.js`)];
-        
-        //Options
-        let ops = {
-          ownerID: OwnerID //ops.ownerID to return the ID defined at the top of server.js
-        }
 
-          let commandFile = require(`./commands/${cmd}.js`); //this will require a file in the commands folder
-          commandFile.run(client, message, func, msg, sender, args, cmd, ops,); //this will pass these variables into the file
-
-      } catch(e) { //this will catch any errors, either in code or if command doesn't exist
-
-          console.log(e.stack);
-
-      } finally {
-
-          console.log(`${message.author.username} ran the command: ${cmd}`)
-
-      }
-    });
-    
       client.on("message", (message) => {
         //message.content.toLowerCase();
         if (message.content.toLowerCase().startsWith("my milk")) {
