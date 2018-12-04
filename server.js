@@ -35,33 +35,21 @@ fs.readdir("./commands/", (err, files) => {
   });
 });
 
-
-//SPLIT 
-
-
-
-      client.on("message", (message) => {
-        //message.content.toLowerCase();
-        if (message.content.toLowerCase().startsWith("my milk")) {
-          message.channel.send("IS HARD!");
-        }
-          if (message.isMentioned(client.user) && message.content.includes("prefix")) {
-    message.channel.send("My prefix is `d!`, now stop tagging me.");
-  }
-      
+  client.on("message", (message) => {
+    //message.content.toLowerCase();
+    if (message.content.toLowerCase().startsWith("my milk")) {
+      message.channel.send("IS HARD!");
+    } 
 }); 
 
-/*
-client.on("message", async message => {
-  var UserID = client.user.id;
-  const prefixMention = new RegExp(/<@!?${UserID}> /);
- //   const prefix = message.content.match(prefixMention) ? message.content.match(prefixMention)[0] : 'd!';
-  if(message.content === prefixMention + "prefix") {
-    message.reply("My prefix is `d!`, now stop tagging me.")
+client.on('message', message => {
+  const prefixMention = new RegExp(`^<@!?${client.user.id}> `);
+    const prefix = message.content.match(prefixMention) ? message.content.match(prefixMention)[0] : '!';
+    if(message.content === prefixMention + prefix) {
+      message.reply("my prefix is `d!`, no stop tagging me.")
   }
-
 });
-*/
+
 
 // client.on('',''=>{});
 
@@ -83,10 +71,6 @@ client.on('guildMemberAdd', member => {
   var role = member.guild.roles.find('name', 'Members')
   member.addRole(role)
 });
-
-//client.on("messageDelete", (messageDelete) => {
-//  messageDelete.channel.send(`The message: "${messageDelete.content}" by ${messageDelete.author.tag} was deleted.`)
-//});
 
 const clean = text => {
   if (typeof(text) === "string")
