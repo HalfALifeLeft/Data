@@ -1,4 +1,4 @@
-exports.run = (client, message, args,  func) => {
+exports.run = (client, message, func, args ) => {
     const { Client, RichEmbed } = require('discord.js');
     const embed = new RichEmbed()
       .setTitle("Origins")
