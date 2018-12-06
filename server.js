@@ -55,7 +55,6 @@ client.on('message', message => {
   }
 });
 
-
 // client.on('',''=>{});
 
 client.on('guildCreate', guild => {
@@ -68,13 +67,6 @@ client.on('guildCreate', guild => {
 
 client.on('guildDelete',guild=>{
   console.log(`I have left ${guild.name} at ${new Date()}`)
-});
-
-//listener event: User joining the discord server.
-client.on('guildMemberAdd', member => {
-  console.log('User ' + member.user.username + 'has joined the server!') //sends a message in console that someone joined
-  var role = member.guild.roles.find('name', 'Members')
-  member.addRole(role)
 });
 
 //listener event: User joining the discord server.

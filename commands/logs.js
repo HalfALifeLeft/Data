@@ -11,3 +11,14 @@ exports.run = (client, message, args, msg, cmd, sender, config, tools, DataHexco
 }
 //create category = Data Logging
 //create channel = 
+/*
+
+channelCreate.js
+channelDelete.js
+channelUpdate.js
+guideBanAdd.js
+guildBanRemove.js
+messageDelete.js
+messageUpdate.js
+
+*/
