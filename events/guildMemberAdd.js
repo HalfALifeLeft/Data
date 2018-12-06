@@ -1,6 +1,10 @@
 module.exports = (client, member) => {
     client.on("guildMemberAdd", (member) => {
       console.log(`New User "${member.user.username}" has joined "${member.guild.name}"` );
-      member.guild.channels.get("general").send(`"${member.user.username}" has joined this server`);
+      const channel = member.guild.channels.find(ch => ch.name === 'general');
+      // Do nothing if the channel wasn't found on this server
+      if (!channel) return;
+      // Send the message, mentioning the member
+      channel.send(`Welcome to the server, ${member}`);
     });
   };
