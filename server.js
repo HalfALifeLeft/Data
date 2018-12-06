@@ -46,7 +46,7 @@ client.on('message', message => {
   const prefixMention = new RegExp(`^<@!?${client.user.id}> `);
     const prefix = message.content.match(prefixMention) ? message.content.match(prefixMention)[0] : '!';
     if(message.content === prefixMention + prefix) {
-      message.reply("my prefix is `d!`, no stop tagging me.")
+      message.reply("my prefix is `d!`, now stop tagging me.")
   }
 });
 
