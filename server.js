@@ -81,4 +81,4 @@ client.on('guildMemberAdd', member => {
 //});
 
 //Discord Login 
-client.login(config.token);
+client.login(process.env.TOKEN);
