@@ -9,10 +9,6 @@ const config = require("./config.json");
 
 client.config = config;
 
-//Global Functions
-var func = require("./functions.js");
-//import { dataHexcode } from './functions.js';
-
 fs.readdir("./events/", (err, files) => {
   if (err) return console.error(err);
   files.forEach(file => {
@@ -32,7 +28,6 @@ fs.readdir("./commands/", (err, files) => {
     let commandName = file.split(".")[0];
     console.log(`Attempting to load command ${commandName}`);
     client.commands.set(commandName, props);
-    props.run( client, config, func )
   });
 });
 

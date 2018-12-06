@@ -1,4 +1,4 @@
-exports.run = (client, message, args, func, msg, cmd, sender, config, DataHexcode) => {
+exports.run = (client, message, args, func, msg, cmd, sender) => {
   const fs = require('fs');
   const prefix = 'd!';
   const commands = JSON.parse(fs.readFileSync('Storage/commands.json', 'utf8'));
@@ -6,7 +6,7 @@ exports.run = (client, message, args, func, msg, cmd, sender, config, DataHexcod
   if (msg === `${prefix}help`) { // If they only type this, lets ONLY show the commands for regular users
     // Start of the embed
      const embed = new Discord.RichEmbed() 
-         .setColor(func.dataHexcode()) 
+         .setColor(0xf2c300) 
      // Variables
      let commandsFound = 0; 
      for (var cmd in commands) { 
@@ -25,7 +25,7 @@ exports.run = (client, message, args, func, msg, cmd, sender, config, DataHexcod
      message.author.send({embed})
      // Post in chat that sent to DMs
      message.channel.send({embed: {
-         color: func.dataHexcode(), 
+         color: 0xf2c300, 
          description: `**Check your DMs ${message.author}!**`
      }})
  } else if (args.join(" ").toUpperCase() === '') {
@@ -39,7 +39,7 @@ exports.run = (client, message, args, func, msg, cmd, sender, config, DataHexcod
      message.channel.send({embed: {
          description:`**${groups}**`,
          title:"Groups",
-         color: func.dataHexcode(),
+         color: 0xf2c300,
      }})
      return;
  } else {
@@ -54,7 +54,7 @@ exports.run = (client, message, args, func, msg, cmd, sender, config, DataHexcod
      if (groupFound != '') { // If a group is found, run this statement.
          // Start of the embed
          const embed = new Discord.RichEmbed()
-             .setColor(func.dataHexcode())
+             .setColor(0xf2c300)
          // Variables
          let commandsFound = 0; 
          for (var cmd in commands) { 
@@ -74,7 +74,7 @@ exports.run = (client, message, args, func, msg, cmd, sender, config, DataHexcod
          message.author.send({embed})
          // Post in chat they sent to DMs
          message.channel.send({embed: {
-             color: func.dataHexcode(),
+             color: 0xf2c300,
              description: `**Check your DMs ${message.author}!**`
          }})
          // Make sure you copy and paste into the right place, lets test it now!
@@ -100,13 +100,13 @@ exports.run = (client, message, args, func, msg, cmd, sender, config, DataHexcod
      if (commandFound === '') {
          message.channel.send({embed: {
              description:`**No group or command found titled \`${args.join(" ")}\`**`,
-             color: func.dataHexcode(),
+             color: 0xf2c300,
          }})
      }
      // Since this one is smaller, lets send the embed differently.
      message.channel.send({embed: {
          title:'<> means required, [] means optional',
-         color: func.dataHexcode(),
+         color: 0xf2c300,
          fields: [{
              name:commandFound,
              value:`**Description:** ${commandDesc}\n**Usage:** ${commandUsage}\n**Group:** ${commandGroup}`

@@ -6,7 +6,7 @@ exports.run = (client, message, func, args ) => {
       /*
        * Alternatively, use "#00AE86", [0, 174, 134] or an integer number.
        */
-      .setColor(func.dataHexcode())
+      .setColor(0xf2c300)
       .setDescription("Data was found by Starfleet in 2338 as the sole survivor on Omicron Theta in the rubble of a colony left after an attack from the Crystalline Entity. He was a synthetic life form with artificial intelligence and designed and built by Doctor Noonien Soong in his own likeness. Data is a self-aware, sapient, sentient and anatomically fully functional android who serves as the second officer and chief operations officer aboard the Federation starship USS Enterprise-D and later the USS Enterprise-E.")
       .setFooter("Created by Half#2428", "https://i.imgur.com/NVWwp1d.png")
       //.setThumbnail("https://i.imgur.com/yZAIrQR.jpg")
@@ -25,4 +25,4 @@ exports.run = (client, message, func, args ) => {
        */
     //  .addField("Invite me to your server!", "[here](https://discordapp.com/oauth2/authorize?client_id=494001612822675458&scope=bot)", true)
       .setThumbnail("https://i.imgur.com/ysVtDyb.jpg")
-      message.channel.send({embed})};
+      return message.channel.send({embed})};
