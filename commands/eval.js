@@ -10,7 +10,7 @@ function clean(text) {
       return text;
 }
       if (message.content.startsWith(config.prefix + "eval")) {
-      let arrayOfID = ["444384280152637441", "341888659907149825"];
+      let arrayOfID = ["444384280152637441"];
       if (!arrayOfID.includes(message.author.id)) return;//only ids above can use this
       try {
         let evaled = message.content.slice(2 + 4).trim(); 
@@ -20,17 +20,17 @@ function clean(text) {
         const embed = new RichEmbed()
         .setAuthor(message.author.username + "#" + message.author.discriminator, message.author.avatarURL)
         .setThumbnail(client.user.avatarURL)
-        .setColor(0x000000)
+        .setColor(process.env.HEXCODE)
         .addField("Input 📥 ", `\`\`\`${evaled}\`\`\``)
         .addField("Output 📤 ", `\`\`\`${evaledCode}\`\`\``)
           message.channel.send(embed)
       } catch (err) {
 //        message.delete();
-        let evaled = message.content.slice(1 + 4).trim();
+        let evaled = message.content.slice(2 + 4).trim();
         const embed = new RichEmbed()
         .setAuthor(message.author.username + "#" + message.author.discriminator, message.author.avatarURL)
         .setThumbnail(client.user.avatarURL)
-        .setColor(0x000000)
+        .setColor(process.env.ERROR)
         .addField("Evaled Command 📥 ", `\`\`\`${evaled}\`\`\``)
         .addField("Error ❌ ", `\`\`\`${err}\`\`\``)
           message.channel.send(embed)

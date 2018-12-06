@@ -7,7 +7,7 @@ const { Client, RichEmbed } = require('discord.js');
                     .setFooter(`/r/cats`)
                     .setDescription(`Meow meow mothermeowers`)
                     .setImage(url)
-                    .setColor(0xf2c300)
+                    .setColor(process.env.HEXCODE)
                 return message.channel.send({ embed })
             })
   }
