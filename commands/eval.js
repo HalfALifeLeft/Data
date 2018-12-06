@@ -1,4 +1,5 @@
-exports.run = (client, message, args, prefix, length, DataHexcode) => {
+/*
+exports.run = (client, message, DataHexcode) => {
 
      const { Client, RichEmbed } = require('discord.js');
      //const config = require("C:/DiscordBot/config.json"); <- old version
@@ -36,3 +37,4 @@ exports.run = (client, message, args, prefix, length, DataHexcode) => {
         .addField("Error ❌ ", `\`\`\`${err}\`\`\``)
           message.channel.send(embed)
       }}};
+*/
