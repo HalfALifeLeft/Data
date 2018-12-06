@@ -68,13 +68,6 @@ client.on('guildMemberAdd', member => {
   member.addRole(role)
 });
 
-const clean = text => {
-  if (typeof(text) === "string")
-    return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
-  else
-      return text;
-}
-
 //listener event: User joining the discord server.
 client.on('guildMemberAdd', member => {
   console.log('User ' + member.user.username + 'has joined the server!') //sends a message in console that someone joined
