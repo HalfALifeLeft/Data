@@ -1,13 +1,22 @@
+require('dotenv').config()
+//process.env.[THING TO CALL]
+
 //Calling Packages
 const Discord = require('discord.js');
 const Enmap = require("enmap");
 const fs = require('fs');
+var func = require("./functions.js");
 
 const client = new Discord.Client();
 const commands = JSON.parse(fs.readFileSync('Storage/commands.json', 'utf8'));
 const config = require("./config.json");
 
 client.config = config;
+
+// 
+// To access this do client.functions.[FUNCTIONHERE]
+// 
+client.functions = func;
 
 fs.readdir("./events/", (err, files) => {
   if (err) return console.error(err);
@@ -40,7 +49,7 @@ fs.readdir("./commands/", (err, files) => {
 
 client.on('message', message => {
   const prefixMention = new RegExp(`^<@!?${client.user.id}> `);
-    const prefix = message.content.match(prefixMention) ? message.content.match(prefixMention)[0] : '!';
+    const prefix = message.content.match(prefixMention) ? message.content.match(prefixMention)[0] : 'd!';
     if(message.content === prefixMention + prefix) {
       message.reply("my prefix is `d!`, now stop tagging me.")
   }

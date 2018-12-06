@@ -1,12 +1,12 @@
-/*exports.dataHexcode = function() {
+exports.hexcode = 0xf2c300;
 
-    return 0xf2c300;
-
-}*/
-module.exports = {
-
-    ping: function() {
-        return "0xf2c300";
-    }
-
+exports.ping = (client) => {
+    return Math.round(client.ping)
 }
+
+exports.example = (a, b) => {
+    if (a && b) {
+        return a + b;
+    }
+    return undefined;
+} 

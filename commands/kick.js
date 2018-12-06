@@ -7,7 +7,7 @@ exports.run = (client, message, [mention, ...reason]) => {
       return message.reply("You can't use this command.");
   
     if (message.mentions.members.size === 0)
-      return message.reply("Please mention a user to kick");
+      return message.reply(process.env.MISSING_USER);
   
     if (!message.guild.me.hasPermission("KICK_MEMBERS"))
       return message.reply("");

@@ -9,10 +9,8 @@ module.exports = (client, message) => {
     // Grab the command data from the client.commands Enmap
     const cmd = client.commands.get(command);
     // If that command doesn't exist, silently exit and do nothing
-    //Global Functions
-    var func = require("../functions.js");
     if (!cmd) return;
     // Run the command
-    cmd.run(client, message, args, func);
+    cmd.run(client, message, args);
   };
   
