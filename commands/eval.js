@@ -20,17 +20,17 @@ function clean(text) {
         const embed = new RichEmbed()
         .setAuthor(message.author.username + "#" + message.author.discriminator, message.author.avatarURL)
         .setThumbnail(client.user.avatarURL)
-        .setColor(0x000000)
+        .setColor(process.env.HEXCODE)
         .addField("Input 📥 ", `\`\`\`${evaled}\`\`\``)
         .addField("Output 📤 ", `\`\`\`${evaledCode}\`\`\``)
           message.channel.send(embed)
       } catch (err) {
 //        message.delete();
-        let evaled = message.content.slice(1 + 4).trim();
+        let evaled = message.content.slice(2 + 4).trim();
         const embed = new RichEmbed()
         .setAuthor(message.author.username + "#" + message.author.discriminator, message.author.avatarURL)
         .setThumbnail(client.user.avatarURL)
-        .setColor(0x000000)
+        .setColor(process.env.ERROR)
         .addField("Evaled Command 📥 ", `\`\`\`${evaled}\`\`\``)
         .addField("Error ❌ ", `\`\`\`${err}\`\`\``)
           message.channel.send(embed)
