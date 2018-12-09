@@ -7,5 +7,5 @@ module.exports = (client, member) => {
         .setTimestamp()
         .setColor(process.env.ERROR)
         .addField("Member was banned",`${member.user.username}#${member.user.discriminator} (${member.user.id})`)
-      channel.send(embed);
+        client.channels.get("506539037989928970").send(embed);
   };

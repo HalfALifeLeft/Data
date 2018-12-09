@@ -1,10 +1,10 @@
-module.exports = (client, member) => {
+module.exports = (client, Channel) => {
     // NEVER have client.on inside of a event or command, it FUCKS it up
-      console.log(`User "${member.user.username}" was unbanned in "${member.guild.name}"` );
+      console.log(`${Channel} was created` );
       const { Client, RichEmbed } = require('discord.js');
       const embed = new RichEmbed()
         .setTimestamp()
         .setColor(process.env.GOOD)
-        .addField("Member was unbanned",`${member.user.username}#${member.user.discriminator} (${member.user.id})`)
+        .addField("Channel Created",`${Channel}`)
         client.channels.get("506539037989928970").send(embed);
   };
