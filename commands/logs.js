@@ -1,11 +1,7 @@
-exports.run = (client, message, args, msg, cmd, sender, config, tools, DataHexcode) => {
+exports.run = (client, message) => {
     const server = require('discord.js');
     
-    server.createChannel('logs', 'category', [{
-        id: server.id,
-        deny: ['MANAGE_MESSAGES'],
-        allow: ['SEND_MESSAGES']
-      }])
+    guild.createChannel('logs', 'category')
         .then(console.log)
         .catch(console.error);
 }

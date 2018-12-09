@@ -56,7 +56,5 @@ client.on('message', message => {
   }
 });
 
-// client.on('',''=>{});
-
 //Discord Login 
 client.login(process.env.TOKEN);

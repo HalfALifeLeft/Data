@@ -10,6 +10,7 @@
     "start": "node server.js"
   },
   "dependencies": {
+    "better-sqlite-pool": "^0.1.2",
     "discord.js": "^11.4.2",
     "dotenv": "^6.2.0",
     "enmap": "^4.5.0",
