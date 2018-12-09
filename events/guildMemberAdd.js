@@ -12,7 +12,7 @@ module.exports = (client, member) => {
       const embed = new RichEmbed()
         .setTimestamp()
         .setColor(process.env.GOOD)
-        .addField("Member joined",`${member.user.username} (${member.user.id})`)
+        .addField("Member joined",`${member.user.username}#${member.user.discriminator} (${member.user.id})`)
       channel2.send(embed);
       member.addRole(role)
   };
