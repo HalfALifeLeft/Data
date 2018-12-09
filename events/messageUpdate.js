@@ -1,14 +1,15 @@
-module.exports = (client, message) => {
+module.exports = (client, message, oldMessage, newMessage) => {
     if (message.author.bot) return;
     const { Client, RichEmbed } = require('discord.js');
     const embed = new RichEmbed()
-    .setTitle("Message Removed")
+    .setTitle(`Message Edited`)
     .setAuthor(message.author.username + "#" + message.author.discriminator, message.author.avatarURL)
     .setTimestamp()
-    .setColor(process.env.ERROR)
+    .setColor(process.env.HEXCODE)
     .addField("Author",`${message.author.username}\n(${message.author.id})`, true)
-    .addField("Channel",`${message.channel}\n(${message.channel.id})`, true)
+    .addField("Channel",`${message.channel}`, true)
     .addBlankField(true)
-    .addField("Message",`${message.content}`)
-client.channels.get("506539037339811866").send(embed);
+    .addField("Old Message",`${oldMessage}`)
+    .addField("New Message",`${newMessage}`)
+    client.channels.get("506539037339811866").send(embed)
 };
