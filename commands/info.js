@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 exports.run = (client, message, func, args ) => {
 	const { Client, RichEmbed } = require('discord.js');
 	const embed = new RichEmbed()
@@ -8,7 +10,7 @@ exports.run = (client, message, func, args ) => {
        */
 		.setColor(process.env.HEXCODE)
 		.setDescription('Data was found by Starfleet in 2338 as the sole survivor on Omicron Theta in the rubble of a colony left after an attack from the Crystalline Entity. He was a synthetic life form with artificial intelligence and designed and built by Doctor Noonien Soong in his own likeness. Data is a self-aware, sapient, sentient and anatomically fully functional android who serves as the second officer and chief operations officer aboard the Federation starship USS Enterprise-D and later the USS Enterprise-E.')
-		.setFooter('Created by Half#2428', 'https://i.imgur.com/NVWwp1d.png')
+		.setFooter('Created by ' + process.env.OWNERNAME, 'https://i.imgur.com/NVWwp1d.png')
 	//.setThumbnail("https://i.imgur.com/yZAIrQR.jpg")
 	/*
        * Takes a Date object, defaults to current date.
