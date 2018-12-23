@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+/* eslint-disable no-console */
 module.exports = (client, Channel) => {
 	// NEVER have client.on inside of a event or command, it FUCKS it up
 	console.log(`${Channel} was created` );

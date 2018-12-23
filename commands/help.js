@@ -1,4 +1,6 @@
-exports.run = (client, message, args, func, msg, cmd, sender) => {
+/* eslint-disable no-redeclare */
+/* eslint-disable no-undef */
+exports.run = (client, message, args, msg, cmd) => {
 	const fs = require('fs');
 	const prefix = 'd!';
 	const commands = JSON.parse(fs.readFileSync('Storage/commands.json', 'utf8'));
@@ -6,7 +8,7 @@ exports.run = (client, message, args, func, msg, cmd, sender) => {
 	if (msg === `${prefix}help`) { // If they only type this, lets ONLY show the commands for regular users
 		// Start of the embed
 		const embed = new Discord.RichEmbed() 
-			.setColor(process.env.HEXCODE); 
+			.setColor(client.func.hexcode); 
 		// Variables
 		let commandsFound = 0; 
 		for (var cmd in commands) { 
@@ -25,7 +27,7 @@ exports.run = (client, message, args, func, msg, cmd, sender) => {
 		message.author.send({embed});
 		// Post in chat that sent to DMs
 		message.channel.send({embed: {
-			color: process.env.HEXCODE, 
+			color: client.func.hexcode, 
 			description: `**Check your DMs ${message.author}!**`
 		}});
 	} else if (args.join(' ').toUpperCase() === '') {
@@ -39,7 +41,7 @@ exports.run = (client, message, args, func, msg, cmd, sender) => {
 		message.channel.send({embed: {
 			description:`**${groups}**`,
 			title:'Groups',
-			color: process.env.HEXCODE,
+			color: client.func.hexcode,
 		}});
 		return;
 	} else {
@@ -54,7 +56,7 @@ exports.run = (client, message, args, func, msg, cmd, sender) => {
 		if (groupFound != '') { // If a group is found, run this statement.
 			// Start of the embed
 			const embed = new Discord.RichEmbed()
-				.setColor(process.env.HEXCODE);
+				.setColor(client.func.hexcode);
 			// Variables
 			let commandsFound = 0; 
 			for (var cmd in commands) { 
@@ -74,7 +76,7 @@ exports.run = (client, message, args, func, msg, cmd, sender) => {
 			message.author.send({embed});
 			// Post in chat they sent to DMs
 			message.channel.send({embed: {
-				color: process.env.HEXCODE,
+				color: client.func.hexcode,
 				description: `**Check your DMs ${message.author}!**`
 			}});
 			// Make sure you copy and paste into the right place, lets test it now!
@@ -100,13 +102,13 @@ exports.run = (client, message, args, func, msg, cmd, sender) => {
 		if (commandFound === '') {
 			message.channel.send({embed: {
 				description:`**No group or command found titled \`${args.join(' ')}\`**`,
-				color: process.env.HEXCODE,
+				color: client.func.hexcode,
 			}});
 		}
 		// Since this one is smaller, lets send the embed differently.
 		message.channel.send({embed: {
 			title:'<> means required, [] means optional',
-			color: process.env.HEXCODE,
+			color: client.func.hexcode,
 			fields: [{
 				name:commandFound,
 				value:`**Description:** ${commandDesc}\n**Usage:** ${commandUsage}\n**Group:** ${commandGroup}`

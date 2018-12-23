@@ -1,3 +1,6 @@
+/* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
 require('dotenv').config();
 //process.env.[THING TO CALL]
 
@@ -17,7 +20,7 @@ client.config = config;
 // To access this do client.functions.[FUNCTIONHERE]
 // 
 
-client.functions = func;
+client.func = func;
 
 fs.readdir('./events/', (err, files) => {
 	if (err) return console.error(err);

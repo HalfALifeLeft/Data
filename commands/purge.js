@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-undef */
+/* eslint-disable no-console */
 exports.run = (client, message, args, tools) => {
 
 	let allowedRole = message.guild.roles.find('name', 'Admins');
@@ -16,8 +19,6 @@ exports.run = (client, message, args, tools) => {
 		//sends how many messages were deleted to chat
 			.catch( error => message.reply(`**ERROR:** ${error.message}`));
 		//checks for errors and puts them in the channel
-		console.log('this is args[0]' + args[0]);
-		console.log('this is args[0] + 1' + parseInt(args[0] + 1));
 	} else {
 		// not allowed access
 		message.reply('**You lack the permission to do this**');
