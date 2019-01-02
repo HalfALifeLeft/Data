@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 module.exports = (client, message) => {
 // Ignore all bots
 	if (message.author.bot) return;

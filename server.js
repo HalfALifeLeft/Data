@@ -17,7 +17,7 @@ const config = require('./config.json');
 client.config = config;
 
 // 
-// To access this do client.functions.[FUNCTIONHERE]
+// To access this do client.func.[FUNCTIONHERE]
 // 
 
 client.func = func;
@@ -44,18 +44,36 @@ fs.readdir('./commands/', (err, files) => {
 	});
 });
 
+const responseObject = {
+	"Rule 1": "Advertising of any form (without approval from an Admin) is prohibited.",
+	"Rule 2": "Keep things SFW unless the channel is marked as NSFW. NSFW content outside of designated channels will not be tolerated and you will be muted.",
+	"Rule 3": "All kinds of spamming is prohibited. Repeated pings, message bombs, text spams, etc.",
+	"Rule 4": "Keep your drama outside of this server, we don't want it here.",
+	"Rule 5": "Harassment of any kind is strictly prohibited and will not be tolerated under and circumstances.",
+	"Rule 6": "Treat all Admins and Moderators with the utmost respect.",
+	"Rule 7": "Name hoisting is not allowed, if you have an `!` or other character at the front of your name to bring yourself to the top of the list, you will be renamed without notice.",
+	"my milk": "IS HARD!"
+  };
+
+client.on("message", (message) => {
+	if(responseObject[message.content]) {
+	  message.channel.send(responseObject[message.content]);
+	}
+  });
+
+/*
 client.on('message', (message) => {
 	//message.content.toLowerCase();
-	if (message.content.toLowerCase().startsWith('my milk')) {
+	if (message.content.toLowerCase('')) {
 		message.channel.send('IS HARD!');
 	} 
 }); 
-
+*/
 client.on('message', message => {
-	const prefixMention = new RegExp(`^<@!?${client.user.id}> `);
+	const prefixMention = new RegExp(`<@!?${client.user.id}> `);
 	const prefix = message.content.match(prefixMention) ? message.content.match(prefixMention)[0] : 'd!';
 	if(message.content === prefixMention + prefix) {
-		message.reply('my prefix is `d!`, now stop tagging me.');
+		message.reply('my prefix is `' + process.env.PREFIX + '` now stop tagging me.');
 	}
 });
 

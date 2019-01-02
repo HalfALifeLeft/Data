@@ -1,7 +1,6 @@
 # config file
-config.json
-node_modules/
-python2.7/
+DataBot.git
+node_modules
 .env
 .eslintrc.js
 package.json
