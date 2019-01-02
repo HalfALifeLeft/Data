@@ -5,9 +5,9 @@ exports.run = (client, message, args ) => {
 	if (client.id !== client.ownerID) return message.channel.send('**You lack the required permissions to use this command.**');
 	//if owner isnt the one sending the message it replies with no perms
 	let color = args[0];
-	let content = args.slice(2).join(" ");
+	let content = args.slice(1).join(" ");
 	console.log(args[0])
-	console.log(args.slice(2).join(" "))
+	console.log(args.slice(1).join(" "))
 	const { Client, RichEmbed } = require('discord.js');
 	const embed = new RichEmbed()	
 		.setColor(`${color}`)
