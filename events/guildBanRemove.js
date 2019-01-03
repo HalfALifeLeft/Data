@@ -2,6 +2,7 @@
 module.exports = (client, member) => {
 	// NEVER have client.on inside of a event or command, it FUCKS it up
 	const mychannel = client.channels.find(channel => channel.name === "member-events")
+	if (!mychannel) return;
 	console.log(`User "${member.user.username}" was unbanned in "${member.guild.name}"` );
 	const { Client, RichEmbed } = require('discord.js');
 	const embed = new RichEmbed()

@@ -1,6 +1,7 @@
 module.exports = (client, member) => {
 	// NEVER have client.on inside of a event or command, it FUCKS it up
 	const mychannel = client.channels.find(channel => channel.name === "member-events")
+	if (!mychannel) return;
 	console.log(`New User "${member.user.username}" has joined "${member.guild.name}"` );
 	var role = member.guild.roles.find('name', 'Members');
 	// Send the message, mentioning the member

@@ -1,6 +1,7 @@
 module.exports = (client, message, oldMessage) => {
 	if (message.author.bot) return;
 	const mychannel = client.channels.find(channel => channel.name === "message-events")
+	if (!mychannel) return;
 	const newMessage = message.content;
 	const { Client, RichEmbed } = require('discord.js');
 	const embed = new RichEmbed()
