@@ -1,5 +1,6 @@
 module.exports = (client, message, oldMessage) => {
 	if (message.author.bot) return;
+	const mychannel = client.channels.find(channel => channel.name === "message-events")
 	const newMessage = message.content;
 	const { Client, RichEmbed } = require('discord.js');
 	const embed = new RichEmbed()
@@ -9,5 +10,5 @@ module.exports = (client, message, oldMessage) => {
 		.addField('Old Message',`${newMessage}`, true)
 		.addField('New Message',`${oldMessage}`, true)
 		.setFooter(`#${message.channel.name}`);
-	client.channels.get('506539037339811866').send(embed);
+	mychannel.send(embed);
 };
