@@ -15,6 +15,7 @@ const commands = JSON.parse(fs.readFileSync('Storage/commands.json', 'utf8'));
 const config = require('./config.json');
 const Message = new Discord.Message();
 
+
 client.config = config;
 client.message = Message;
 // 
