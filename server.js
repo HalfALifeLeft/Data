@@ -13,9 +13,10 @@ var func = require('./functions.js');
 const client = new Discord.Client();
 const commands = JSON.parse(fs.readFileSync('Storage/commands.json', 'utf8'));
 const config = require('./config.json');
+const Message = new Discord.Message();
 
 client.config = config;
-
+client.message = Message;
 // 
 // To access this do client.func.[FUNCTIONHERE]
 // 
@@ -71,7 +72,7 @@ client.on('message', (message) => {
 }); 
 */
 client.on('message', message => {
-	const prefixMention = new RegExp(`<@!?${client.user.id}> `);
+	const prefixMention = new RegExp(`<@!?${client.user.id}>`);
 	const prefix = message.content.match(prefixMention) ? message.content.match(prefixMention)[0] : 'd!';
 	if(message.content === prefixMention + prefix) {
 		message.reply('my prefix is `' + process.env.PREFIX + '` now stop tagging me.');

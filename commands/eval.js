@@ -1,4 +1,3 @@
-
 exports.run = (client, message) => {
 	console.log('command ran');
 	const config = require('../config.json');

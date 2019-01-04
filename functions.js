@@ -11,3 +11,9 @@ exports.example = (a, b) => {
 	}
 	return undefined;
 }; 
+exports.createChannel = (message, name) => {
+	message.guild.createChannel(name, `text`);
+};
+exports.createCategory = (message, name) => {
+	message.guild.createChannel(name, `category`);
+};
