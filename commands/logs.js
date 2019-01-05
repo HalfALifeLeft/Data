@@ -9,3 +9,5 @@ exports.run = (client, message, args) => {
         const category = client.channels.find(channel => channel.name === "testingcategory" && channel.type == "category");
     if (category && ChannelLogging) ChannelLogging.setParent(category.id);
 };
+
+//create logging channels
