@@ -1,18 +1,18 @@
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
-require('dotenv').config();
+require(`dotenv`).config();
 //process.env.[THING TO CALL]
 
 //Calling Packages
-const Discord = require('discord.js');
-const Enmap = require('enmap');
-const fs = require('fs');
-var func = require('./functions.js');
+const Discord = require(`discord.js`);
+const Enmap = require(`enmap`);
+const fs = require(`fs`);
+var func = require(`./functions.js`);
 
 const client = new Discord.Client();
-const commands = JSON.parse(fs.readFileSync('Storage/commands.json', 'utf8'));
-const config = require('./config.json');
+const commands = JSON.parse(fs.readFileSync(`Storage/commands.json`, `utf8`));
+const config = require(`./config.json`);
 const Message = new Discord.Message();
 
 
@@ -24,11 +24,11 @@ client.message = Message;
 
 client.func = func;
 
-fs.readdir('./events/', (err, files) => {
+fs.readdir(`./events/`, (err, files) => {
 	if (err) return console.error(err);
 	files.forEach(file => {
 		const event = require(`./events/${file}`);
-		let eventName = file.split('.')[0];
+		let eventName = file.split(`.`)[0];
 		console.log(`Attempting to load event ${eventName}`);
 		client.on(eventName, event.bind(null, client));
 	});
@@ -36,33 +36,33 @@ fs.readdir('./events/', (err, files) => {
 
 client.commands = new Enmap();
 
-fs.readdir('./commands/', (err, files) => {
+fs.readdir(`./commands/`, (err, files) => {
 	if (err) return console.error(err);
 	files.forEach(file => {
-		if (!file.endsWith('.js')) return;
+		if (!file.endsWith(`.js`)) return;
 		let props = require(`./commands/${file}`);
-		let commandName = file.split('.')[0];
+		let commandName = file.split(`.`)[0];
 		console.log(`Attempting to load command ${commandName}`);
 		client.commands.set(commandName, props);
 	});
 });
 
 const responseObject = {
-	"Rule 1": "Advertising of any form (without approval from an Admin) is prohibited.",
-	"Rule 2": "Keep things SFW unless the channel is marked as NSFW. NSFW content outside of designated channels will not be tolerated and you will be muted.",
-	"Rule 3": "All kinds of spamming is prohibited. Repeated pings, message bombs, text spams, etc.",
-	"Rule 4": "Keep your drama outside of this server, we don't want it here.",
-	"Rule 5": "Harassment of any kind is strictly prohibited and will not be tolerated under and circumstances.",
-	"Rule 6": "Treat all Admins and Moderators with the utmost respect.",
-	"Rule 7": "Name hoisting is not allowed, if you have an `!` or other character at the front of your name to bring yourself to the top of the list, you will be renamed without notice.",
-	"my milk": "IS HARD!"
-  };
+	'Rule 1': `Advertising of any form (without approval from an Admin) is prohibited.`,
+	'Rule 2': `Keep things SFW unless the channel is marked as NSFW. NSFW content outside of designated channels will not be tolerated and you will be muted.`,
+	'Rule 3': `All kinds of spamming is prohibited. Repeated pings, message bombs, text spams, etc.`,
+	'Rule 4': `Keep your drama outside of this server, we don't want it here.`,
+	'Rule 5': `Harassment of any kind is strictly prohibited and will not be tolerated under and circumstances.`,
+	'Rule 6': `Treat all Admins and Moderators with the utmost respect.`,
+	'Rule 7': `Name hoisting is not allowed, if you have an \`!\` or other character at the front of your name to bring yourself to the top of the list, you will be renamed without notice.`,
+	'my milk': `IS HARD!`
+};
 
-client.on("message", (message) => {
+client.on(`message`, (message) => {
 	if(responseObject[message.content]) {
-	  message.channel.send(responseObject[message.content]);
+		message.channel.send(responseObject[message.content]);
 	}
-  });
+});
 
 /*
 client.on('message', (message) => {
@@ -72,11 +72,11 @@ client.on('message', (message) => {
 	} 
 }); 
 */
-client.on('message', message => {
+client.on(`message`, message => {
 	const prefixMention = new RegExp(`<@!?${client.user.id}>`);
-	const prefix = message.content.match(prefixMention) ? message.content.match(prefixMention)[0] : 'd!';
+	const prefix = message.content.match(prefixMention) ? message.content.match(prefixMention)[0] : `d!`;
 	if(message.content === prefixMention + prefix) {
-		message.reply('my prefix is `' + process.env.PREFIX + '` now stop tagging me.');
+		message.reply(`my prefix is \`` + process.env.PREFIX + `\` now stop tagging me.`);
 	}
 });
 

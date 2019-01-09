@@ -17,7 +17,3 @@ exports.createChannel = (message, name) => {
 exports.createCategory = (message, name) => {
 	message.guild.createChannel(name, `category`);
 };
-async function createChannels(message, name)
-{
-	message.guild.createChannel(name, `text`);
-}
