@@ -1,7 +1,8 @@
+/* eslint-disable no-undef */
 exports.run = (client, message, args) => {
 
 	//Check if the bot owner is the author
-	if (client.id !== client.ownerID) return message.channel.send('**You lack the required permissions to use this command.**');
+	if (client.id !== client.ownerID) return message.channel.send(`**You lack the required permissions to use this command.**`);
 	//if owner isnt the one sending the message it replies with no perms
 
 	//Delete from cache
