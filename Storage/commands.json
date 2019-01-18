@@ -1,9 +1,21 @@
 {
+    "Channel": {
+        "name":"Channel",
+        "group":"Admins",
+        "desc":"Creates a channel.",
+        "usage":"channel <channel name> <channel type>"
+    },
+    "Embed": {
+        "name":"Embed",
+        "group":"Admins",
+        "desc":"Places a RichEmbed in the chat",
+        "usage":"embed <hexcode> <text up to 1024 characters>"
+    },
     "Help": {
         "name":"Help",
         "group":"Users",
         "desc":"Displays a list of commands.",
-        "usage":"help [group OR command]"
+        "usage":"help"
     },
     "Info": {
         "name":"Info",
@@ -11,6 +23,12 @@
         "desc":"A background on Data.",
         "usage":"info"
     },
+    "Kick": {
+        "name":"Kick",
+        "group":"Mods",
+        "desc":"Kicks a user",
+        "usage":"kick [@user]"
+    },    
     "Kitty": {
         "name":"Kitty",
         "group":"Users",
@@ -46,5 +64,11 @@
         "group":"Users",
         "desc":"gets a random image from a subreddit.",
         "usage":"subreddit <subreddit>"
+    },
+    "Syntax": {
+        "name":"Syntax",
+        "group":"Users",
+        "desc":"Displays the usage information of all commands",
+        "usage":"syntax [GROUP]"
     }
 }
