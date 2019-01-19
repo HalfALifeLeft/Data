@@ -1,4 +1,7 @@
+/* eslint-disable no-console */
+/* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
+
 exports.hexcode = 0xf2c300;
 
 exports.ping = (client) => {
@@ -17,3 +20,12 @@ exports.createChannel = (message, name) => {
 exports.createCategory = (message, name) => {
 	message.guild.createChannel(name, `category`);
 };
+/*
+function hexcode() {
+	return 0xf2c300;
+}
+
+function ping(client) {
+	return Math.round(client.ping);
+}
+*/
