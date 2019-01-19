@@ -14,7 +14,6 @@ const client = new Discord.Client();
 const commands = JSON.parse(fs.readFileSync(`Storage/commands.json`, `utf8`));
 const config = require(`./config.json`);
 const Message = new Discord.Message();
-const Shard = new Discord.Shard(manageridargs);
 
 client.config = config;
 client.message = Message;
