@@ -1,5 +1,11 @@
 {
-    "Channel": {
+    "Avatar": {
+        "name":"Avatar",
+        "group":"Users",
+        "desc":"Gets a user's avatar.",
+        "usage":"avatar [@user]"
+    },
+        "Channel": {
         "name":"Channel",
         "group":"Admins",
         "desc":"Creates a channel.",
