@@ -14,9 +14,11 @@ const client = new Discord.Client();
 const commands = JSON.parse(fs.readFileSync(`Storage/commands.json`, `utf8`));
 const config = require(`./config.json`);
 const Message = new Discord.Message();
+var stringSimilarity = require(`string-similarity`);
 
 client.config = config;
 client.message = Message;
+client.stringSimilarity = stringSimilarity;
 // 
 // To access this do client.func.[FUNCTIONHERE]
 // 
