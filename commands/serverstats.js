@@ -1,10 +1,11 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 exports.run = (client, message, args) => {
+    var moment = require(`moment`);
     const { Client, RichEmbed } = require(`discord.js`);
     const embed = new RichEmbed()
         .setTitle(`Server Stats: ${message.guild.name}`)
-        .setDescription(`Server ID: ${message.guild.id}`)
+        .setDescription(`This server was created at ${moment.utc(message.guild.createdAt).format(`MM/DD/YYYY - hh:mm:ss`)}`)
         .setColor(process.env.HEXCODE)
         .addField(`Region`,`${message.guild.region}`, true)
         .addField(`Users`,`${message.guild.members.filter(m => m.presence.status === `online`).size}/${message.guild.memberCount}`, true)
@@ -13,6 +14,6 @@ exports.run = (client, message, args) => {
         .addField(`Roles`,`${message.guild.roles.size}`, true)
         .addField(`Owner`,`${message.guild.owner}`, true)
         .setThumbnail(message.guild.iconURL)
-        .setFooter(`This server was created at ${message.guild.createdAt}`);
+        .setFooter(`Server ID: ${message.guild.id}`);
     message.channel.send({embed});
 };

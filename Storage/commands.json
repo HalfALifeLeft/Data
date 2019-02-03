@@ -2,10 +2,10 @@
     "Avatar": {
         "name":"Avatar",
         "group":"Users",
-        "desc":"Gets a user's avatar.",
-        "usage":"avatar [@user]"
+        "desc":"Gets a user's avatar",
+        "usage":"avatar [@user or user]"
     },
-        "Channel": {
+    "Channel": {
         "name":"Channel",
         "group":"Admins",
         "desc":"Creates a channel.",
@@ -65,10 +65,16 @@
         "desc":"Reloads a command on the bot",
         "usage":"reload <command name>"
     },
+    "Serverstats": {
+        "name":"Serverstats",
+        "group":"Users",
+        "desc":"Displays the stats of the current server",
+        "usage":"serverstats"
+    },
     "Subreddit": {
         "name":"Subreddit",
         "group":"Users",
-        "desc":"gets a random image from a subreddit.",
+        "desc":"Gets a random image from a subreddit.",
         "usage":"subreddit <subreddit>"
     },
     "Syntax": {
@@ -76,5 +82,11 @@
         "group":"Users",
         "desc":"Displays the usage information of all commands",
         "usage":"syntax [GROUP]"
+    },
+    "Userinfo": {
+        "name":"Userinfo",
+        "group":"Users",
+        "desc":"Gets the stats of a user",
+        "usage":"userinfo [@user or user]"
     }
 }

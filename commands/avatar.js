@@ -5,12 +5,15 @@ exports.run = (client, message, args) => {
     const sm = require(`string-similarity`);
     let members = [];
     let indexes = [];
-
+    //    if(!args[0]) return message.reply(`you need to provide a user!`);
     message.guild.members.forEach(function(member){
         members.push(member.user.username);
         indexes.push(member.id);
     });
-    let match = sm.findBestMatch(args[0], members) || message.author; //matching first argument with a name from the members array
+    if(!args[0]) {
+        args[0] = message.author.username;
+    }
+    let match = sm.findBestMatch(args[0], members); //matching first argument with a name from the members array
     let username = match.bestMatch.target; //get the best match from variable match
     let member = message.guild.members.get(indexes[members.indexOf(username)]); //want the ID of the matched user, so we take the position of the name from members array and match it with the ID in the position of the indexes array.
     let usernameUser = ``;
@@ -31,5 +34,7 @@ exports.run = (client, message, args) => {
     const embed = new RichEmbed()
         .setColor(process.env.HEXCODE)
         .setImage(user.avatarURL);
-    message.channel.send({embed}); 
+    message.channel.send({embed});
+    console.log(match);
+    console.log(username); 
 };
