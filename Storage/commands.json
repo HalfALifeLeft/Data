@@ -41,6 +41,12 @@
         "desc":"Displays a random picture of a cat.",
         "usage":"kitty"
     },
+    "Logs": {
+        "name":"Logs",
+        "group":"Admins",
+        "desc":"Creates the logging channels to enable logging for DataBot",
+        "usage":"logs"
+    },
     "Meme": {
         "name":"Meme",
         "group":"Users",

@@ -3,7 +3,7 @@
 /* eslint-disable no-console */
 exports.run = (client, message, args, tools) => {
 
-    let allowedRole = message.guild.roles.find(`name`, `Admins`);
+    let allowedRole = message.guild.roles.find(r => r.name === `Admins`);
     if (message.member.roles.has(allowedRole.id)) {
         // allowed access to command
         //fetch the amount of messages caller wants to delete, stored in args[0]

@@ -8,7 +8,7 @@ exports.run = (client, message, func, args ) => {
         .setColor(process.env.HEXCODE)
         .addField(`User Commands`, `\`avatar, help, info, kitty, meme, ping, serverstats, subreddit, userstats\``)
         .addField(`Mod Commands`, `\`kick, purge\``)
-        .addField(`Admin Commands`, `\`channel, embed\``)
+        .addField(`Admin Commands`, `\`channel, embed, logs\``)
         .setFooter(`Created by ` + process.env.OWNERNAME, `https://i.imgur.com/NVWwp1d.png`)
         .setTimestamp();
     message.channel.send({embed});

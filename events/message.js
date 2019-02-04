@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 module.exports = (client, message) => {
 // Ignore all bots
-    if (message.author.bot) return;
+    if (message.author.bot || !message.guild) return;
     // Ignore messages not starting with the prefix (in config.json)
     if (message.content.indexOf(process.env.PREFIX) !== 0) return;
     // Our standard argument/command name definition.

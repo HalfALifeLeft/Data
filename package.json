@@ -14,7 +14,7 @@
     "better-sqlite-pool": "^0.1.2",
     "discord.js": "^11.4.2",
     "dotenv": "^6.2.0",
-    "enmap": "^4.5.0",
+    "enmap": "^4.7.0",
     "eslint": "^5.12.0",
     "express": "^4.16.3",
     "gif-search": "^2.0.1",

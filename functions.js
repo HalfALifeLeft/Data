@@ -5,20 +5,26 @@
 exports.hexcode = 0xf2c300;
 
 exports.ping = (client) => {
-	return Math.round(client.ping);
+    return Math.round(client.ping);
 };
 
 exports.example = (a, b) => {
-	if (a && b) {
-		return a + b;
-	}
-	return undefined;
+    if (a && b) {
+        return a + b;
+    }
+    return undefined;
 }; 
 exports.createChannel = (message, name) => {
-	message.guild.createChannel(name, `text`);
+    setTimeout(()=> {
+        message.guild.createChannel(name, `text`);
+        message.channel.send(`created channel: ` + name);
+    }, 50);
 };
 exports.createCategory = (message, name) => {
-	message.guild.createChannel(name, `category`);
+    setTimeout(() => {
+        message.guild.createChannel(name, `category`);
+        message.channel.send(`created Category: ` + name);
+    }, 50);
 };
 /*
 function hexcode() {
