@@ -9,6 +9,11 @@ exports.run = (client, message, args) => {
         const channelLoggingThree = client.channels.find(channel => channel.name === `server-events` && channel.type == `text`);
         const channelLoggingFour = client.channels.find(channel => channel.name === `mod-events` && channel.type == `text`);
         const category = client.channels.find(channel => channel.name === `Data Logging` && channel.type == `category`);
+        const channelLoggingOneId = client.channels.find(channel => channel.name === `member-events` && channel.type == `text`);
+        const channelLoggingTwoId = client.channels.find(channel => channel.name === `message-events` && channel.type == `text`);
+        const channelLoggingThreeId = client.channels.find(channel => channel.name === `server-events` && channel.type == `text`);
+        const channelLoggingFourId = client.channels.find(channel => channel.name === `mod-events` && channel.type == `text`);
+        const categoryId = client.channels.find(channel => channel.name === `Data Logging` && channel.type == `category`);
 
         if (channelLoggingOne || channelLoggingTwo || channelLoggingThree || channelLoggingFour || category) return message.reply(`At least one logging channel/category I need to create already exists! Please delete any channels by the name of \`
         member-events, message-events, server-events, or mod-events\` or categories called \`Data Logging\` so that I can properly set up logging on this server!`);
