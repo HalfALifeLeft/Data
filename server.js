@@ -16,6 +16,26 @@ const config = require(`./config.json`);
 const Message = new Discord.Message();
 var stringSimilarity = require(`string-similarity`);
 
+client.settings = new Enmap({
+    name: `settings`,
+    fetchAll: false,
+    autoFetch: true,
+    cloneLevel: `deep`
+});
+
+const defaultSettings = {
+    prefix: `d!`,
+    memberLogChannel: `member-events`,
+    messageLogChannel: `message-events`,
+    serverLogChannel: `server-events`,
+    modLogChannel: `mod-events`,
+    modRole: `Mods`,
+    adminRole: `Admins`,
+    welcomeChannel: `general`,
+    welcomeMessage: `Welcome into the server <@{{user}}>!`
+};
+
+client.defaultSettings = defaultSettings;
 client.config = config;
 client.message = Message;
 client.stringSimilarity = stringSimilarity;
