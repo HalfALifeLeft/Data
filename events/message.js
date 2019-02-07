@@ -4,7 +4,7 @@ module.exports = (client, message) => {
     if (message.author.bot || !message.guild) return;
     // Ignore messages not starting with the prefix (in config.json)
     const guildConf = client.settings.ensure(message.guild.id, client.defaultSettings);
-    if(message.content.indexOf(guildConf.prefix) !== 0) return;
+    if(message.content.toLowerCase().indexOf(guildConf.prefix) !== 0) return;
     // Our standard argument/command name definition.
     const args = message.content.slice(guildConf.prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
@@ -15,4 +15,3 @@ module.exports = (client, message) => {
     // Run the command
     cmd.run(client, message, args);
 };
-  

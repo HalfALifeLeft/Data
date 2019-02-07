@@ -14,11 +14,11 @@ exports.run = (client, message, args) => {
     if(!args[0]) {
         args[0] = message.author.username;
     } else {
-    console.log(`RegEx Outer Else Worked`);
+        console.log(`RegEx Outer Else Worked`);
         if(args[0] === regExTest) {
             console.log(`RegEx worked`);
-            async () => {
-             /*   try {
+            //async () => {
+            /*   try {
                     const User = await client.fetchUser(id) 
                     const member = await guild.fetchmember(User)
                     const role = guild.roles.find(r => r.name === `Testing`);
@@ -27,7 +27,7 @@ exports.run = (client, message, args) => {
                 } catch (e) {
                     console.error(e);
                 } */
-            }
+            //}
         }
     }
     message.guild.members.forEach(function(member){
