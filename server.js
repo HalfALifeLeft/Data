@@ -7,6 +7,7 @@ require(`dotenv`).config();
 //Calling Packages
 const Discord = require(`discord.js`);
 const Enmap = require(`enmap`);
+const express = require(`./express.js`);
 const fs = require(`fs`);
 var func = require(`./functions.js`);
 

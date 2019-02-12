@@ -7,7 +7,6 @@ exports.run = (client, message, args) => {
     Booru.search(`safebooru.org`, [ `${args[0]}` ], {limit: 1, random: true})
         .then(function(images) {
             for (let image of images) {
-                console.log(image.common.file_url);
                 const { Client, RichEmbed } = require(`discord.js`);
                 const embed = new RichEmbed()
                     .setColor(process.env.HEXCODE)
