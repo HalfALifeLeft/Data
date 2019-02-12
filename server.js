@@ -16,7 +16,7 @@ const config = require(`./config.json`);
 const Message = new Discord.Message();
 var stringSimilarity = require(`string-similarity`);
 
-client.settings = new Enmap({
+/*client.settings = new Enmap({
     name: `settings`,
     fetchAll: false,
     autoFetch: true,
@@ -35,7 +35,7 @@ const defaultSettings = {
     welcomeMessage: `Welcome into the server <@{{user}}>!`
 };
 
-client.defaultSettings = defaultSettings;
+client.defaultSettings = defaultSettings;*/
 client.config = config;
 client.message = Message;
 client.stringSimilarity = stringSimilarity;
@@ -95,10 +95,10 @@ client.on('message', (message) => {
 */
 client.on(`message`, message => {
     const prefixMention = new RegExp(`<@!?${client.user.id}>`);
-    const guildConf = client.settings.ensure(message.guild.id, client.defaultSettings);
+    //    const guildConf = client.settings.ensure(message.guild.id, client.defaultSettings);
     if(prefixMention.test(message.content) === true) {
         if(message.content.includes(`prefix`) === true) {
-            message.reply(`my prefix is \`` + guildConf.prefix + `\` now stop tagging me.`);
+            message.reply(`my prefix is \`` + client.config.prefix + `\` now stop tagging me.`);
         }
     }
     // Ignore all bots
