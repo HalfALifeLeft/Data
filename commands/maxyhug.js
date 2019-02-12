@@ -5,6 +5,6 @@ exports.run = (client, message, args) => {
     const { Client, RichEmbed } = require(`discord.js`);
     const embed = new RichEmbed()
         .setColor(process.env.HEXCODE)
-        .setImage(`https://i.imgur.com/2tNQkQu.png`);
+        .setImage(`https://i.imgur.com/fe4EWHL.png`);
     message.channel.send({embed});
 };

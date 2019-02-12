@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 exports.run = (client, message, args) => {
+    let content = args.slice(1).join(` `);
     let imageArray = [
         `http://i.imgur.com/Z5DpKer.gif`,
         `http://66.media.tumblr.com/89de7b404cf5cd01663ddd4bcae731a2/tumblr_nw37nuwXGG1r60zuio1_540.gif`,
@@ -34,6 +35,7 @@ exports.run = (client, message, args) => {
         `https://media1.tenor.com/images/868514ccca94037608a50a9bd60e69ff/tenor.gif?itemid=13400355`
     ];
     let randomNumber = Math.floor(Math.random() * imageArray.length);
+    let usersMentioned = message.mentions.users.array();
 
     if(message.mentions.users.find(val => val.username === message.author.username)) {
         message.channel.send(`Awww don't be lonely! Take a hug from me!`);
@@ -45,14 +47,12 @@ exports.run = (client, message, args) => {
         return;
     }
 
-    let usersMentioned = message.mentions.users.array();
-
     if(usersMentioned.length === 0) {
         message.channel.send(`You can't hug the air! Tag someone to hug them!`);
         return;
     }
 
-    message.channel.send(`${message.author} hugs ${message.mentions.users.array().toString().replace(`,`, `, `)}`);
+    message.channel.send(`${message.author} hugs ${message.mentions.users.array().toString().replace(`,`, `, `)} ${content}`);
     const { Client, RichEmbed } = require(`discord.js`);
     const embed = new RichEmbed()
         .setColor(process.env.HEXCODE)
