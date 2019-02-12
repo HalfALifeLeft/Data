@@ -101,6 +101,19 @@ client.on(`message`, message => {
             message.reply(`my prefix is \`` + guildConf.prefix + `\` now stop tagging me.`);
         }
     }
+    // Ignore all bots
+    if (message.author.bot || !message.guild) return;
+    // Ignore messages not starting with the prefix (in config.json)
+    if(!message.content.toLowerCase().startsWith(`data`)) return;
+    // Our standard argument/command name definition.
+    const args = message.content.slice(5).trim().split(/ +/g);
+    const command = args.shift().toLowerCase();
+    // Grab the command data from the client.commands Enmap
+    const cmd = client.commands.get(command);
+    // If that command doesn't exist, silently exit and do nothing
+    if (!cmd) return;
+    // Run the command
+    cmd.run(client, message, args);
 });
 
 //Discord Login 
