@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
-exports.run = (client, message, args, tools) => {
+module.exports.run = async (client, message, args, tools) => {
 
     let allowedRole = message.guild.roles.find(r => r.name === `Admins`);
     if (message.member.roles.has(allowedRole.id)) {
@@ -23,4 +23,7 @@ exports.run = (client, message, args, tools) => {
         // not allowed access
         message.reply(`**You lack the permission to do this**`);
     }
+};
+module.exports.help = {
+    name: `purge`
 };

@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
-exports.run = (client, message, args,  func) => { 
+module.exports.run = async (client, message, args) => {
     const { Client, RichEmbed } = require(`discord.js`);
     const randomPuppy = require(`random-puppy`);
     randomPuppy(`memes`)
@@ -12,4 +12,7 @@ exports.run = (client, message, args,  func) => {
                 .setColor(process.env.HEXCODE);
             return message.channel.send({ embed });
         });
+};
+module.exports.help = {
+    name: `meme`
 };

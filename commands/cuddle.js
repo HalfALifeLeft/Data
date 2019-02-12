@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
-exports.run = (client, message, args) => {
+module.exports.run = async (client, message, args) => {
     let content = args.slice(1).join(` `);
     let imageArray = [
         `https://media1.tenor.com/images/4a211d5c5d076ad8795d8a82f9f01c29/tenor.gif?itemid=13221038`,
@@ -54,4 +54,7 @@ exports.run = (client, message, args) => {
         .setColor(process.env.HEXCODE)
         .setImage(imageArray[randomNumber]);
     message.channel.send({embed});
+};
+module.exports.help = {
+    name: `cuddle`
 };

@@ -1,6 +1,6 @@
 /* eslint-disable no-redeclare */
 /* eslint-disable no-undef */
-exports.run = (client, message, args, msg, cmd) => {
+module.exports.run = async (client, message, args) => {
     const fs = require(`fs`);
     const prefix = `d!`;
     const commands = JSON.parse(fs.readFileSync(`Storage/commands.json`, `utf8`));
@@ -116,4 +116,7 @@ exports.run = (client, message, args, msg, cmd) => {
         }});
         return; // We want to return here so that it doesnt run the rest of the script also.
     }
+};
+module.exports.help = {
+    name: `syntax`
 };

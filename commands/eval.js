@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
-exports.run = (client, message) => {
+module.exports.run = async (client, message, args) => {
     const config = require(`../config.json`);
     const { Client, RichEmbed } = require(`discord.js`);
     function clean(text) {
@@ -35,3 +35,6 @@ exports.run = (client, message) => {
                 .addField(`Error ❌ `, `\`\`\`${err}\`\`\``);
             message.channel.send(embed);
         }}};
+module.exports.help = {
+    name: `eval`
+};

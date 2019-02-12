@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-exports.run = (client, message, args) => {
+module.exports.run = async (client, message, args) => {
     const guildConf = client.settings.ensure(message.guild.id, client.defaultSettings);
     // Command is admin only, let's grab the admin value: 
     const adminRole = message.guild.roles.find(r => r.name === guildConf.adminRole);
@@ -30,4 +30,7 @@ exports.run = (client, message, args) => {
     
     // We can confirm everything's done to the client.
     message.channel.send(`Guild configuration item ${prop} has been changed to:\n\`${value.join(` `)}\``);
+};
+module.exports.help = {
+    name: `setconf`
 };

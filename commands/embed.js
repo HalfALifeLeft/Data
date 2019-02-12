@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
-exports.run = (client, message, args ) => {
+module.exports.run = async (client, message, args) => {
     let allowedRole = message.guild.roles.find(`name`, `Admins`);
     if (message.member.roles.has(allowedRole.id)) return message.channel.send(`**You lack the required permissions to use this command.**`);
     //if owner isnt the one sending the message it replies with no perms
@@ -12,4 +12,7 @@ exports.run = (client, message, args ) => {
         .setColor(`${color}`)
         .setDescription(`${content}`);
     return message.channel.send({embed});
+};
+module.exports.help = {
+    name: `embed`
 };

@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
-exports.run = (client, message, args) => {
+module.exports.run = async (client, message, args) => {
     let allowedRole = message.guild.roles.find(r => r.name === `Admins`);
     if (message.member.roles.has(allowedRole.id)) {
         const channelLoggingOne = client.channels.find(channel => channel.name === `member-event` && channel.type == `text`);
@@ -33,3 +33,8 @@ exports.run = (client, message, args) => {
         return message.reply(`you do not have permission to do this!`);
     }
 };
+module.exports.help = {
+    name: `logs`
+};
+
+//USE PROMISES

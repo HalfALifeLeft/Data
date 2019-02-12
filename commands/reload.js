@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-exports.run = (client, message, args) => {
+module.exports.run = async (client, message, args) => {
 
     //Check if the bot owner is the author
     if (client.id !== client.ownerID) return message.channel.send(`**You lack the required permissions to use this command.**`);
@@ -17,4 +17,7 @@ exports.run = (client, message, args) => {
     //Finally, send an output if it hasn't returned yet
     message.reply(`The command ${args[0]} has been reloaded.`);
 
+};
+module.exports.help = {
+    name: `reload`
 };

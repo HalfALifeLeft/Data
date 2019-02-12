@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
-exports.run = (client, message, args) => {
+module.exports.run = async (client, message, args) => {
     let content = args.slice(1).join(` `);
     let imageArray = [
         `http://i.imgur.com/Z5DpKer.gif`,
@@ -58,4 +58,7 @@ exports.run = (client, message, args) => {
         .setColor(process.env.HEXCODE)
         .setImage(imageArray[randomNumber]);
     message.channel.send({embed});
+};
+module.exports.help = {
+    name: `hug`
 };

@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
-exports.run = (client, message, args) => {
+module.exports.run = async (client, message, args) => {
     const Booru = require(`booru`);
 
     Booru.search(`safebooru.org`, [ `${args[0]}` ], {limit: 1, random: true})
@@ -23,4 +23,8 @@ exports.run = (client, message, args) => {
                 console.log(err);
             }
         });
+};
+
+module.exports.help = {
+    name: `booru`
 };
