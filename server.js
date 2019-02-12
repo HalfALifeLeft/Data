@@ -95,9 +95,11 @@ client.on('message', (message) => {
 */
 client.on(`message`, message => {
     const prefixMention = new RegExp(`<@!?${client.user.id}>`);
-    const prefix = message.content.match(prefixMention) ? message.content.match(prefixMention)[0] : `d!`;
-    if(message.content === prefixMention + prefix) {
-        message.reply(`my prefix is \`` + process.env.PREFIX + `\` now stop tagging me.`);
+    const guildConf = client.settings.ensure(message.guild.id, client.defaultSettings);
+    if(prefixMention.test(message.content) === true) {
+        if(message.content.includes(`prefix`) === true) {
+            message.reply(`my prefix is \`` + guildConf.prefix + `\` now stop tagging me.`);
+        }
     }
 });
 
