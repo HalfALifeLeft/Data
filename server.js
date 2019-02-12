@@ -98,7 +98,7 @@ client.on(`message`, message => {
     //    const guildConf = client.settings.ensure(message.guild.id, client.defaultSettings);
     if(prefixMention.test(message.content) === true) {
         if(message.content.includes(`prefix`) === true) {
-            message.reply(`my prefix is \`` + client.config.prefix + `\` now stop tagging me.`);
+            message.reply(`my prefix is \`` + process.env.PREFIX + `\` now stop tagging me.`);
         }
     }
     // Ignore all bots
