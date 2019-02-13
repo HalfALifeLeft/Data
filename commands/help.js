@@ -12,6 +12,20 @@ module.exports.run = async (client, message, args) => {
         .setFooter(`Created by ` + process.env.OWNERNAME, `https://i.imgur.com/NVWwp1d.png`)
         .setTimestamp();
     message.channel.send({embed});
+
+
+
+    client.fs.readdir(`../commands/`, (err, files) => {
+        if (err) console.error(err);
+    
+        let jsfiles = files.filter(f => f.split(`.`).pop()  === `js`);
+    
+        jsfiles.forEach((f, i) => {
+            let props = require(`../commands/${f}`);
+            console.log(props.name);
+        });
+    });
+
 };
 module.exports.help = {
     name: `help`

@@ -40,6 +40,7 @@ client.defaultSettings = defaultSettings;*/
 client.config = config;
 client.message = Message;
 client.stringSimilarity = stringSimilarity;
+client.fs = fs;
 // 
 // To access this do client.func.[FUNCTIONHERE]
 // 
