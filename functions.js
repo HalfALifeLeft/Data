@@ -14,18 +14,6 @@ exports.example = (a, b) => {
     }
     return undefined;
 }; 
-exports.createChannel = (message, name) => {
-    setTimeout(()=> {
-        message.guild.createChannel(name, `text`);
-        message.channel.send(`created channel: ` + name);
-    }, 50);
-};
-exports.createCategory = (message, name) => {
-    setTimeout(() => {
-        message.guild.createChannel(name, `category`);
-        message.channel.send(`created Category: ` + name);
-    }, 50);
-};
 /*
 function hexcode() {
 	return 0xf2c300;

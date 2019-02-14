@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
-exports.run = (client, message, args) => {
+module.exports.run = async (client, message, args) => {
     const sm = require(`string-similarity`);
     var moment = require(`moment`);
     let members = [];
@@ -54,4 +54,7 @@ exports.run = (client, message, args) => {
         .setThumbnail(user.avatarURL)
         .setFooter(`User ID: ${user.id}`);
     message.channel.send({embed});
+};
+module.exports.help = {
+    name: `userinfo`
 };

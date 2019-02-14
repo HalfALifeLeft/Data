@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
-exports.run = (client, message, [mention, ...reason]) => {
+module.exports.run = async (client, message, args) => {
     const modRole = message.guild.roles.find(`name`, `Mods`);
     if (!modRole)
         return message.reply(`The Mods role does not exist`);
@@ -19,4 +19,7 @@ exports.run = (client, message, [mention, ...reason]) => {
     kickMember.kick(reason.join(` `)).then(member => {
         message.reply(`${member.user.username} was succesfully kicked.`);
     });
+};
+module.exports.help = {
+    name: `kick`
 };

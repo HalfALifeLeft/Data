@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
-exports.run = (client, message, args) => {
+module.exports.run = async (client, message, args) => {
     if(!args[0]) return message.reply(`you need to ask a question for the 8ball to answer!`);
     const eightball = require(`8ball`)();
     const { Client, RichEmbed } = require(`discord.js`);
@@ -8,4 +8,8 @@ exports.run = (client, message, args) => {
         .setColor(process.env.HEXCODE)
         .setTitle(`${eightball}`);
     message.channel.send({embed});
+};
+
+module.exports.help = {
+    name: `8ball`
 };

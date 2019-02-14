@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
-exports.run = (client, message, args) => {
+module.exports.run = async (client, message, args) => {
     const sm = require(`string-similarity`);
     let members = [];
     let indexes = [];
@@ -37,4 +37,7 @@ exports.run = (client, message, args) => {
     message.channel.send({embed});
     console.log(match);
     console.log(username); 
+};
+module.exports.help = {
+    name: `avatar`
 };

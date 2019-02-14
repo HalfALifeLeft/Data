@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
-exports.run = (client, message, args) => {
+module.exports.run = async (client, message, args) => {
     var moment = require(`moment`);
     const { Client, RichEmbed } = require(`discord.js`);
     const embed = new RichEmbed()
@@ -16,4 +16,7 @@ exports.run = (client, message, args) => {
         .setThumbnail(message.guild.iconURL)
         .setFooter(`Server ID: ${message.guild.id}`);
     message.channel.send({embed});
+};
+module.exports.help = {
+    name: `serverstats`
 };

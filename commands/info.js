@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
-exports.run = (client, message, func, args ) => {
+module.exports.run = async (client, message, args) => {
     const { Client, RichEmbed } = require(`discord.js`);
     const embed = new RichEmbed()
         .setTitle(`Origins`)
@@ -27,4 +27,8 @@ exports.run = (client, message, func, args ) => {
        */
     //  .addField("Invite me to your server!", "[here](https://discordapp.com/oauth2/authorize?client_id=494001612822675458&scope=bot)", true)
         .setThumbnail(`https://i.imgur.com/ysVtDyb.jpg`);
-    return message.channel.send({embed});};
+    return message.channel.send({embed});
+};
+module.exports.help = {
+    name: `info`
+};

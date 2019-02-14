@@ -7,6 +7,7 @@ require(`dotenv`).config();
 //Calling Packages
 const Discord = require(`discord.js`);
 const Enmap = require(`enmap`);
+const express = require(`./express.js`);
 const fs = require(`fs`);
 var func = require(`./functions.js`);
 
@@ -39,6 +40,7 @@ client.defaultSettings = defaultSettings;*/
 client.config = config;
 client.message = Message;
 client.stringSimilarity = stringSimilarity;
+client.fs = fs;
 // 
 // To access this do client.func.[FUNCTIONHERE]
 // 
@@ -55,9 +57,9 @@ fs.readdir(`./events/`, (err, files) => {
     });
 });
 
-client.commands = new Enmap();
+//client.commands = new Enmap();
 
-fs.readdir(`./commands/`, (err, files) => {
+/*fs.readdir(`./commands/`, (err, files) => {
     if (err) return console.error(err);
     files.forEach(file => {
         if (!file.endsWith(`.js`)) return;
@@ -65,6 +67,23 @@ fs.readdir(`./commands/`, (err, files) => {
         let commandName = file.split(`.`)[0];
         console.log(`Attempting to load command ${commandName}`);
         client.commands.set(commandName, props);
+    });
+});*/
+
+client.commands = new Discord.Collection();
+fs.readdir(`./commands/`, (err, files) => {
+    if (err) console.error(err);
+
+    let jsfiles = files.filter(f => f.split(`.`).pop()  === `js`);
+    if (jsfiles.length <= 0) {
+        console.log(`No loadable commands!`);
+        return;
+    }
+    jsfiles.forEach((f, i) => {
+        let props = require(`./commands/${f}`);
+        let commandName = f.split(`.`)[0];
+        console.log(`Attempting to load command ${commandName}`);
+        client.commands.set(props.help.name, props);
     });
 });
 
@@ -98,7 +117,7 @@ client.on(`message`, message => {
     //    const guildConf = client.settings.ensure(message.guild.id, client.defaultSettings);
     if(prefixMention.test(message.content) === true) {
         if(message.content.includes(`prefix`) === true) {
-            message.reply(`my prefix is \`` + client.config.prefix + `\` now stop tagging me.`);
+            message.reply(`my prefix is \`` + process.env.PREFIX + `\` now stop tagging me.`);
         }
     }
     // Ignore all bots
