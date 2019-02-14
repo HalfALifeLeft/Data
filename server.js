@@ -79,11 +79,10 @@ fs.readdir(`./commands/`, (err, files) => {
         console.log(`No loadable commands!`);
         return;
     }
-    console.log(`Loading ${jsfiles.length} commands.`); 
-
     jsfiles.forEach((f, i) => {
         let props = require(`./commands/${f}`);
-        console.log(`${i + 1}: ${f} loaded.`);
+        let commandName = f.split(`.`)[0];
+        console.log(`Attempting to load command ${commandName}`);
         client.commands.set(props.help.name, props);
     });
 });
