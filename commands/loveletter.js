@@ -30,7 +30,13 @@ module.exports.run = async (client, message, args) => {
         let memberIndex = myguild.members.get(indexes[members.indexOf(username)]);
 
         if (collectedOne.first().content === `cancel` || collectedOne.first().content === `Cancel`) {
-            return message.channel.send(`canceled`);
+            message.channel.send(`canceled`).then(msg => {
+                msg.delete(50000);
+                return;
+            }).catch((e) => {
+                console.error(e);
+            });
+            
         }
 
         if (message.mentions.everyone === true) return message.reply(`You cannot tag everyone with this command!`);
