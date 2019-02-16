@@ -3,8 +3,8 @@
 /* eslint-disable no-undef */
 module.exports = (client, member) => {
     // NEVER have client.on inside of a event or command, it FUCKS it up
-    const mychannel = client.guild.channels.find(channel => channel.name === `member-events`);
-    const general = client.guild.channels.find(channel => channel.name === `general`);
+    const mychannel = member.guild.channels.find(channel => channel.name === `member-events`);
+    const general = member.guild.channels.find(channel => channel.name === `general`);
     var role = member.guild.roles.find(role => role.name === `Members`);
     if (!mychannel) return;
     if (!general) return; 
