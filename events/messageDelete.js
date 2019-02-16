@@ -2,7 +2,7 @@
 /* eslint-disable no-undef */
 module.exports = (client, message) => {
     if (message.author.bot) return;
-    const mychannel = client.channels.find(channel => channel.name === `message-events`);
+    const mychannel = client.guild.channels.find(channel => channel.name === `message-events`);
     if (!mychannel) return;
     let content = message.content;
     if (content.length > 1024) return;

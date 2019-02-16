@@ -50,8 +50,6 @@ module.exports.run = async (client, message, args) => {
         game = user.presence.game;
     }
 
-    console.log(game);
-
     const { Client, RichEmbed } = require(`discord.js`);
     const embed = new RichEmbed()
         .setTitle(`User Info: ${user.username}#${user.discriminator}`)
@@ -65,9 +63,6 @@ module.exports.run = async (client, message, args) => {
         .setThumbnail(user.avatarURL)
         .setFooter(`User ID: ${user.id}`);
     message.channel.send({embed});
-
-    //console.log(message.author);
-
 };
 module.exports.help = {
     name: `userinfo`

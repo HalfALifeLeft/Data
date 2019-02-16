@@ -16,6 +16,7 @@ const commands = JSON.parse(fs.readFileSync(`Storage/commands.json`, `utf8`));
 const config = require(`./config.json`);
 const Message = new Discord.Message();
 var stringSimilarity = require(`string-similarity`);
+const Guild = new Discord.Guild();
 
 /*client.settings = new Enmap({
     name: `settings`,
@@ -41,6 +42,7 @@ client.config = config;
 client.message = Message;
 client.stringSimilarity = stringSimilarity;
 client.fs = fs;
+client.guild = Guild;
 // 
 // To access this do client.func.[FUNCTIONHERE]
 // 

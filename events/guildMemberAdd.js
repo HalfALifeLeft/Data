@@ -3,10 +3,12 @@
 /* eslint-disable no-undef */
 module.exports = (client, member) => {
     // NEVER have client.on inside of a event or command, it FUCKS it up
-    const mychannel = client.channels.find(channel => channel.name === `member-events`);
-    const general = client.channels.find(channel => channel.name === `general`);
-    if (!mychannel) return; 
+    const mychannel = client.guild.channels.find(channel => channel.name === `member-events`);
+    const general = client.guild.channels.find(channel => channel.name === `general`);
     var role = member.guild.roles.find(role => role.name === `Members`);
+    if (!mychannel) return;
+    if (!general) return; 
+    if (!role) return; 
     const { Client, RichEmbed } = require(`discord.js`);
     const embed = new RichEmbed()
         .setTimestamp()
