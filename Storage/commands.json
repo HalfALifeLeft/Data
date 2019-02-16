@@ -1,9 +1,21 @@
 {
+    "8ball": {
+        "name":"8Ball",
+        "group":"Users",
+        "desc":"Ask the magic 8ball a question!",
+        "usage":"8ball <question>"
+    },
     "Avatar": {
         "name":"Avatar",
         "group":"Users",
-        "desc":"Gets a user's avatar",
+        "desc":"Gets a user's avatar.",
         "usage":"avatar [@user or user]"
+    },
+    "Booru": {
+        "name":"Booru",
+        "group":"Users",
+        "desc":"Searches safebooru for a command.",
+        "usage":"booru <search term>"
     },
     "Channel": {
         "name":"Channel",
@@ -11,10 +23,16 @@
         "desc":"Creates a channel.",
         "usage":"channel <channel name> <channel type>"
     },
+    "Cuddle": {
+        "name":"Cuddle",
+        "group":"Users",
+        "desc":"Cuddle a user.",
+        "usage":"cuddle [@user]"
+    },
     "Embed": {
         "name":"Embed",
         "group":"Admins",
-        "desc":"Places a RichEmbed in the chat",
+        "desc":"Places a RichEmbed in the chat.",
         "usage":"embed <hexcode> <text up to 1024 characters>"
     },
     "Help": {
@@ -23,18 +41,36 @@
         "desc":"Displays a list of commands.",
         "usage":"help"
     },
+    "Hug": {
+        "name":"Hug",
+        "group":"Users",
+        "desc":"Hug a user.",
+        "usage":"hug [@user]"
+    },
     "Info": {
         "name":"Info",
         "group":"Users",
         "desc":"A background on Data.",
         "usage":"info"
     },
+    "Invite": {
+        "name":"Invite",
+        "group":"Users",
+        "desc":"Gets a server invite and DMs it to you.",
+        "usage":"invite"
+    },
     "Kick": {
         "name":"Kick",
         "group":"Mods",
         "desc":"Kicks a user",
         "usage":"kick [@user]"
-    },    
+    },
+    "Kili": {
+        "name":"Kili",
+        "group":"Users",
+        "desc":"You're welcome Kili",
+        "usage":"kili"
+    },
     "Kitty": {
         "name":"Kitty",
         "group":"Users",
@@ -46,6 +82,12 @@
         "group":"Admins",
         "desc":"Creates the logging channels to enable logging for DataBot",
         "usage":"logs"
+    },
+    "Maxyhug": {
+        "name":"Maxyhug",
+        "group":"Users",
+        "desc":"Special hug for Maxy",
+        "usage":"maxyhug"
     },
     "Meme": {
         "name":"Meme",
@@ -70,6 +112,12 @@
         "group":"Admins",
         "desc":"Reloads a command on the bot",
         "usage":"reload <command name>"
+    },
+    "Sendmessage": {
+        "name":"Sendmessage",
+        "group":"Users",
+        "desc":"Send a message to a user (experimental, no guarantees)",
+        "usage":"sendmessage"
     },
     "Serverstats": {
         "name":"Serverstats",
