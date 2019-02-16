@@ -1,5 +1,7 @@
-/* eslint-disable no-undef */
-module.exports.run = async (client, message, args) => {
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-unreachable */
+/* eslint-disable no-undef */module.exports.run = async (client, message, args) => {
+    return;
     const guildConf = client.settings.ensure(message.guild.id, client.defaultSettings);
     // Command is admin only, let's grab the admin value: 
     const adminRole = message.guild.roles.find(r => r.name === guildConf.adminRole);

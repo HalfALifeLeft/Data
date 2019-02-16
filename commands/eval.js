@@ -13,7 +13,7 @@ module.exports.run = async (client, message, args) => {
         let arrayOfID = [`444384280152637441`];
         if (!arrayOfID.includes(message.author.id)) return;//only ids above can use this
         try {
-            let evaled = message.content.slice(2 + 4).trim(); 
+            let evaled = message.content.slice(3 + 4).trim(); 
             // you do .toLowerCase() on args when defining them, so you can't use them in your eval. I made it so it removes the prefix and four letters from the start of the word and then evals everything else
             let evaledCode = eval(evaled);//eval the code
             //        message.delete();

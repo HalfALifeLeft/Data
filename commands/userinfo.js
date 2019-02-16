@@ -42,18 +42,32 @@ module.exports.run = async (client, message, args) => {
     let a = moment(Date.now());
     let b = moment(user.createdTimestamp);
     let c = moment(memberIndex.joinedTimestamp);
-    
+    let game = ``;
+
+    if(!user.presence.game) {
+        game = `This person isn't playing anything. How dare they have a life?!`;
+    } else {
+        game = user.presence.game;
+    }
+
+    console.log(game);
+
     const { Client, RichEmbed } = require(`discord.js`);
     const embed = new RichEmbed()
         .setTitle(`User Info: ${user.username}#${user.discriminator}`)
         .setDescription(`Chilling in ${user.presence.status} status`)
+        .addField(`Game:`, `${game}`, true)
         .setColor(process.env.HEXCODE)
-        .addField(`Created:`,`${moment.utc(user.createdTimestamp).format(`MM/DD/YYYY - hh:mm:ss`)} (${a.diff(b, `days`)} days ago!)`, true)
-        .addField(`Joined Server:`,`${moment.utc(memberIndex.joinedTimestamp).format(`MM/DD/YYYY - hh:mm:ss`)} (${a.diff(c, `days`)} days ago!)`)
+        .addField(`Bot:`,`${user.bot}`)
+        .addField(`Created:`,`${moment.utc(user.createdTimestamp).format(`MMMM DD, YYYY, hh:mm a`)} (${a.diff(b, `days`)} days ago!)`, true)
+        .addField(`Joined Server:`,`${moment.utc(memberIndex.joinedTimestamp).format(`MMMM DD, YYYY, hh:mm a`)} (${a.diff(c, `days`)} days ago!)`)
         .addField(`Roles:`,`${memberIndex.roles.filter(r => r.name !== `@everyone`).map(r => `<@&${r.id}>`).join(`, `) || `No Roles`}`)
         .setThumbnail(user.avatarURL)
         .setFooter(`User ID: ${user.id}`);
     message.channel.send({embed});
+
+    //console.log(message.author);
+
 };
 module.exports.help = {
     name: `userinfo`
