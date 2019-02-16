@@ -18,26 +18,6 @@ const Message = new Discord.Message();
 var stringSimilarity = require(`string-similarity`);
 const Guild = new Discord.Guild();
 
-/*client.settings = new Enmap({
-    name: `settings`,
-    fetchAll: false,
-    autoFetch: true,
-    cloneLevel: `deep`
-});
-
-const defaultSettings = {
-    prefix: `d!`,
-    memberLogChannel: `member-events`,
-    messageLogChannel: `message-events`,
-    serverLogChannel: `server-events`,
-    modLogChannel: `mod-events`,
-    modRole: `Mods`,
-    adminRole: `Admins`,
-    welcomeChannel: `general`,
-    welcomeMessage: `Welcome into the server <@{{user}}>!`
-};
-
-client.defaultSettings = defaultSettings;*/
 client.config = config;
 client.message = Message;
 client.stringSimilarity = stringSimilarity;
@@ -58,20 +38,6 @@ fs.readdir(`./events/`, (err, files) => {
         client.on(eventName, event.bind(null, client));
     });
 });
-
-//hidden code
-//client.commands = new Enmap();
-
-/*fs.readdir(`./commands/`, (err, files) => {
-    if (err) return console.error(err);
-    files.forEach(file => {
-        if (!file.endsWith(`.js`)) return;
-        let props = require(`./commands/${file}`);
-        let commandName = file.split(`.`)[0];
-        console.log(`Attempting to load command ${commandName}`);
-        client.commands.set(commandName, props);
-    });
-});*/
 
 client.commands = new Discord.Collection();
 fs.readdir(`./commands/`, (err, files) => {
