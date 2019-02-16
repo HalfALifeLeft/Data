@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 module.exports = (client, oldChannel, newChannel) => {
-    const mychannel = Channel.guild.channels.find(channel => channel.name === `server-events`);
+    const mychannel = newChannel.guild.channels.find(channel => channel.name === `server-events`);
     if (!mychannel) return;
     const { Client, RichEmbed } = require(`discord.js`);
     const embed = new RichEmbed()
