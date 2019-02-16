@@ -57,6 +57,7 @@ fs.readdir(`./events/`, (err, files) => {
     });
 });
 
+//hidden code
 //client.commands = new Enmap();
 
 /*fs.readdir(`./commands/`, (err, files) => {
@@ -104,14 +105,6 @@ client.on(`message`, (message) => {
     }
 });
 
-/*
-client.on('message', (message) => {
-	//message.content.toLowerCase();
-	if (message.content.toLowerCase('')) {
-		message.channel.send('IS HARD!');
-	} 
-}); 
-*/
 client.on(`message`, message => {
     const prefixMention = new RegExp(`<@!?${client.user.id}>`);
     //    const guildConf = client.settings.ensure(message.guild.id, client.defaultSettings);

@@ -98,7 +98,7 @@ exports.run = async (client, message, args) => {
 
                         var data = `Message from ${message.author.username}#${message.author.discriminator} sent to ${usernameUser.user.username}#${usernameUser.user.discriminator}, image: ${dataImage.url}, content: ${messageContent}`;
 
-                        fs.appendFile(`lovelettersexp.txt`, data + `\r\n`, {
+                        fs.appendFile(`messages.txt`, data + `\r\n`, {
                             'flags': `a`
                         }, function(err, data) {
                             if (err) console.log(err);
