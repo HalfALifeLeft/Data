@@ -2,8 +2,9 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 exports.run = async (client, message, args) => {
-    if (message.author.id !== process.env.OWNERID) {
-        return message.reply(`Only the owner of the bot can do this!`);
+    let allowedRole = message.guild.roles.find(r => r.name === `Admins`);
+    if (!message.member.roles.has(allowedRole.id)) {
+        return message.reply(`Only Admins can do this!`);
     }
     client.generateInvite([2146958591])
         .then(link => {

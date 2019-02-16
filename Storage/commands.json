@@ -17,6 +17,12 @@
         "desc":"Searches safebooru for a command.",
         "usage":"booru <search term>"
     },
+    "Botinvite": {
+        "name":"Botinvite",
+        "group":"Admins",
+        "desc":"Gets the bot's invite link and sends it to you.",
+        "usage":"botinvite"
+    },
     "Channel": {
         "name":"Channel",
         "group":"Admins",
@@ -34,6 +40,12 @@
         "group":"Admins",
         "desc":"Places a RichEmbed in the chat.",
         "usage":"embed <hexcode> <text up to 1024 characters>"
+    },
+    "Eval": {
+        "name":"Eval",
+        "group":"Owner",
+        "desc":"Evaluates code.",
+        "usage":"eval <code>"
     },
     "Help": {
         "name":"Help",
