@@ -1,12 +1,3 @@
-# config file
-DataBot.git
 node_modules
-.env
-.eslintrc.js
-package.json
-package-lock.json
-References
-data
-data/enmap.sqlite
-data/enmap.sqlite-shm
-dataImages
+References/
+data/
