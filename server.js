@@ -11,7 +11,9 @@ const express = require(`./express.js`);
 const fs = require(`fs`);
 var func = require(`./functions.js`);
 
-const client = new Discord.Client();
+const client = new Discord.Client({
+    disableEveryone: true,
+});
 const commands = JSON.parse(fs.readFileSync(`Storage/commands.json`, `utf8`));
 const config = require(`./config.json`);
 const Message = new Discord.Message();
