@@ -25,9 +25,22 @@ client.message = Message;
 client.stringSimilarity = stringSimilarity;
 client.fs = fs;
 client.guild = Guild;
+client.enmap = Enmap;
 // 
 // To access this do client.func.[FUNCTIONHERE]
 // 
+
+const penisEnmap = new Enmap({
+    name: `penis`,
+    autoFetch: true,
+    fetchAll: false
+});
+
+client.penisEnmap = penisEnmap;
+
+penisEnmap.defer.then( () => {
+    console.log(penisEnmap.size + ` keys loaded`);
+});
 
 client.func = func;
 
