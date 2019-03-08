@@ -37,27 +37,37 @@ module.exports.run = async (client, message, args) => {
     let randomNumber = Math.floor(Math.random() * imageArray.length);
     let usersMentioned = message.mentions.users.array();
 
-    if(message.mentions.users.find(val => val.username === message.author.username)) {
+    if (message.mentions.users.find(val => val.username === message.author.username)) {
         message.channel.send(`Awww don't be lonely! Take a hug from me!`);
-        const { Client, RichEmbed } = require(`discord.js`);
+        const {
+            Client,
+            RichEmbed
+        } = require(`discord.js`);
         const embed = new RichEmbed()
             .setColor(process.env.HEXCODE)
             .setImage(`https://i.pinimg.com/originals/56/7b/0d/567b0d7c708f70bb27bc9c1532d1a779.gif`);
-        message.channel.send({embed});
+        message.channel.send({
+            embed
+        });
         return;
     }
 
-    if(usersMentioned.length === 0) {
+    if (usersMentioned.length === 0) {
         message.channel.send(`You can't hug the air! Tag someone to hug them!`);
         return;
     }
 
     message.channel.send(`${message.author} hugs ${message.mentions.users.array().toString().replace(`,`, `, `)} ${content}`);
-    const { Client, RichEmbed } = require(`discord.js`);
+    const {
+        Client,
+        RichEmbed
+    } = require(`discord.js`);
     const embed = new RichEmbed()
         .setColor(process.env.HEXCODE)
         .setImage(imageArray[randomNumber]);
-    message.channel.send({embed});
+    message.channel.send({
+        embed
+    });
 };
 module.exports.help = {
     name: `hug`

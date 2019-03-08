@@ -1,7 +1,10 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 module.exports.run = async (client, message, args) => {
-    const { Client, RichEmbed } = require(`discord.js`);
+    const {
+        Client,
+        RichEmbed
+    } = require(`discord.js`);
     const randomPuppy = require(`random-puppy`);
     randomPuppy(`cats`)
         .then(url => {
@@ -10,7 +13,9 @@ module.exports.run = async (client, message, args) => {
                 .setDescription(`Meow meow mothermeowers`)
                 .setImage(url)
                 .setColor(process.env.HEXCODE);
-            return message.channel.send({ embed });
+            return message.channel.send({
+                embed
+            });
         });
 };
 module.exports.help = {

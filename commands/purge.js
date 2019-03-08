@@ -15,9 +15,9 @@ module.exports.run = async (client, message, args, tools) => {
         //this checks if args is more than 100, if it is then returns message
         //now we can delete messages
         message.channel.bulkDelete(number)
-            .then( messages => message.reply(`**Successfully cleared the bridge of \`${messages.size}\` messages**`))
-        //sends how many messages were deleted to chat
-            .catch( error => message.reply(`**ERROR:** ${error.message}`));
+            .then(messages => message.reply(`**Successfully cleared the bridge of \`${messages.size}\` messages**`))
+            //sends how many messages were deleted to chat
+            .catch(error => message.reply(`**ERROR:** ${error.message}`));
         //checks for errors and puts them in the channel
     } else {
         // not allowed access

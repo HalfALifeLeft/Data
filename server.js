@@ -38,7 +38,7 @@ const penisEnmap = new Enmap({
 
 client.penisEnmap = penisEnmap;
 
-penisEnmap.defer.then( () => {
+penisEnmap.defer.then(() => {
     console.log(penisEnmap.size + ` keys loaded`);
 });
 
@@ -58,7 +58,7 @@ client.commands = new Discord.Collection();
 fs.readdir(`./commands/`, (err, files) => {
     if (err) console.error(err);
 
-    let jsfiles = files.filter(f => f.split(`.`).pop()  === `js`);
+    let jsfiles = files.filter(f => f.split(`.`).pop() === `js`);
     if (jsfiles.length <= 0) {
         console.log(`No loadable commands!`);
         return;
@@ -83,7 +83,7 @@ const responseObject = {
 };
 
 client.on(`message`, (message) => {
-    if(responseObject[message.content]) {
+    if (responseObject[message.content]) {
         message.channel.send(responseObject[message.content]);
     }
 });
@@ -91,15 +91,15 @@ client.on(`message`, (message) => {
 client.on(`message`, message => {
     const prefixMention = new RegExp(`<@!?${client.user.id}>`);
     //    const guildConf = client.settings.ensure(message.guild.id, client.defaultSettings);
-    if(prefixMention.test(message.content) === true) {
-        if(message.content.includes(`prefix`) === true) {
+    if (prefixMention.test(message.content) === true) {
+        if (message.content.includes(`prefix`) === true) {
             message.reply(`my prefix is \`` + process.env.PREFIX + `\` now stop tagging me.`);
         }
     }
     // Ignore all bots
     if (message.author.bot || !message.guild) return;
     // Ignore messages not starting with the prefix (in config.json)
-    if(!message.content.toLowerCase().startsWith(`data`)) return;
+    if (!message.content.toLowerCase().startsWith(`data`)) return;
     // Our standard argument/command name definition.
     const args = message.content.slice(5).trim().split(/ +/g);
     const command = args.shift().toLowerCase();

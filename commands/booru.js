@@ -4,14 +4,22 @@
 module.exports.run = async (client, message, args) => {
     const Booru = require(`booru`);
 
-    Booru.search(`safebooru.org`, [ `${args[0]}` ], {limit: 1, random: true})
-        .then(function(images) {
+    Booru.search(`safebooru.org`, [`${args[0]}`], {
+        limit: 1,
+        random: true
+    })
+        .then(function (images) {
             for (let image of images) {
-                const { Client, RichEmbed } = require(`discord.js`);
+                const {
+                    Client,
+                    RichEmbed
+                } = require(`discord.js`);
                 const embed = new RichEmbed()
                     .setColor(process.env.HEXCODE)
                     .setImage(image.common.file_url);
-                message.channel.send({embed});
+                message.channel.send({
+                    embed
+                });
             }
         })
         .catch(err => {

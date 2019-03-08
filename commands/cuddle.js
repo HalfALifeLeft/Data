@@ -33,27 +33,37 @@ module.exports.run = async (client, message, args) => {
     let randomNumber = Math.floor(Math.random() * imageArray.length);
     let usersMentioned = message.mentions.users.array();
 
-    if(message.mentions.users.find(val => val.username === message.author.username)) {
+    if (message.mentions.users.find(val => val.username === message.author.username)) {
         message.channel.send(`Awww, I'll cuddle you <3`);
-        const { Client, RichEmbed } = require(`discord.js`);
+        const {
+            Client,
+            RichEmbed
+        } = require(`discord.js`);
         const embed = new RichEmbed()
             .setColor(process.env.HEXCODE)
             .setImage(imageArray[randomNumber]);
-        message.channel.send({embed});
+        message.channel.send({
+            embed
+        });
         return;
     }
 
-    if(usersMentioned.length === 0) {
+    if (usersMentioned.length === 0) {
         message.channel.send(`You can't cuddle the air! Tag someone to cuddle them!`);
         return;
     }
 
     message.channel.send(`${message.author} cuddles ${message.mentions.users.array().toString().replace(`,`, `, `)} ${content}`);
-    const { Client, RichEmbed } = require(`discord.js`);
+    const {
+        Client,
+        RichEmbed
+    } = require(`discord.js`);
     const embed = new RichEmbed()
         .setColor(process.env.HEXCODE)
         .setImage(imageArray[randomNumber]);
-    message.channel.send({embed});
+    message.channel.send({
+        embed
+    });
 };
 module.exports.help = {
     name: `cuddle`

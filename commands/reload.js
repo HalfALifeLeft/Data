@@ -6,7 +6,7 @@ module.exports.run = async (client, message, args) => {
     //if owner isnt the one sending the message it replies with no perms
 
     //Delete from cache
-    try { 
+    try {
         delete require.cache[require.resolve(`./${args[0]}.js`)];
         //since we are already in the commands folder, no need to specify which folder
     } catch (e) {

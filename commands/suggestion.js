@@ -7,7 +7,7 @@ module.exports.run = async (client, message, args) => {
     let content = ``;
     const findSuggestionsChannel = message.guild.channels.find(channel => channel.name === `suggestions` && channel.type == `text`);
 
-    if(!findSuggestionsChannel) {
+    if (!findSuggestionsChannel) {
         return message.reply(`Please tell an admin of the server to create the channel #suggestions so I can make suggestions for you all!`);
     }
 

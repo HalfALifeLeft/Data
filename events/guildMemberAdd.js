@@ -7,13 +7,16 @@ module.exports = (client, member) => {
     const general = member.guild.channels.find(channel => channel.name === `general`);
     var role = member.guild.roles.find(role => role.name === `Members`);
     if (!mychannel) return;
-    if (!general) return; 
-    if (!role) return; 
-    const { Client, RichEmbed } = require(`discord.js`);
+    if (!general) return;
+    if (!role) return;
+    const {
+        Client,
+        RichEmbed
+    } = require(`discord.js`);
     const embed = new RichEmbed()
         .setTimestamp()
         .setColor(process.env.GOOD)
-        .addField(`Member joined`,`${member.user.username}#${member.user.discriminator} (${member.user.id})`);
+        .addField(`Member joined`, `${member.user.username}#${member.user.discriminator} (${member.user.id})`);
     mychannel.send(embed);
     general.send(`<@${member.id}> has joined the server!`);
     member.addRole(role);

@@ -1,10 +1,10 @@
 /* eslint-disable no-undef */
 module.exports = (client, message) => {
-// Ignore all bots
+    // Ignore all bots
     if (message.author.bot || !message.guild) return;
     // Ignore messages not starting with the prefix (in config.json)
     //    const guildConf = client.settings.ensure(message.guild.id, client.defaultSettings);
-    if(message.content.toLowerCase().indexOf(process.env.PREFIX) !== 0) return;
+    if (message.content.toLowerCase().indexOf(process.env.PREFIX) !== 0) return;
     // Our standard argument/command name definition.
     const args = message.content.slice(process.env.PREFIX.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();

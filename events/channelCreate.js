@@ -6,10 +6,13 @@ module.exports = (client, Channel) => {
     if (Channel.type == `dm`) return;
     const mychannel = Channel.guild.channels.find(channel => channel.name === `server-events`);
     if (!mychannel) return;
-    const { Client, RichEmbed } = require(`discord.js`);
+    const {
+        Client,
+        RichEmbed
+    } = require(`discord.js`);
     const embed = new RichEmbed()
         .setTimestamp()
         .setColor(process.env.GOOD)
-        .addField(`Channel Created`,`#${Channel.name} (\`${Channel.id}\`)`);
+        .addField(`Channel Created`, `#${Channel.name} (\`${Channel.id}\`)`);
     mychannel.send(embed);
 };

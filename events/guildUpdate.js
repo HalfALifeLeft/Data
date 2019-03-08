@@ -4,11 +4,14 @@
 module.exports = (client, oldGuild, newGuild) => {
     const mychannel = newGuild.channels.find(channel => channel.name === `server-events`);
     if (!mychannel) return;
-    const { Client, RichEmbed } = require(`discord.js`);
+    const {
+        Client,
+        RichEmbed
+    } = require(`discord.js`);
     const embed = new RichEmbed()
         .setTimestamp()
         .setColor(process.env.GOOD)
-        .addField(`Old Server Name`,`${oldGuild.name}`, true)
-        .addField(`New Server Name`,`${newGuild.name}`, true);
+        .addField(`Old Server Name`, `${oldGuild.name}`, true)
+        .addField(`New Server Name`, `${newGuild.name}`, true);
     mychannel.send(embed);
 };

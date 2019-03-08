@@ -13,7 +13,7 @@ exports.run = async (client, message, args) => {
     let messageContent = ``;
     let messageId = [];
 
-    myguild.members.forEach(function(member) {
+    myguild.members.forEach(function (member) {
         members.push(member.user.username);
         indexes.push(member.id);
     });
@@ -87,11 +87,11 @@ exports.run = async (client, message, args) => {
 
                     if (collectedThree.first().content === `yes` || collectedThree.first().content === `Yes`) {
                         usernameUser.send(`Someone has sent you a message! Here it is: `)
-                            .catch(function(e) {
+                            .catch(function (e) {
                                 console.error(e);
                             });
                         usernameUser.send(messageContent)
-                            .catch(function(e) {
+                            .catch(function (e) {
                                 console.error(e);
                                 message.reply(`I am sorry, but I cannot DM the selected user. Their DMs are closed!`);
                             });
@@ -100,7 +100,7 @@ exports.run = async (client, message, args) => {
 
                         fs.appendFile(`messages.txt`, data + `\r\n`, {
                             'flags': `a`
-                        }, function(err, data) {
+                        }, function (err, data) {
                             if (err) console.log(err);
                         });
 

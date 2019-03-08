@@ -7,11 +7,16 @@ module.exports.run = async (client, message, args) => {
     let color = args[0];
     let content = args.slice(1).join(` `);
     if (content.length > 1024) return message.channel.send(`Your embed exceeds the character limit of 1024`);
-    const { Client, RichEmbed } = require(`discord.js`);
-    const embed = new RichEmbed()	
+    const {
+        Client,
+        RichEmbed
+    } = require(`discord.js`);
+    const embed = new RichEmbed()
         .setColor(`${color}`)
         .setDescription(`${content}`);
-    return message.channel.send({embed});
+    return message.channel.send({
+        embed
+    });
 };
 module.exports.help = {
     name: `embed`
