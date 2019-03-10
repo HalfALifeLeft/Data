@@ -18,7 +18,7 @@ module.exports.run = async (client, message, args) => {
         errors: [`time`]
     }).then((collectedOne) => {
 
-        if (collectedOne.first().content === `cancel` || collectedOne.first().content === `Cancel`) {
+        if (collectedOne.first().content.toLowerCase() === `cancel`) {
             return message.channel.send(`Canceled`);
         }
 
@@ -31,7 +31,7 @@ module.exports.run = async (client, message, args) => {
             errors: [`time`]
         }).then((collectedTwo) => {
 
-            if (collectedTwo.first().content === `cancel` || collectedTwo.first().content === `Cancel`) {
+            if (collectedTwo.first().content.toLowerCase() === `cancel`) {
                 return message.channel.send(`Canceled`);
             }
 
@@ -44,11 +44,15 @@ module.exports.run = async (client, message, args) => {
                 errors: [`time`]
             }).then((collectedThree) => {
 
-                if (collectedThree.first().content === `no` || collectedThree.first().content === `No`) {
+                if (collectedThree.first().content.toLowerCase() === `no`) {
                     return message.channel.send(`Canceled`);
                 }
 
-                if (collectedThree.first().content === `yes` || collectedThree.first().content === `Yes`) {
+                if (collectedThree.first().content.toLowerCase() === `cancel`) {
+                    return message.channel.send(`Canceled`);
+                }
+
+                if (collectedThree.first().content.toLowerCase() === `yes`) {
 
                     const {
                         Client,
