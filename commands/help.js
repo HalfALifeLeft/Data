@@ -31,7 +31,7 @@ module.exports.run = async (client, message, args) => {
     if (!args[0]) {
         const embed = new Discord.RichEmbed()
             .setTitle(`Commands List`)
-            .setDescription(`Just a command list for Data's functionality. More help can be found with \`d!help [Users | Mods | Admins | [Command Name]]\`!`)
+            .setDescription(`Just a command list for Data's functionality. More help can be found with \`d!help [Command Name]\`!`)
             .setColor(process.env.HEXCODE)
             .addField(`User Commands`, `\`${usersArray.sort().toString()}\``)
             .addField(`Mod Commands`, `\`${modsArray.sort().toString()}\``)

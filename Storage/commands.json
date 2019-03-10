@@ -107,10 +107,16 @@
         "desc":"Displays a random meme from /r/memes.",
         "usage":"meme"
     },
+    "Penis": {
+        "name":"Penis",
+        "group":"Users",
+        "desc":"Get someone's penis length! 100% accurate!",
+        "usage":"penis [@users]"
+    },
     "Ping": {
         "name":"Ping",
         "group":"Mods",
-        "desc":"Displays a list of commands.",
+        "desc":"Displays the ping of the bot.",
         "usage":"ping"
     },
     "Purge": {
@@ -142,6 +148,12 @@
         "group":"Users",
         "desc":"Gets a random image from a subreddit.",
         "usage":"subreddit <subreddit>"
+    },
+    "Suggestion": {
+        "name":"Suggestion",
+        "group":"Users",
+        "desc":"Create a suggestion.",
+        "usage":"suggestion"
     },
     "Syntax": {
         "name":"Syntax",
