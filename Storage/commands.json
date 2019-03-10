@@ -134,7 +134,7 @@
     "Sendmessage": {
         "name":"Sendmessage",
         "group":"Users",
-        "desc":"Send a message to a user (experimental, no guarantees)",
+        "desc":"Send a message to a user (experimental, no guarantees, and it is **LOGGED** for user safety)",
         "usage":"sendmessage"
     },
     "Serverstats": {
