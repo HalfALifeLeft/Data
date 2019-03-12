@@ -7,6 +7,9 @@ module.exports = (client, message, oldMessage) => {
     let content = message.content;
     if (content.length > 1024) return;
     const newMessage = message.content;
+    if (oldMessage == newMessage) {
+        return;
+    }
     const {
         Client,
         RichEmbed
