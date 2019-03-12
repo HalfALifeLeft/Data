@@ -30,7 +30,7 @@ module.exports.run = async (client, message, args) => {
             message.channel.send(embed);
         } catch (err) {
             //        message.delete();
-            let evaled = message.content.slice(2 + 4).trim();
+            let evaled = message.content.slice(3 + 4).trim();
             const embed = new RichEmbed()
                 .setAuthor(message.author.username + `#` + message.author.discriminator, message.author.avatarURL)
                 .setThumbnail(client.user.avatarURL)

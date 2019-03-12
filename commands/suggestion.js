@@ -19,7 +19,7 @@ module.exports.run = async (client, message, args) => {
     }).then((collectedOne) => {
 
         if (collectedOne.first().content.toLowerCase() === `cancel`) {
-            return message.channel.send(`Canceled`);
+            return message.channel.send(`You have canceled your suggestion`);
         }
 
         title = collectedOne.first().content;
@@ -32,7 +32,7 @@ module.exports.run = async (client, message, args) => {
         }).then((collectedTwo) => {
 
             if (collectedTwo.first().content.toLowerCase() === `cancel`) {
-                return message.channel.send(`Canceled`);
+                return message.channel.send(`You have canceled your suggestion`);
             }
 
             content = collectedTwo.first().content;
@@ -45,11 +45,11 @@ module.exports.run = async (client, message, args) => {
             }).then((collectedThree) => {
 
                 if (collectedThree.first().content.toLowerCase() === `no`) {
-                    return message.channel.send(`Canceled`);
+                    return message.channel.send(`You have canceled your suggestion`);
                 }
 
                 if (collectedThree.first().content.toLowerCase() === `cancel`) {
-                    return message.channel.send(`Canceled`);
+                    return message.channel.send(`You have canceled your suggestion`);
                 }
 
                 if (collectedThree.first().content.toLowerCase() === `yes`) {
