@@ -4,7 +4,7 @@
 module.exports = (client, member) => {
     // NEVER have client.on inside of a event or command, it FUCKS it up
     const mychannel = member.guild.channels.find(channel => channel.name === `member-events`);
-    if (!mychannel) return;
+    if (mychannel == null) return;
     const {
         Client,
         RichEmbed

@@ -6,9 +6,11 @@ module.exports = (client, member) => {
     const mychannel = member.guild.channels.find(channel => channel.name === `member-events`);
     const general = member.guild.channels.find(channel => channel.name === `general`);
     var role = member.guild.roles.find(role => role.name === `Members`);
-    if (!mychannel) return;
-    if (!general) return;
-    if (!role) return;
+
+    if (role == null) return;
+    member.addRole(role);
+
+    if (mychannel == null) return;
     const {
         Client,
         RichEmbed
@@ -18,6 +20,7 @@ module.exports = (client, member) => {
         .setColor(process.env.GOOD)
         .addField(`Member joined`, `${member.user.username}#${member.user.discriminator} (${member.user.id})`);
     mychannel.send(embed);
+
+    if (general == null) return;
     general.send(`<@${member.id}> has joined the server!`);
-    member.addRole(role);
 };
