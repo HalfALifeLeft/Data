@@ -39,7 +39,19 @@ const penisEnmap = new Enmap({
 client.penisEnmap = penisEnmap;
 
 penisEnmap.defer.then(() => {
-    console.log(penisEnmap.size + ` keys loaded`);
+    console.log(penisEnmap.size + ` penis keys loaded`);
+});
+
+const dataConfig = new Enmap({
+    name: `dataConfig`,
+    autoFetch: true,
+    fetchAll: false
+});
+
+client.dataConfig = dataConfig;
+
+dataConfig.defer.then(() => {
+    console.log(dataConfig.size + ` config keys loaded`);
 });
 
 client.func = func;
