@@ -2,49 +2,60 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 module.exports.run = async (client, message, args) => {
+    let memberChannel = args[0];
+    let messageChannel = args[1];
+    let serverChannel = args[2];
+    let modChannel = args[3];
+    let prefix = client.dataConfig.get(`${message.guild.id}`, `prefix`);
     let allowedRole = message.guild.roles.find(r => r.name === `Admins`);
+    if (!memberChannel || !messageChannel || !serverChannel || !modChannel) return message.reply(`You need to define 4 channel names! \`${prefix}logs [Member Logging Channel] [Message Logging Channel] [Server Logging Channel] [Mod Logging Channel]\``);
     if (message.member.roles.has(allowedRole.id)) {
-        const channelLoggingOne = message.guild.channels.find(channel => channel.name === `member-events` && channel.type == `text`);
-        const channelLoggingTwo = message.guild.channels.find(channel => channel.name === `message-events` && channel.type == `text`);
-        const channelLoggingThree = message.guild.channels.find(channel => channel.name === `server-events` && channel.type == `text`);
-        const channelLoggingFour = message.guild.channels.find(channel => channel.name === `mod-events` && channel.type == `text`);
+        const channelLoggingOne = message.guild.channels.find(channel => channel.name === memberChannel && channel.type == `text`);
+        const channelLoggingTwo = message.guild.channels.find(channel => channel.name === messageChannel && channel.type == `text`);
+        const channelLoggingThree = message.guild.channels.find(channel => channel.name === serverChannel && channel.type == `text`);
+        const channelLoggingFour = message.guild.channels.find(channel => channel.name === modChannel && channel.type == `text`);
         const category = message.guild.channels.find(channel => channel.name === `Data Logging Test` && channel.type == `category`);
 
         if (channelLoggingOne || channelLoggingTwo || channelLoggingThree || channelLoggingFour || category) return message.reply(`At least one logging channel/category I need to create already exists! Please delete any channels by the name of \`
-        member-events, message-events, server-events, or mod-events\` or categories called \`Data Logging\` so that I can properly set up logging on this server!`);
+        ${memberChannel}, ${messageChannel}, ${serverChannel}, or ${modChannel}\` or categories called \`Data Logging Test\` so that I can properly set up logging on this server!`);
 
         message.guild.createChannel(`Data Logging`, `category`) //make category
             .then(CategoryChannel => {
-                message.guild.createChannel(`member-events`, `text`)
+                message.guild.createChannel(memberChannel, `text`)
                     .then(TextChannel => {
                         TextChannel.setParent(CategoryChannel.id);
+                        client.dataConfig.set(`${message.guild.id}`, `${TextChannel.id}`, `memberLogs`);
                     })
                     .catch((e) => {
                         console.error(e);
                     });
-                message.guild.createChannel(`message-events`, `text`)
+                message.guild.createChannel(messageChannel, `text`)
                     .then(TextChannel => {
                         TextChannel.setParent(CategoryChannel.id);
+                        client.dataConfig.set(`${message.guild.id}`, `${TextChannel.id}`, `messageLogs`);
+
                     })
                     .catch((e) => {
                         console.error(e);
                     });
-                message.guild.createChannel(`server-events`, `text`)
+                message.guild.createChannel(serverChannel, `text`)
                     .then(TextChannel => {
                         TextChannel.setParent(CategoryChannel.id);
+                        client.dataConfig.set(`${message.guild.id}`, `${TextChannel.id}`, `serverLogs`);
                     })
                     .catch((e) => {
                         console.error(e);
                     });
-                message.guild.createChannel(`mod-events`, `text`)
+                message.guild.createChannel(modChannel, `text`)
                     .then(TextChannel => {
                         TextChannel.setParent(CategoryChannel.id);
+                        client.dataConfig.set(`${message.guild.id}`, `${TextChannel.id}`, `modLogs`);
                     })
                     .catch((e) => {
                         console.error(e);
                     });
             });
-        message.channel.send(`I have completed setting up the logging channels!`);
+        message.channel.send(`I have completed setting up the logging channels and have added them to the configurations!`);
     } else {
         return message.reply(`you do not have permission to do this!`);
     }

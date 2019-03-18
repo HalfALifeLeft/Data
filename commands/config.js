@@ -19,8 +19,8 @@ module.exports.run = async (client, message, args) => {
         //if guild ID is not in the enmap, add it to enmap
         await client.dataConfig.set(`${message.guild.id}`, {
             prefix: `dd!`,
-            messageLogs: ``,
             memberLogs: ``,
+            messageLogs: ``,
             serverLogs: ``,
             modLogs: ``,
             welcomeChannel: ``
@@ -28,7 +28,7 @@ module.exports.run = async (client, message, args) => {
     }
 
     if (!configArgs || !configName) {
-        return message.channel.send(`\`\`\`Blank means it is not set\nprefix => ${client.dataConfig.get(`${message.guild.id}`, `prefix`)}\nmessageLogs => ${client.dataConfig.get(`${message.guild.id}`, `messageLogs`)}\nmemberLogs => ${client.dataConfig.get(`${message.guild.id}`, `memberLogs`)}\nserverLogs => ${client.dataConfig.get(`${message.guild.id}`, `serverLogs`)}\nmodLogs => ${client.dataConfig.get(`${message.guild.id}`, `modLogs`)}\nwelcomeChannel => ${client.dataConfig.get(`${message.guild.id}`, `welcomeChannel`)}\`\`\``);
+        return message.channel.send(`\`\`\`Blank means it is not set\nprefix => ${client.dataConfig.get(`${message.guild.id}`, `prefix`)}\nmemberLogs => ${client.dataConfig.get(`${message.guild.id}`, `memberLogs`)}\nmessageLogs => ${client.dataConfig.get(`${message.guild.id}`, `messageLogs`)}\nserverLogs => ${client.dataConfig.get(`${message.guild.id}`, `serverLogs`)}\nmodLogs => ${client.dataConfig.get(`${message.guild.id}`, `modLogs`)}\nwelcomeChannel => ${client.dataConfig.get(`${message.guild.id}`, `welcomeChannel`)}\`\`\``);
     }
     if (!configArgs) {
         return message.reply(`You are either missing an argument`);

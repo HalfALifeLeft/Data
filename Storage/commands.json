@@ -99,7 +99,7 @@
         "name":"Logs",
         "group":"Admins",
         "desc":"Creates the logging channels to enable logging for DataBot",
-        "usage":"logs"
+        "usage":"logs [Member Logging Channel Name] [Message Logging Channel Name] [Server Logging Channel Name] [Mod Logging Channel Name]"
     },
     "Maxyhug": {
         "name":"Maxyhug",
