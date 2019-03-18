@@ -114,8 +114,15 @@ client.on(`message`, (message) => {
 
 client.on(`message`, message => {
     const prefixMention = new RegExp(`<@!?${client.user.id}>`);
+    client.dataConfig.ensure(`${message.guild.id}`, {
+        prefix: `dd!`, 
+        messageLogs: ``,
+        memberLogs: ``,
+        serverLogs: ``,
+        modLogs: ``,
+        welcomeChannel: ``});
+
     const dataPrefix = client.dataConfig.get(`${message.guild.id}`, `prefix`);
-    //    const guildConf = client.settings.ensure(message.guild.id, client.defaultSettings);
     if (prefixMention.test(message.content) === true) {
         if (message.content.includes(`prefix`) === true) {
             if (message.content.toLowerCase().indexOf(`<@`) !== 0) return;
