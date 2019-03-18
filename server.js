@@ -54,18 +54,6 @@ dataConfig.defer.then(() => {
     console.log(dataConfig.size + ` config keys loaded`);
 });
 
-const dataConfigDefault = new Enmap({
-    name: `dataConfigDefault`,
-    autoFetch: true,
-    fetchAll: false
-});
-
-client.dataConfigDefault = dataConfigDefault;
-
-dataConfigDefault.defer.then(() => {
-    console.log(dataConfigDefault.size + ` config keys loaded`);
-});
-
 client.func = func;
 
 fs.readdir(`./events/`, (err, files) => {
