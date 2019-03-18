@@ -54,6 +54,18 @@ dataConfig.defer.then(() => {
     console.log(dataConfig.size + ` config keys loaded`);
 });
 
+const dataConfigDefault = new Enmap({
+    name: `dataConfigDefault`,
+    autoFetch: true,
+    fetchAll: false
+});
+
+client.dataConfigDefault = dataConfigDefault;
+
+dataConfigDefault.defer.then(() => {
+    console.log(dataConfigDefault.size + ` config keys loaded`);
+});
+
 client.func = func;
 
 fs.readdir(`./events/`, (err, files) => {
@@ -102,25 +114,32 @@ client.on(`message`, (message) => {
 
 client.on(`message`, message => {
     const prefixMention = new RegExp(`<@!?${client.user.id}>`);
+    const dataPrefix = client.dataConfig.get(`${message.guild.id}`, `prefix`);
     //    const guildConf = client.settings.ensure(message.guild.id, client.defaultSettings);
     if (prefixMention.test(message.content) === true) {
         if (message.content.includes(`prefix`) === true) {
-            message.reply(`my prefix is \`` + process.env.PREFIX + `\` now stop tagging me.`);
+            if (message.content.toLowerCase().indexOf(`<@`) !== 0) return;
+            message.reply(`my prefix is \`` + dataPrefix + `\` now stop tagging me.`);
         }
+    
+        let prefixLength = 3;
+        if(message.mentions.members.first().user.nickname !== null) {
+            prefixLength = 4;
+        }
+        // Ignore all bots
+        if (message.author.bot || !message.guild) return;
+        // Ignore messages not starting with the prefix (in config.json)
+        if (message.content.toLowerCase().indexOf(`<@`) !== 0) return;
+        // Our standard argument/command name definition.
+        const args = message.content.slice(message.mentions.members.first().id.length + prefixLength).trim().split(/ +/g);
+        const command = args.shift().toLowerCase();
+        // Grab the command data from the client.commands Enmap
+        const cmd = client.commands.get(command);
+        // If that command doesn't exist, silently exit and do nothing
+        if (!cmd) return;
+        // Run the command
+        cmd.run(client, message, args);
     }
-    // Ignore all bots
-    if (message.author.bot || !message.guild) return;
-    // Ignore messages not starting with the prefix (in config.json)
-    if (!message.content.toLowerCase().startsWith(`data`)) return;
-    // Our standard argument/command name definition.
-    const args = message.content.slice(5).trim().split(/ +/g);
-    const command = args.shift().toLowerCase();
-    // Grab the command data from the client.commands Enmap
-    const cmd = client.commands.get(command);
-    // If that command doesn't exist, silently exit and do nothing
-    if (!cmd) return;
-    // Run the command
-    cmd.run(client, message, args);
 });
 
 //Discord Login 

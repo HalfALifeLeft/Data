@@ -1,8 +1,11 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 module.exports = (client, message, oldMessage) => {
+    const channelId = client.dataConfig.get(`${message.guild.id}`, `messageLogs`);
+    if (message.guild.channels.has(channelId) == false) return;
+
     if (message.author.bot) return;
-    const mychannel = message.guild.channels.find(channel => channel.name === `message-events`);
+    const mychannel = message.guild.channels.find(channel => channel.id === channelId);
     if (!mychannel) return;
     let content = message.content;
     if (content.length > 1024) return;

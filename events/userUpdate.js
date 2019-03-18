@@ -1,7 +1,10 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 module.exports = (client, oldUser, newUser) => {
-    const mychannel = client.guild.channels.find(channel => channel.name === `member-events`);
+    const channelId = client.dataConfig.get(`${message.guild.id}`, `memberLogs`);
+    if (message.guild.channels.has(channelId) == false) return;
+
+    const mychannel = client.guild.channels.find(channel => channel.id === channelId);
     if (!mychannel) return;
     const {
         Client,

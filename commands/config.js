@@ -13,7 +13,6 @@ module.exports.run = async (client, message, args) => {
 
     if (regExTest.test(configArgs) === true) {
         configArgs = args[1].replace(`<#`, ``).replace(`>`, ``);
-        console.log(configArgs);
     }
 
     if (!client.dataConfig.get(`${message.guild.id}`)) {
@@ -23,12 +22,13 @@ module.exports.run = async (client, message, args) => {
             messageLogs: ``,
             memberLogs: ``,
             serverLogs: ``,
-            modLogs: ``
+            modLogs: ``,
+            welcomeChannel: ``
         });
     }
 
     if (!configArgs || !configName) {
-        return message.channel.send(`\`\`\`Blank means it is not set\nprefix => ${client.dataConfig.get(`${message.guild.id}`, `prefix`)}\nmessageLogs => ${client.dataConfig.get(`${message.guild.id}`, `messageLogs`)}\nmemberLogs => ${client.dataConfig.get(`${message.guild.id}`, `memberLogs`)}\nserverLogs => ${client.dataConfig.get(`${message.guild.id}`, `serverLogs`)}\nmodLogs => ${client.dataConfig.get(`${message.guild.id}`, `modLogs`)}\n\`\`\``);
+        return message.channel.send(`\`\`\`Blank means it is not set\nprefix => ${client.dataConfig.get(`${message.guild.id}`, `prefix`)}\nmessageLogs => ${client.dataConfig.get(`${message.guild.id}`, `messageLogs`)}\nmemberLogs => ${client.dataConfig.get(`${message.guild.id}`, `memberLogs`)}\nserverLogs => ${client.dataConfig.get(`${message.guild.id}`, `serverLogs`)}\nmodLogs => ${client.dataConfig.get(`${message.guild.id}`, `modLogs`)}\nwelcomeChannel => ${client.dataConfig.get(`${message.guild.id}`, `welcomeChannel`)}\`\`\``);
     }
     if (!configArgs) {
         return message.reply(`You are either missing an argument`);

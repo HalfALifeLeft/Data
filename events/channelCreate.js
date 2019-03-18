@@ -2,9 +2,12 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
 module.exports = (client, Channel) => {
+    const channelId = client.dataConfig.get(`${Channel.guild.id}`, `serverLogs`);
+    if (Channel.guild.channels.has(channelId) == false) return;
+
     // NEVER have client.on inside of a event or command, it FUCKS it up
     if (Channel.type == `dm`) return;
-    const mychannel = Channel.guild.channels.find(channel => channel.name === `server-events`);
+    const mychannel = Channel.guild.channels.find(channel => channel.id === channelId);
     if (!mychannel) return;
     const {
         Client,

@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 module.exports.run = async (client, message, args) => {
-    const config = require(`../config.json`);
+    const configPrefix = client.dataConfig.get(`${message.guild.id}`, `prefix`);
     const {
         Client,
         RichEmbed
@@ -13,11 +13,11 @@ module.exports.run = async (client, message, args) => {
         else
             return text;
     }
-    if (message.content.startsWith(config.prefix + `eval`)) {
+    if (message.content.startsWith(configPrefix + `eval`)) {
         let arrayOfID = [`444384280152637441`];
         if (!arrayOfID.includes(message.author.id)) return; //only ids above can use this
         try {
-            let evaled = message.content.slice(3 + 4).trim();
+            let evaled = message.content.slice(configPrefix.length + 4).trim();
             // you do .toLowerCase() on args when defining them, so you can't use them in your eval. I made it so it removes the prefix and four letters from the start of the word and then evals everything else
             let evaledCode = eval(evaled); //eval the code
             //        message.delete();
@@ -30,7 +30,7 @@ module.exports.run = async (client, message, args) => {
             message.channel.send(embed);
         } catch (err) {
             //        message.delete();
-            let evaled = message.content.slice(3 + 4).trim();
+            let evaled = message.content.slice(configPrefix.length + 4).trim();
             const embed = new RichEmbed()
                 .setAuthor(message.author.username + `#` + message.author.discriminator, message.author.avatarURL)
                 .setThumbnail(client.user.avatarURL)

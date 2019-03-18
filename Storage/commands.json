@@ -35,6 +35,12 @@
         "desc":"Cuddle a user.",
         "usage":"cuddle [@user]"
     },
+    "Config": {
+        "name":"Config",
+        "group":"Admins",
+        "desc":"Server Configuration",
+        "usage":"config [configName] [configArgs]"
+    },
     "Embed": {
         "name":"Embed",
         "group":"Admins",

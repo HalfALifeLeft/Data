@@ -2,7 +2,10 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 module.exports = (client, oldGuild, newGuild) => {
-    const mychannel = newGuild.channels.find(channel => channel.name === `server-events`);
+    const channelId = client.dataConfig.get(`${oldGuild.id}`, `serverLogs`);
+    if (message.guild.channels.has(channelId) == false) return;
+
+    const mychannel = newGuild.channels.find(channel => channel.id === channelId);
     if (!mychannel) return;
     const {
         Client,

@@ -1,8 +1,11 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 module.exports = (client, guild, user) => {
+    const channelId = client.dataConfig.get(`${guild.id}`, `modLogs`);
+    if (guild.channels.has(channelId) == false) return;
+
     // NEVER have client.on inside of a event or command, it FUCKS it up
-    const mychannel = client.guild.channels.find(channel => channel.name === `mod-events`);
+    const mychannel = guild.channels.find(channel => channel.id === channelId);
     if (!mychannel) return;
     const {
         Client,
