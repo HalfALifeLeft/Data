@@ -83,23 +83,6 @@ fs.readdir(`./commands/`, (err, files) => {
     });
 });
 
-const responseObject = {
-    'Rule 1': `Advertising of any form (without approval from an Admin) is prohibited.`,
-    'Rule 2': `Keep things SFW unless the channel is marked as NSFW. NSFW content outside of designated channels will not be tolerated and you will be muted.`,
-    'Rule 3': `All kinds of spamming is prohibited. Repeated pings, message bombs, text spams, etc.`,
-    'Rule 4': `Keep your drama outside of this server, we don't want it here.`,
-    'Rule 5': `Harassment of any kind is strictly prohibited and will not be tolerated under and circumstances.`,
-    'Rule 6': `Treat all Admins and Moderators with the utmost respect.`,
-    'Rule 7': `Name hoisting is not allowed, if you have an \`!\` or other character at the front of your name to bring yourself to the top of the list, you will be renamed without notice.`,
-    'my milk': `IS HARD!`
-};
-
-client.on(`message`, (message) => {
-    if (responseObject[message.content]) {
-        message.channel.send(responseObject[message.content]);
-    }
-});
-
 client.on(`message`, message => {
     const prefixMention = new RegExp(`<@!?${client.user.id}>`);
     client.dataConfig.ensure(`${message.guild.id}`, {
@@ -108,7 +91,34 @@ client.on(`message`, message => {
         memberLogs: ``,
         serverLogs: ``,
         modLogs: ``,
-        welcomeChannel: ``});
+        welcomeChannel: ``,
+        ruleOne: ``,
+        ruleTwo: ``,
+        ruleThree: ``,
+        ruleFour: ``,
+        ruleFive: ``,
+        ruleSix: ``,
+        ruleSeven: ``,
+        ruleEight: ``,
+        ruleNine: ``,
+        ruleTen: ``});
+
+    const responseObject = {
+        'Rule 1': client.dataConfig.get(`${message.guild.id}`, `ruleOne`),
+        'Rule 2': client.dataConfig.get(`${message.guild.id}`, `ruleTwo`),
+        'Rule 3': client.dataConfig.get(`${message.guild.id}`, `ruleThree`),
+        'Rule 4': client.dataConfig.get(`${message.guild.id}`, `ruleFour`),
+        'Rule 5': client.dataConfig.get(`${message.guild.id}`, `ruleFive`),
+        'Rule 6': client.dataConfig.get(`${message.guild.id}`, `ruleSix`),
+        'Rule 7': client.dataConfig.get(`${message.guild.id}`, `ruleSeven`),
+        'Rule 8': client.dataConfig.get(`${message.guild.id}`, `ruleEight`),
+        'Rule 9': client.dataConfig.get(`${message.guild.id}`, `ruleNine`),
+        'Rule 10': client.dataConfig.get(`${message.guild.id}`, `ruleTen`)
+    };
+
+    if (responseObject[message.content]) {
+        message.channel.send(responseObject[message.content]);
+    }
 
     const dataPrefix = client.dataConfig.get(`${message.guild.id}`, `prefix`);
     if (prefixMention.test(message.content) === true) {
@@ -121,6 +131,7 @@ client.on(`message`, message => {
         if(message.mentions.members.first().user.nickname !== null) {
             prefixLength = 4;
         }
+        
         // Ignore all bots
         if (message.author.bot || !message.guild) return;
         // Ignore messages not starting with the prefix (in config.json)

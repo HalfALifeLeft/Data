@@ -4,7 +4,7 @@
 module.exports.run = async (client, message, args) => {
     let AllowedRole = message.guild.roles.find(r => r.name == `Admins`);
     let configName = args[0];
-    let configArgs = args[1];
+    let configArgs = args.slice(1).join(` `);
     let regExTest = RegExp(/<#!?\d+>/);
 
     if (message.member.roles.has(AllowedRole.id) === false) {
@@ -23,12 +23,38 @@ module.exports.run = async (client, message, args) => {
             messageLogs: ``,
             serverLogs: ``,
             modLogs: ``,
-            welcomeChannel: ``
+            welcomeChannel: ``,
+            ruleOne: ``,
+            ruleTwo: ``,
+            ruleThree: ``,
+            ruleFour: ``,
+            ruleFive: ``,
+            ruleSix: ``,
+            ruleSeven: ``,
+            ruleEight: ``,
+            ruleNine: ``,
+            ruleTen: ``
         });
     }
 
     if (!configArgs || !configName) {
-        return message.channel.send(`\`\`\`Blank means it is not set\nprefix => ${client.dataConfig.get(`${message.guild.id}`, `prefix`)}\nmemberLogs => ${client.dataConfig.get(`${message.guild.id}`, `memberLogs`)}\nmessageLogs => ${client.dataConfig.get(`${message.guild.id}`, `messageLogs`)}\nserverLogs => ${client.dataConfig.get(`${message.guild.id}`, `serverLogs`)}\nmodLogs => ${client.dataConfig.get(`${message.guild.id}`, `modLogs`)}\nwelcomeChannel => ${client.dataConfig.get(`${message.guild.id}`, `welcomeChannel`)}\`\`\``);
+        return message.channel.send(`\`\`\`Blank means it is not set
+        prefix => ${client.dataConfig.get(`${message.guild.id}`, `prefix`)}
+        memberLogs => ${client.dataConfig.get(`${message.guild.id}`, `memberLogs`)}
+        messageLogs => ${client.dataConfig.get(`${message.guild.id}`, `messageLogs`)}
+        serverLogs => ${client.dataConfig.get(`${message.guild.id}`, `serverLogs`)}
+        modLogs => ${client.dataConfig.get(`${message.guild.id}`, `modLogs`)}
+        welcomeChannel => ${client.dataConfig.get(`${message.guild.id}`, `welcomeChannel`)}
+        ruleOne => ${client.dataConfig.get(`${message.guild.id}`, `ruleOne`)}
+        ruleTwo => ${client.dataConfig.get(`${message.guild.id}`, `ruleTwo`)}
+        ruleThree => ${client.dataConfig.get(`${message.guild.id}`, `ruleThree`)}
+        ruleFour => ${client.dataConfig.get(`${message.guild.id}`, `ruleFour`)}
+        ruleFive => ${client.dataConfig.get(`${message.guild.id}`, `ruleFive`)}
+        ruleSix => ${client.dataConfig.get(`${message.guild.id}`, `ruleSix`)}
+        ruleSeven => ${client.dataConfig.get(`${message.guild.id}`, `ruleSeven`)}
+        ruleEight => ${client.dataConfig.get(`${message.guild.id}`, `ruleEight`)}
+        ruleNine => ${client.dataConfig.get(`${message.guild.id}`, `ruleNine`)}
+        ruleTen => ${client.dataConfig.get(`${message.guild.id}`, `ruleTen`)}\`\`\``);
     }
     if (!configArgs) {
         return message.reply(`You are either missing an argument`);
