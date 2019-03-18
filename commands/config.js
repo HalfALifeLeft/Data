@@ -57,10 +57,10 @@ module.exports.run = async (client, message, args) => {
         ruleTen => ${client.dataConfig.get(`${message.guild.id}`, `ruleTen`)}\`\`\``);
     }
     if (!configArgs) {
-        return message.reply(`You are either missing an argument`);
+        return message.reply(`You are missing an argument`);
     }
     if (!configName) {
-        return message.reply(`You are either missing a name`);
+        return message.reply(`You are missing a name`);
     }
 
     client.dataConfig.set(`${message.guild.id}`, `${configArgs}`, `${configName}`);
