@@ -1,12 +1,10 @@
+/* eslint-disable no-console */
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 module.exports.run = async (client, message, args) => {
-    const modRole = message.guild.roles.find(`name`, `Mods`);
+    const modRole = message.member.hasPermission(`KICK_MEMBERS`, false, true, true);
     if (!modRole)
-        return message.reply(`The Mods role does not exist`);
-
-    if (!message.member.roles.has(modRole.id))
-        return message.reply(`You can't use this command.`);
+        return message.reply(`You do not have the \`KICK_MEMBERS\` permission`);
 
     if (message.mentions.members.size === 0)
         return message.reply(process.env.MISSING_USER);
@@ -16,9 +14,13 @@ module.exports.run = async (client, message, args) => {
 
     const kickMember = message.mentions.members.first();
 
-    kickMember.kick(reason.join(` `)).then(member => {
-        message.reply(`${member.user.username} was succesfully kicked.`);
-    });
+    kickMember.kick(args.slice(1).join(` `))
+        .then(member => {
+            message.reply(`${member.user.username} was succesfully kicked.`);
+        })
+        .catch( e => {
+            console.error(e);
+        });
 };
 module.exports.help = {
     name: `kick`
