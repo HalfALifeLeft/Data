@@ -2,7 +2,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 module.exports.run = async (client, message, args) => {
-    let AllowedRole = message.guild.roles.find(r => r.name == `Admins`);
     let configName = args[0];
     let configArgs = args.slice(1).join(` `);
     let regExTestOne = RegExp(/<#!?\d+>/);
