@@ -18,7 +18,7 @@ module.exports = (client, message) => {
         .setAuthor(message.author.username + `#` + message.author.discriminator, message.author.avatarURL)
         .setTimestamp()
         .setColor(process.env.ERROR)
-        .addField(`Message`, `${message.content}`)
+        .addField(`Message`, `\`\`\`${message.content}\`\`\``)
         .setFooter(`#${message.channel.name}`);
     mychannel.send(embed);
 };

@@ -11,6 +11,12 @@
         "desc":"Gets a user's avatar.",
         "usage":"avatar [@user or user]"
     },
+    "Ban": {
+        "name":"Ban",
+        "group":"Admins",
+        "desc":"Bans a user.",
+        "usage":"ban <@user> [reason]"
+    },
     "Booru": {
         "name":"Booru",
         "group":"Users",
@@ -29,17 +35,17 @@
         "desc":"Creates a channel.",
         "usage":"channel <channel name> <channel type>"
     },
-    "Cuddle": {
-        "name":"Cuddle",
-        "group":"Users",
-        "desc":"Cuddle a user.",
-        "usage":"cuddle [@user]"
-    },
     "Config": {
         "name":"Config",
         "group":"Admins",
         "desc":"Server Configuration",
         "usage":"config [configName] [configArgs]"
+    },
+    "Cuddle": {
+        "name":"Cuddle",
+        "group":"Users",
+        "desc":"Cuddle a user.",
+        "usage":"cuddle [@user]"
     },
     "Embed": {
         "name":"Embed",
@@ -113,6 +119,12 @@
         "desc":"Displays a random meme from /r/memes.",
         "usage":"meme"
     },
+    "Mute": {
+        "name":"Mute",
+        "group":"Mods",
+        "desc":"Mutes a user.",
+        "usage":"mute <@user>"
+    },
     "Penis": {
         "name":"Penis",
         "group":"Users",
@@ -136,6 +148,12 @@
         "group":"Admins",
         "desc":"Reloads a command on the bot",
         "usage":"reload <command name>"
+    },
+    "Role": {
+        "name":"Role",
+        "group":"Users",
+        "desc":"Give yourself a role.",
+        "usage":"role [role name]"
     },
     "Sendmessage": {
         "name":"Sendmessage",
@@ -166,6 +184,12 @@
         "group":"Users",
         "desc":"Displays the usage information of all commands",
         "usage":"syntax [GROUP]"
+    },
+    "Unmute": {
+        "name":"Unmute",
+        "group":"Mods",
+        "desc":"Unmutes a user.",
+        "usage":"unmute <@user>"
     },
     "Userinfo": {
         "name":"Userinfo",

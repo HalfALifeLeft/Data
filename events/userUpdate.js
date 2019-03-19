@@ -1,11 +1,22 @@
+/* eslint-disable no-console */
+/* eslint-disable no-unreachable */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 module.exports = (client, oldUser, newUser) => {
-    const channelId = client.dataConfig.get(`${message.guild.id}`, `memberLogs`);
-    if (message.guild.channels.has(channelId) == false) return;
+    
+    return;
+
+    console.log(oldUser);
+    console.log(`------`);
+    console.log(newUser);
+    console.log(`------`);
+
+    const channelId = client.dataConfig.get(`${oldUser.guild.id}`, `memberLogs`);
+    if (oldUser.guild.channels.has(channelId) == false) return;
 
     const mychannel = client.guild.channels.find(channel => channel.id === channelId);
     if (!mychannel) return;
+
     const {
         Client,
         RichEmbed

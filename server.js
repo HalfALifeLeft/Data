@@ -87,6 +87,7 @@ client.on(`message`, message => {
     const prefixMention = new RegExp(`<@!?${client.user.id}>`);
     client.dataConfig.ensure(`${message.guild.id}`, {
         prefix: `dd!`, 
+        mutedRole: ``,
         messageLogs: ``,
         memberLogs: ``,
         serverLogs: ``,
