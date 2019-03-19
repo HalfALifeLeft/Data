@@ -7,8 +7,8 @@ module.exports.run = async (client, message, args) => {
     let configArgs = args.slice(1).join(` `);
     let regExTest = RegExp(/<#!?\d+>/);
 
-    if (message.member.roles.has(AllowedRole.id) === false) {
-        return;
+    if (!message.member.hasPermission(`ADMINISTRATOR`, false, true, true)) {
+        return message.reply(`you do not have the \`ADMINISTRATOR\` permission`);
     }
 
     if (regExTest.test(configArgs) === true) {
