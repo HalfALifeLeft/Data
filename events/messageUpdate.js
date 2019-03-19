@@ -21,8 +21,8 @@ module.exports = (client, message, oldMessage) => {
         .setAuthor(message.author.username + `#` + message.author.discriminator, message.author.avatarURL)
         .setTimestamp()
         .setColor(process.env.HEXCODE)
-        .addField(`Old Message`, `${newMessage}`, true)
-        .addField(`New Message`, `${oldMessage}`, true)
+        .addField(`Old Message`, `\`\`\`${newMessage}\`\`\``)
+        .addField(`New Message`, `\`\`\`${oldMessage}\`\`\``)
         .setFooter(`#${message.channel.name}`);
     mychannel.send(embed);
 };

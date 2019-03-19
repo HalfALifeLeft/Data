@@ -5,20 +5,26 @@ module.exports.run = async (client, message, args) => {
     let AllowedRole = message.guild.roles.find(r => r.name == `Admins`);
     let configName = args[0];
     let configArgs = args.slice(1).join(` `);
-    let regExTest = RegExp(/<#!?\d+>/);
+    let regExTestOne = RegExp(/<#!?\d+>/);
+    let regExTestTwo = RegExp(/<@!?\d+>/);
 
     if (!message.member.hasPermission(`ADMINISTRATOR`, false, true, true)) {
         return message.reply(`you do not have the \`ADMINISTRATOR\` permission`);
     }
 
-    if (regExTest.test(configArgs) === true) {
+    if (regExTestOne.test(configArgs) === true) {
         configArgs = args[1].replace(`<#`, ``).replace(`>`, ``);
+    }
+
+    if (regExTestTwo.test(configArgs) === true) {
+        configArgs = args[1].replace(`<@`, ``).replace(`>`, ``);
     }
 
     if (!client.dataConfig.get(`${message.guild.id}`)) {
         //if guild ID is not in the enmap, add it to enmap
         await client.dataConfig.set(`${message.guild.id}`, {
             prefix: `dd!`,
+            mutedRole: ``,
             memberLogs: ``,
             messageLogs: ``,
             serverLogs: ``,
@@ -40,6 +46,7 @@ module.exports.run = async (client, message, args) => {
     if (!configArgs || !configName) {
         return message.channel.send(`\`\`\`Blank means it is not set
         prefix => ${client.dataConfig.get(`${message.guild.id}`, `prefix`)}
+        mutedRole => ${client.dataConfig.get(`${message.guild.id}`, `mutedRole`)}
         memberLogs => ${client.dataConfig.get(`${message.guild.id}`, `memberLogs`)}
         messageLogs => ${client.dataConfig.get(`${message.guild.id}`, `messageLogs`)}
         serverLogs => ${client.dataConfig.get(`${message.guild.id}`, `serverLogs`)}
