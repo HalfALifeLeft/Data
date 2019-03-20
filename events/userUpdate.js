@@ -2,19 +2,22 @@
 /* eslint-disable no-unreachable */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
-module.exports = (client, oldUser, newUser) => {
+module.exports = (client, message, oldUser) => {
     
     return;
 
+    let newUser = message.member.user.username;
+
     console.log(oldUser);
-    console.log(`------`);
     console.log(newUser);
-    console.log(`------`);
+    //console.log(`------`);
+    //console.log(newUser);
+    //console.log(`------`);
 
-    const channelId = client.dataConfig.get(`${oldUser.guild.id}`, `memberLogs`);
-    if (oldUser.guild.channels.has(channelId) == false) return;
+    const channelId = client.dataConfig.get(`${newUser.guild.id}`, `memberLogs`);
+    if (newUser.guild.channels.has(channelId) == false) return;
 
-    const mychannel = client.guild.channels.find(channel => channel.id === channelId);
+    const mychannel = client.channels.find(channel => channel.id === channelId);
     if (!mychannel) return;
 
     const {
@@ -25,6 +28,6 @@ module.exports = (client, oldUser, newUser) => {
         .setTimestamp()
         .setColor(process.env.GOOD)
         .addField(`Old Member Username`, `${oldUser.username}#${oldUser.discriminator} (${oldUser.id})`)
-        .addField(`New Member Username`, `${newUser.username}#${newUser.discriminator} (${newUser.id})`);
+        .addField(`New Member Username`, `${newUser.user.username}#${newUser.user.discriminator} (${newUser.user.id})`);
     mychannel.send(embed);
 };
