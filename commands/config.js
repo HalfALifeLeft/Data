@@ -6,6 +6,27 @@ module.exports.run = async (client, message, args) => {
     let configArgs = args.slice(1).join(` `);
     let regExTestOne = RegExp(/<#!?\d+>/);
     let regExTestTwo = RegExp(/<@!?\d+>/);
+    let arrayOfConfigs = [ `prefix`,
+        `mutedRole`,
+        `memberLogs`, 
+        `messageLogs`, 
+        `serverLogs`, 
+        `modLogs`, 
+        `welcomeChannel`, 
+        `ruleOne`, 
+        `ruleTwo`, 
+        `ruleThree`,
+        `ruleFour`,
+        `ruleFive`,
+        `ruleSix`,
+        `ruleSeven`,
+        `ruleEight`,
+        `ruleNine`,
+        `ruleTen`];
+    
+    if(arrayOfConfigs.includes(configName) == false) {
+        return message.reply(`that isn't an option to configure!`);
+    }
 
     if (!message.member.hasPermission(`ADMINISTRATOR`, false, true, true)) {
         return message.reply(`you do not have the \`ADMINISTRATOR\` permission`);
