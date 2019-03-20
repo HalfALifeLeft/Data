@@ -23,10 +23,6 @@ module.exports.run = async (client, message, args) => {
         `ruleEight`,
         `ruleNine`,
         `ruleTen`];
-    
-    if(arrayOfConfigs.includes(configName) == false) {
-        return message.reply(`that isn't an option to configure!`);
-    }
 
     if (!message.member.hasPermission(`ADMINISTRATOR`, false, true, true)) {
         return message.reply(`you do not have the \`ADMINISTRATOR\` permission`);
@@ -88,6 +84,10 @@ module.exports.run = async (client, message, args) => {
     }
     if (!configName) {
         return message.reply(`You are missing a name`);
+    }
+  
+    if(arrayOfConfigs.includes(configName) == false) {
+        return message.reply(`that isn't an option to configure!`);
     }
 
     client.dataConfig.set(`${message.guild.id}`, `${configArgs}`, `${configName}`);
