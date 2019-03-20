@@ -155,12 +155,6 @@
         "desc":"Give yourself a role.",
         "usage":"role [role name]"
     },
-    "Sendmessage": {
-        "name":"Sendmessage",
-        "group":"Users",
-        "desc":"Send a message to a user (experimental, no guarantees, and it is **LOGGED** for user safety)",
-        "usage":"sendmessage"
-    },
     "Serverstats": {
         "name":"Serverstats",
         "group":"Users",
