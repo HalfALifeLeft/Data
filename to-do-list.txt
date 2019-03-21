@@ -1,0 +1,30 @@
+# Data Bot - To Do List
+
+ - CURRENCY COMMANDS
+     - USE ENMAP TO SET UP CURRENCY ON A PER-USER BASIS, USE USER.ID AS THE KEY
+         - balance, check User's balance of points
+         - daily, daily (once every 23h) bonus of points for using the bot
+         - gamble, gamble, 1-50 = loss, 51-99 = 2x points, 100 = 3x points.
+         - transfer, transfer money from User to another User
+ - ITEM SYSTEM
+     - USE ENMAP TO SET UP AN INVENTORY SYSTEM, POSSIBLY TYING INTO CURRENCY SYSTEM
+         - fish, fishing command, have a chance to get a fish, can sell fish in market.
+         - inventory, user's inventory. Enmap user.id
+         - iteminfo, info about item
+         - itemtransfer, transfer item from User1 to User2
+         - loot, random chance of getting loot, would require a ticket or some system
+         - market, market to buy and sell
+         - mine, mining command, needs user to have a pickaxe
+         - useitem, use an item, if it is usable.
+ - MUSIC COMMANDS
+     - PLAY YOUTUBE VIDEOS/MUSIC
+         - play, play song
+         - pause, pause song
+         - stop, stop playing songs altogether, clears queue
+         - queue, show queue of songs
+         - clearqueue, clears queue without stopping playing current
+         - skip, skips current song, make a voting system
+         - forceskip, needs mod perms, forces a skip song
+         - forceplay, needs mod perms, forces a song to play
+         - repeat, repeat current playing song
+         - shuffle, shuffle queue
