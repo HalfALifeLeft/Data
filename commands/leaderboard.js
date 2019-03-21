@@ -2,7 +2,8 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 module.exports.run = async (client, message, args) => {
-    const key = `${message.member.user.id}-${message.guild.id}`;
+    let key = `${message.member.user.id}-${message.guild.id}`;
+    let i = 1;
 
     // Get a filtered list (for this guild only), and convert to an array while we're at it.
     const filtered = client.currency.array();
@@ -24,8 +25,16 @@ module.exports.run = async (client, message, args) => {
         .setDescription(`Our top 10 points leaders!`)
         .setColor(process.env.HEXCODE);
     for(var data of top10) {
-        console.log(data.userID);
-        embed.addField(client.users.get(data.userID).tag, `${data.points} points (level ${data.level})`);
+        key = `${data.user}-${message.guild.id}`;
+        await client.currency.ensure(key, {
+            user: data.user,
+            guild: message.guild.id,
+            points: 0,
+            level: 1,
+            lastSeen: new Date()
+        });    
+        embed.addField(`${i} - ` + client.users.get(data.user).tag, `$${Math.floor(data.points / 10)} (level ${data.level})`);
+        i++;
     }
     return message.channel.send({embed});
 };

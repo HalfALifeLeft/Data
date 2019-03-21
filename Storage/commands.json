@@ -11,6 +11,12 @@
         "desc":"Gets a user's avatar.",
         "usage":"avatar [@user or user]"
     },
+    "Balance": {
+        "name":"Balance",
+        "group":"Users",
+        "desc":"Gets the money and level of a user",
+        "usage":"balance [@user]"
+    },
     "Ban": {
         "name":"Ban",
         "group":"Admins",
@@ -100,6 +106,12 @@
         "group":"Users",
         "desc":"Displays a random picture of a cat.",
         "usage":"kitty"
+    },
+    "Leaderboard": {
+        "name":"Leaderboard",
+        "group":"Users",
+        "desc":"Gets the top 10 richest users in the guild.",
+        "usage":"leaderboard"
     },
     "Logs": {
         "name":"Logs",

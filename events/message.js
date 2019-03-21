@@ -1,6 +1,9 @@
 /* eslint-disable no-undef */
 module.exports = (client, message) => {
 
+    // Ignore all bots
+    if (message.author.bot || !message.guild) return;
+
     client.dataConfig.ensure(`${message.guild.id}`, {
         prefix: `dd!`, 
         messageLogs: ``,
@@ -13,8 +16,8 @@ module.exports = (client, message) => {
     const key = `${message.author.id}-${message.guild.id}`;
 
     client.currency.ensure(key, {
-        userID: message.author.id,
-        guildID: message.guild.id,
+        user: message.author.id,
+        guild: message.guild.id,
         points: 0,
         level: 1,
         lastSeen: new Date()
@@ -32,15 +35,7 @@ module.exports = (client, message) => {
         client.currency.set(key, curLevel, `level`);
     }
 
-
-
-
-
-
-    // Ignore all bots
-    if (message.author.bot || !message.guild) return;
-    // Ignore messages not starting with the prefix (in config.json)
-    //    const guildConf = client.settings.ensure(message.guild.id, client.defaultSettings);
+    // Ignore messages not starting with the prefix
     if (message.content.toLowerCase().indexOf(dataPrefix) !== 0) return;
     // Our standard argument/command name definition.
     const args = message.content.slice(dataPrefix.length).trim().split(/ +/g);
