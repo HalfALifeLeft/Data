@@ -10,7 +10,7 @@ module.exports = (client, message) => {
         welcomeChannel: ``});
     const dataPrefix = client.dataConfig.get(`${message.guild.id}`, `prefix`);
 
-    const key = `${message.member.user.id}-${message.guild.id}`;
+    const key = `${message.author.user.id}-${message.guild.id}`;
 
     client.currency.ensure(key, {
         userID: message.author.id,
