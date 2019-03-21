@@ -54,6 +54,18 @@ dataConfig.defer.then(() => {
     console.log(dataConfig.size + ` config keys loaded`);
 });
 
+const currency = new Enmap({
+    name: `currency`,
+    autoFetch: true,
+    fetchAll: false
+});
+
+client.currency = currency;
+
+currency.defer.then(() => {
+    console.log(currency.size + ` currency keys loaded`);
+});
+
 client.func = func;
 
 fs.readdir(`./events/`, (err, files) => {

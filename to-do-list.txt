@@ -5,7 +5,7 @@
          - balance, check User's balance of points
          - daily, daily (once every 23h) bonus of points for using the bot
          - gamble, gamble, 1-50 = loss, 51-99 = 2x points, 100 = 3x points.
-         - transfer, transfer money from User to another User
+         - MOVED TO BAL GIVE #
  - ITEM SYSTEM
      - USE ENMAP TO SET UP AN INVENTORY SYSTEM, POSSIBLY TYING INTO CURRENCY SYSTEM
          - fish, fishing command, have a chance to get a fish, can sell fish in market.
