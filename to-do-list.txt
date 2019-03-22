@@ -28,13 +28,10 @@
          - repeat, repeat current playing song
          - shuffle, shuffle queue
  - EVENTS
-         - channelUpdate
-         - channelPinsUpdate
-         - disconnect
-         - guildMemberUpdate
-         - guildUnavailable
-         - messageReactionAdd
-         - messageReactionRemove
+         - done - channelUpdate
+         - done - disconnect
+         - done - guildMemberUpdate
+         - done - guildUnavailable
          - messageReactionRemoveAll
          - rateLimit
          - reconnect

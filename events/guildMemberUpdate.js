@@ -54,17 +54,6 @@ module.exports = async (client, oldMember, newMember) => {
         embed.addField(`Role Added`, `<@&${addedRoles}>`);
     }
 
-    console.log(newMember.serverDeaf);
-    console.log(oldMember.serverDeaf);
-
-    if(oldMember.serverDeaf != newMember.serverDeaf) {
-        embed.addField(`User VC Status`, `Deafened: ${newMember.serverDeaf}`);
-    }
-
-    if(oldMember.serverMute != newMember.serverMute) {
-        embed.addField(`User VC Status`, `Muted: ${newMember.serverMute}`);
-    }
-
     if(newMember.nickname != oldMember.nickname) {
         let nicknameNew = newMember.nickname;
         let nicknameOld = oldMember.nickname;
