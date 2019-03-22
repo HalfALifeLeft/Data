@@ -2,11 +2,10 @@
 
  - CURRENCY COMMANDS
      - USE ENMAP TO SET UP CURRENCY ON A PER-USER BASIS, USE USER.ID AS THE KEY
-         - balance, check User's balance of points
-         - daily, daily (once every 23h) bonus of points for using the bot
+         - DONE balance
+         - DONE daily
          - gamble, gamble, 1-50 = loss, 51-99 = 2x points, 100 = 3x points.
-         - MOVED TO BAL GIVE #
- - ITEM SYSTEM
+ - ITEM SYSTEM - BoxBot kind of deal, items and all. Money system, 
      - USE ENMAP TO SET UP AN INVENTORY SYSTEM, POSSIBLY TYING INTO CURRENCY SYSTEM
          - fish, fishing command, have a chance to get a fish, can sell fish in market.
          - inventory, user's inventory. Enmap user.id
@@ -28,3 +27,17 @@
          - forceplay, needs mod perms, forces a song to play
          - repeat, repeat current playing song
          - shuffle, shuffle queue
+ - EVENTS
+         - channelUpdate
+         - channelPinsUpdate
+         - disconnect
+         - guildMemberUpdate
+         - guildUnavailable
+         - messageReactionAdd
+         - messageReactionRemove
+         - messageReactionRemoveAll
+         - rateLimit
+         - reconnect
+         - resume
+         - voiceStateUpdate
+         - warn, info. take error events and clone it for warn
