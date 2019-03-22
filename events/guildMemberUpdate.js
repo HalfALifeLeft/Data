@@ -54,11 +54,14 @@ module.exports = async (client, oldMember, newMember) => {
         embed.addField(`Role Added`, `<@&${addedRoles}>`);
     }
 
-    if(newMember.serverDeaf != oldMember.serverDeaf) {
+    console.log(newMember.serverDeaf);
+    console.log(oldMember.serverDeaf);
+
+    if(oldMember.serverDeaf != newMember.serverDeaf) {
         embed.addField(`User VC Status`, `Deafened: ${newMember.serverDeaf}`);
     }
 
-    if(newMember.serverMute != oldMember.serverMute) {
+    if(oldMember.serverMute != newMember.serverMute) {
         embed.addField(`User VC Status`, `Muted: ${newMember.serverMute}`);
     }
 
