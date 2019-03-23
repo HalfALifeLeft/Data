@@ -2,29 +2,21 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 module.exports.run = async (client, message, args) => {
-    let mentionedUser = message.mentions.members.first();
-    let userArgs = args.slice(1).join(` `);
-    let regExTestOne = RegExp(/<#!?\d+>/);
-    let regExTestTwo = RegExp(/<@!?\d+>/);
-
-    if(!mentionedUser) {
-        mentionedUser = message.author;
+    let user = message.author.id;
+    if(!message.mentions) {
+        user = message.mentions.members.first().id;
     }
-
-    const key = `${mentionedUser.id}-${message.guild.id}`;
-
-    //console.log(key);
-
-    client.currency.ensure(key, {        
-        user: mentionedUser.id,
-        guild: message.guild.id,
+    const key = `${user}-${message.guild.id}`;
+    
+    client.currency.ensure(key, {
+        userID: user,
+        guildID: message.guild.id,
         points: 0,
         level: 1,
         lastSeen: new Date()
     });
 
-
-    message.channel.send(`<@!${mentionedUser.id}> currently has $${Math.floor(client.currency.get(key, `points`) / 10)}, and is level ${client.currency.get(key, `level`)}!`);
+    message.channel.send(`<@!${user}> currently has $${Math.floor(client.currency.get(key, `points`) / 10)}, and is level ${client.currency.get(key, `level`)}!`);
 
 };
 module.exports.help = {
