@@ -38,3 +38,8 @@
          - resume
          - voiceStateUpdate
          - warn, info. take error events and clone it for warn
+ - GENERAL 
+         - create a command to allow me (only bot owner) to browse through the guilds the bot is in and join one if I want
+         - rewrite suggestions command
+         - rewrite subreddit, kitty, and meme to use reddit API instead of randompuppy
+         - use .setInterval or other function to add a duration to mutes (default duration is 24h)
