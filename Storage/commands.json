@@ -47,6 +47,12 @@
         "desc":"Server Configuration",
         "usage":"config [configName] [configArgs]"
     },
+    "Issue": {
+        "name":"Issue",
+        "group":"Users",
+        "desc":"Found a bug in my code? Glitch in the matrix? Report it using this!",
+        "usage":"issue"
+    },
     "Cuddle": {
         "name":"Cuddle",
         "group":"Users",
