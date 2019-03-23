@@ -39,7 +39,7 @@ module.exports.run = async (client, message, args) => {
     if (!client.dataConfig.get(`${message.guild.id}`)) {
         //if guild ID is not in the enmap, add it to enmap
         await client.dataConfig.set(`${message.guild.id}`, {
-            prefix: `dd!`,
+            prefix: `d!`,
             mutedRole: ``,
             memberLogs: ``,
             messageLogs: ``,
