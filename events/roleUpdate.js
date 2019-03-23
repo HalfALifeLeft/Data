@@ -10,7 +10,7 @@ module.exports = (client, oldRole, newRole) => {
 
     if(oldRole == newRole) return;
 
-    if(oldRole.color == newRole.color && oldRole.hoist == newRole.hoist && oldRole.managed == newRole.managed && oldRole.mentionable == newRole.mentionable) return;
+    if(oldRole.color == newRole.color && oldRole.hoist == newRole.hoist && oldRole.managed == newRole.managed && oldRole.mentionable == newRole.mentionable && oldRole.name == newRole.name) return;
 
     let oldColor = ``;
     if(oldRole.color == 0) {
@@ -33,9 +33,9 @@ module.exports = (client, oldRole, newRole) => {
     const embed = new RichEmbed()
         .setTimestamp()
         .setColor(process.env.GOOD)
-        .addField(`Role`, `<@&${oldRole.id}> (\`${oldRole.id}\`)`)
-        .addField(`Old Role Details`, `Color: ${oldColor}\nHoisted Role: ${oldRole.hoist}\nManaged By Outside Service: ${oldRole.managed}\nMentionable: ${oldRole.mentionable}`)
-        .addField(`New Role Details`, `Color: ${newColor}\nHoisted Role: ${newRole.hoist}\nManaged By Outside Service: ${newRole.managed}\nMentionable: ${newRole.mentionable}`);
+        .addField(`Role Updated`, `<@&${oldRole.id}> (\`${oldRole.id}\`)`)
+        .addField(`Old Role Details`, `Name: ${oldRole.name}\nColor: ${oldColor}\nHoisted Role: ${oldRole.hoist}\nManaged By Outside Service: ${oldRole.managed}\nMentionable: ${oldRole.mentionable}`)
+        .addField(`New Role Details`, `Name: ${newRole.name}\nColor: ${newColor}\nHoisted Role: ${newRole.hoist}\nManaged By Outside Service: ${newRole.managed}\nMentionable: ${newRole.mentionable}`);
     mychannel.send(embed);
 };
 
