@@ -5,7 +5,7 @@ module.exports = (client, message) => {
     if (message.author.bot || !message.guild) return;
 
     client.dataConfig.ensure(`${message.guild.id}`, {
-        prefix: `dd!`, 
+        prefix: `d!`, 
         messageLogs: ``,
         memberLogs: ``,
         serverLogs: ``,

@@ -7,9 +7,10 @@ module.exports.run = async (client, message, args) => {
     let serverChannel = args[2];
     let modChannel = args[3];
     let prefix = client.dataConfig.get(`${message.guild.id}`, `prefix`);
-    let allowedRole = message.guild.roles.find(r => r.name === `Admins`);
     if (!memberChannel || !messageChannel || !serverChannel || !modChannel) return message.reply(`You need to define 4 channel names! \`${prefix}logs [Member Logging Channel] [Message Logging Channel] [Server Logging Channel] [Mod Logging Channel]\``);
-    if (message.member.roles.has(allowedRole.id)) {
+
+      if (message.member.hasPermission(`ADMINISTRATOR`, false, true, true)) return message.channel.send(`**You need the \`ADMINISTRATOR\` permission to use this command.**`);
+  
         const channelLoggingOne = message.guild.channels.find(channel => channel.name === memberChannel && channel.type == `text`);
         const channelLoggingTwo = message.guild.channels.find(channel => channel.name === messageChannel && channel.type == `text`);
         const channelLoggingThree = message.guild.channels.find(channel => channel.name === serverChannel && channel.type == `text`);
@@ -56,9 +57,6 @@ module.exports.run = async (client, message, args) => {
                     });
             });
         message.channel.send(`I have completed setting up the logging channels and have added them to the configurations!`);
-    } else {
-        return message.reply(`you do not have permission to do this!`);
-    }
 };
 module.exports.help = {
     name: `logs`

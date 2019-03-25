@@ -1,8 +1,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 module.exports.run = async (client, message, args) => {
-    let allowedRole = message.guild.roles.find(r => r.name === `Admins`);
-    if (message.member.roles.has(allowedRole.id) === false) return message.channel.send(`**You lack the required permissions to use this command.**`);
+    if (message.member.hasPermission(`ADMINISTRATOR`, false, true, true)) return message.channel.send(`**You need the \`ADMINISTRATOR\` permission to use this command.**`);
     //if owner isnt the one sending the message it replies with no perms
     let color = args[0];
     let content = args.slice(1).join(` `);
