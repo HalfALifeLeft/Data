@@ -2,5 +2,5 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
 module.exports = async (client, replayed) => {
-
+    console.log(replayed + ` events replayed`);
 };
