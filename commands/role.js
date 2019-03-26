@@ -57,7 +57,7 @@ module.exports.run = async (client, message, args) => {
          }
       
       client.roles.set(`${message.guild.id}`, `${roleSetArgs}`, `${roleSetName}`);
-      message.channel.send(`\`\`\`${roleSetName} => ${roleSetArgs}\`\`\``)
+      message.channel.send(`\`\`\`${roleSetName} => ${roleSetArgs}\`\`\``);
       
        } else {
   
