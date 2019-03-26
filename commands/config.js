@@ -3,8 +3,8 @@
 /* eslint-disable no-undef */
 module.exports.run = async (client, message, args) => {
     let configBase = args[0]
-    let configName = args[1];
-    let configArgs = args.slice(2).join(` `);
+    let configName = args[0];
+    let configArgs = args.slice(1).join(` `);
     let regExTestOne = RegExp(/<#!?\d+>/);
     let regExTestTwo = RegExp(/<@!?\d+>/);
     let arrayOfConfigs = [ `prefix`,
@@ -28,9 +28,7 @@ module.exports.run = async (client, message, args) => {
     if (!message.member.hasPermission(`ADMINISTRATOR`, false, true, true)) {
         return message.reply(`you do not have the \`ADMINISTRATOR\` permission`);
     }
-    
-    if(configBase == `settings`) {
-       
+           
   
     if (regExTestOne.test(configArgs) === true) {
         configArgs = args[1].replace(`<#`, ``).replace(`>`, ``);
@@ -96,7 +94,6 @@ module.exports.run = async (client, message, args) => {
 
     client.dataConfig.set(`${message.guild.id}`, `${configArgs}`, `${configName}`);
     message.channel.send(`Config Changed:\`\`\`${configName} => ${configArgs}\`\`\``);
-}
 
 };
 module.exports.help = {

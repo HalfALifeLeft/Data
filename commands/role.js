@@ -2,9 +2,7 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
 module.exports.run = async (client, message, args) => {
-  
-    let userRole = args.slice(0).join(` `);
-  
+    
     client.roles.ensure(`${message.guild.id}`, {
         role1: ``,
         role1Name: ``,
@@ -17,11 +15,56 @@ module.exports.run = async (client, message, args) => {
         role5: ``,
         role5Name: ``
     });
+    
+    if(args[0] == `config`) {
+      let roleSetName = args[1];
+      let roleSetArgs = args.slice(2).join(` `);
+          let regExTestTwo = RegExp(/<@!?\d+>/);
+      
+      let arrayOfRoles = [
+        `role1`,
+        `role1Name`,
+        `role2`,
+        `role2Name`,
+        `role3`,
+        `role3Name`,
+        `role4`,
+        `role4Name`,
+        `role5`,
+        `role5Name`
+      ];
+      
+      if (message.content == client.dataConfig.get(`${message.guild.id}`, `prefix`) + `role config`) {
+        
+        return message.channel.send(`\`\`\`Blank means it is not set
+        role1 => ${client.roles.get(`${message.guild.id}`, `role1`)}
+        role1Name => ${client.roles.get(`${message.guild.id}`, `role1Name`)}
+        role2 => ${client.roles.get(`${message.guild.id}`, `role2`)}
+        role2Name => ${client.roles.get(`${message.guild.id}`, `role2Name`)}
+        role3 => ${client.roles.get(`${message.guild.id}`, `role3`)}
+        role3Name => ${client.roles.get(`${message.guild.id}`, `role3Name`)}
+        role4 => ${client.roles.get(`${message.guild.id}`, `role4`)}
+        role4Name => ${client.roles.get(`${message.guild.id}`, `role4Name`)}
+        role5 => ${client.roles.get(`${message.guild.id}`, `role5`)}
+        role5Name => ${client.roles.get(`${message.guild.id}`, `role5Name`)}\`\`\``);
+          }
+      
+      if (!arrayOfRoles.includes(roleSetName)) {
+          return message.reply(`Please give me a config name!`);
+          }
+      if (regExTestTwo.test(roleSetArgs) === true) {
+         return message.reply(`Please give me a config arg!`);
+         }
+      
+      client.roles.set(`${message.guild.id}`, `${roleSetArgs}`, `${roleSetName}`);
+      message.channel.send(`\`\`\`${roleSetName} => ${roleSetArgs}\`\`\``)
+      
+       } else {
   
-    console.log(client.roles);
-  
+             let userRole = args.slice(0).join(` `);
+
     var obj = {};
-    obj[ `Neon Red` ] = message.guild.roles.find(r => r.name === `Neon Red`);//1
+    obj[ `${client.roles.get(`${message.guild.id}`, `role1Name`)}` ] = message.guild.roles.find(r => r.id === `${client.roles.get(`${message.guild.id}`, `role1`)}`);//1
     obj[ `Neon Orange` ] = message.guild.roles.find(r => r.name === `Neon Orange`);//2
     obj[ `Neon Yellow` ] = message.guild.roles.find(r => r.name === `Neon Yellow`);//3
     obj[ `Neon Green` ] = message.guild.roles.find(r => r.name === `Neon Green`);//4
@@ -73,6 +116,7 @@ module.exports.run = async (client, message, args) => {
     var role = message.guild.roles.find(r => r.id === obj[userRole].id);
     message.member.addRole(role, `User used role command to obtain role.`);
     message.delete();
+       }
 };
 module.exports.help = {
     name: `role`
