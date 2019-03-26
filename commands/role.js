@@ -2,9 +2,24 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
 module.exports.run = async (client, message, args) => {
-
+  
     let userRole = args.slice(0).join(` `);
-
+  
+    client.roles.ensure(`${message.guild.id}`, {
+        role1: ``,
+        role1Name: ``,
+        role2: ``,
+        role2Name:``,
+        role3: ``,
+        role3Name: ``,
+        role4: ``,
+        role4Name: ``,
+        role5: ``,
+        role5Name: ``
+    });
+  
+    console.log(client.roles);
+  
     var obj = {};
     obj[ `Neon Red` ] = message.guild.roles.find(r => r.name === `Neon Red`);//1
     obj[ `Neon Orange` ] = message.guild.roles.find(r => r.name === `Neon Orange`);//2

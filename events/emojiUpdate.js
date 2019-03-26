@@ -2,6 +2,26 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
 module.exports = (client, oldEmoji, newEmoji) => {
+  
+              client.dataConfig.ensure(`${oldEmoji.guild.id}`, {
+        prefix: `d!`, 
+        mutedRole: ``,
+        messageLogs: ``,
+        memberLogs: ``,
+        serverLogs: ``,
+        modLogs: ``,
+        welcomeChannel: ``,
+        ruleOne: ``,
+        ruleTwo: ``,
+        ruleThree: ``,
+        ruleFour: ``,
+        ruleFive: ``,
+        ruleSix: ``,
+        ruleSeven: ``,
+        ruleEight: ``,
+        ruleNine: ``,
+        ruleTen: ``});
+  
     const channelId = client.dataConfig.get(`${oldEmoji.guild.id}`, `serverLogs`);
     if (oldEmoji.guild.channels.has(channelId) == false) return;
 
