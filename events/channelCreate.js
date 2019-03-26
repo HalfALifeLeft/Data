@@ -2,6 +2,26 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
 module.exports = (client, Channel) => {
+  
+              client.dataConfig.ensure(`${Channel.guild.id}`, {
+        prefix: `d!`, 
+        mutedRole: ``,
+        messageLogs: ``,
+        memberLogs: ``,
+        serverLogs: ``,
+        modLogs: ``,
+        welcomeChannel: ``,
+        ruleOne: ``,
+        ruleTwo: ``,
+        ruleThree: ``,
+        ruleFour: ``,
+        ruleFive: ``,
+        ruleSix: ``,
+        ruleSeven: ``,
+        ruleEight: ``,
+        ruleNine: ``,
+        ruleTen: ``});
+  
     if (Channel.type == `dm`) return;
     const channelId = client.dataConfig.get(`${Channel.guild.id}`, `serverLogs`);
     if (Channel.guild.channels.has(channelId) == false) return;
