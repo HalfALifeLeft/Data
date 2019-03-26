@@ -18,25 +18,39 @@ module.exports.run = async (client, message, args) => {
 
     await message.channel.send(`\`\`\`` + tenRoles.join(`\n`).toString() + `\`\`\``)
     .then((msg) => {
-        msg.react(`⬅`);
-        msg.react(`➡`);
+
+
+        setTimeout(function(){
+            msg.react(`⬅`);
+        }, 250);
+        console.log(`go back arrow`);
+        setTimeout(function(){
+            msg.react(`➡`);
+        }, 500);
+        console.log(`go forward arrow`);
     });
-    console.log(`collector started`);
+    
     const collector = message.createReactionCollector((reaction, user) => 
         user.id === message.author.id &&
         reaction.emoji.name === `⬅` ||
         reaction.emoji.name === `➡`
     ).once(`collect`, reaction => {
         const chosen = reaction.emoji.name;
+        console.log(`collector started`);
         if (chosen === `⬅`) {
-            console.log(`previous page`);
+            i--;
+            o--;
+            tenRoles = allRoles.slice(i * 10, o * 10);
+            msg.edit(`\`\`\`` + tenRoles.join(`\n`).toString() + `\`\`\``);
         } else if (chosen === `➡`) {
-            console.log(`next page`);
-        }
-        console.log(`collector stopped`);
+            i++;
+            o++;
+            tenRoles = allRoles.slice(i * 10, o * 10);
+            msg.edit(`\`\`\`` + tenRoles.join(`\n`).toString() + `\`\`\``);
+}
         collector.stop();
+        console.log(`collector stopped`);
     });
-
 };
 module.exports.help = {
     name: `roles`

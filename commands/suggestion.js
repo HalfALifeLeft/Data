@@ -65,12 +65,12 @@ module.exports.run = async (client, message, args) => {
                         .setTimestamp()
                         .setFooter(`${message.author.username}#${message.author.discriminator}`);
                     findSuggestionsChannel.send(embed).then((msg) => {
-                        msg.react(`👍`).catch((e) => {
-                            console.error(e);
-                        });
-                        msg.react(`👎`).catch((e) => {
-                            console.error(e);
-                        });
+                        setTimeout(function(){
+                            msg.react(`👎`).catch((e) => {console.error(e);});
+                        }, 250);
+                        setTimeout(function(){
+                            msg.react(`👍`).catch((e) => {console.error(e);});
+                        }, 350);
                     }).catch((e) => {
                         console.error(e);
                     });
