@@ -4,7 +4,6 @@
 module.exports.run = async (client, message, args) => {
 
     let allRoles = [];
-    //const filter = m => m.author.id === message.author.id;
 
     message.guild.roles.forEach(function (role) {
         allRoles.push(role.name + ` - ` + role.id);
@@ -12,98 +11,64 @@ module.exports.run = async (client, message, args) => {
 
     let i = 0;
     let o = 1;
-    let tenRoles = allRoles.slice(i * 10, o * 10);
+    let tenRoles = allRoles.slice(i * 20, o * 20);
 
-    console.log(tenRoles);
+    message.channel.send(`\`\`\`**Page (${o}/${Math.ceil(allRoles.length / 20)})**\n` + tenRoles.join(`\n`).toString() + `\`\`\``)
+        .then((msg) => {
+            msg.react(`⬅`)
+                .then(() => {
+                    msg.react(`➡`)
+                        .catch((e) => {
+                            console.error(e);
+                        });
+                })
+                .catch((e) => {
+                    console.error(e);
+                });
 
-    await message.channel.send(`\`\`\`` + tenRoles.join(`\n`).toString() + `\`\`\``)
-    .then((msg) => {
+            const collector = msg.createReactionCollector((reaction, user) =>
+                user.id === message.author.id &&
+                reaction.emoji.name === `⬅` ||
+                reaction.emoji.name === `➡`, {
+                    time: 300000
+                }
+            );
 
+            collector.on(`collect`, reaction => {
+                const react = reaction.emoji.name;
 
-        setTimeout(function(){
-            msg.react(`⬅`);
-        }, 250);
-        console.log(`go back arrow`);
-        setTimeout(function(){
-            msg.react(`➡`);
-        }, 500);
-        console.log(`go forward arrow`);
-    });
-    
-    const collector = message.createReactionCollector((reaction, user) => 
-        user.id === message.author.id &&
-        reaction.emoji.name === `⬅` ||
-        reaction.emoji.name === `➡`
-    ).once(`collect`, reaction => {
-        const chosen = reaction.emoji.name;
-        console.log(`collector started`);
-        if (chosen === `⬅`) {
-            i--;
-            o--;
-            tenRoles = allRoles.slice(i * 10, o * 10);
-            msg.edit(`\`\`\`` + tenRoles.join(`\n`).toString() + `\`\`\``);
-        } else if (chosen === `➡`) {
-            i++;
-            o++;
-            tenRoles = allRoles.slice(i * 10, o * 10);
-            msg.edit(`\`\`\`` + tenRoles.join(`\n`).toString() + `\`\`\``);
-}
-        collector.stop();
-        console.log(`collector stopped`);
-    });
+                if (react === `⬅`) {
+                    i--;
+                    o--;
+                    if (i < 0) {
+                        i = Math.ceil(allRoles.length / 20) - 1;
+                    }
+                    if (o < 1) {
+                        o = Math.ceil(allRoles.length / 20);
+                    }
+                    tenRoles = allRoles.slice(i * 20, o * 20);
+                    msg.edit(`\`\`\`**Page (${o}/${Math.ceil(allRoles.length / 20)})**\n` + tenRoles.join(`\n`).toString() + `\`\`\``);
+                    reaction.remove(message.author);
+                } else if (react === `➡`) {
+                    i++;
+                    o++;
+                    if (i >= Math.ceil(allRoles.length / 20)) {
+                        i = 0;
+                    }
+                    if (o >= Math.ceil(allRoles.length / 20) + 1) {
+                        o = 1;
+                    }
+                    tenRoles = allRoles.slice(i * 20, o * 20);
+                    msg.edit(`\`\`\`**Page (${o}/${Math.ceil(allRoles.length / 20)})**\n` + tenRoles.join(`\n`).toString() + `\`\`\``);
+                    reaction.remove(message.author);
+                }
+
+                setTimeout(function () {
+                    collector.stop();
+                }, 300000);
+            });
+        });
 };
 module.exports.help = {
     name: `roles`
 };
-
-/*
-
-        .then((msg) => {
-
-            msg.react(`➡`)
-                .then(async (emoji1) => {
-                    const filter = reaction => reaction.emoji.name === `➡`;
-                    console.log(`go forward ran`);
-                    msg.awaitReactions(filter && filterUser, {
-                            time: 15000
-                        })
-                        .then((message) => {
-                            i++;
-                            o++;
-                            tenRoles = allRoles.slice(i * 10, o * 10);
-                            msg.edit(`\`\`\`` + tenRoles.join(`\n`).toString() + `\`\`\``);
-                        })
-                        .catch((e) => {
-                            console.error(e);
-                        });
-                })
-                .catch((e) => {
-                    console.error(e);
-                });
-            msg.react(`⬅`)
-                .then(async (emoji2) => {
-                    const filter = reaction => reaction.emoji.name === `⬅`;
-                    console.log(`go back ran`);
-                    msg.awaitReactions(filter && filterUser, {
-                            time: 15000
-                        })
-                        .then((message) => {
-                            i--;
-                            o--;
-                            tenRoles = allRoles.slice(i * 10, o * 10);
-                            msg.edit(`\`\`\`` + tenRoles.join(`\n`).toString() + `\`\`\``);
-                        })
-                        .catch((e) => {
-                            console.error(e);
-                        });
-                })
-                .catch((e) => {
-                    console.error(e);
-                });
-        })
-        .catch((e) => {
-            console.error(e);
-        });
-
-
-*/
