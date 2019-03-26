@@ -3,7 +3,7 @@
 /* eslint-disable no-undef */
 module.exports = async (client, messages) => {
   
-        client.dataConfig.ensure(`${message.guild.id}`, {
+        client.dataConfig.ensure(`${messages.first().guild.id}`, {
         prefix: `d!`, 
         mutedRole: ``,
         messageLogs: ``,
