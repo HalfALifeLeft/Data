@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 module.exports.run = async (client, message, args) => {
-    let configBase = args[0]
+    let configBase = args[0];
     let configName = args[0];
     let configArgs = args.slice(1).join(` `);
     let regExTestOne = RegExp(/<#!?\d+>/);
@@ -48,6 +48,7 @@ module.exports.run = async (client, message, args) => {
             serverLogs: ``,
             modLogs: ``,
             welcomeChannel: ``,
+            suggestChannel: ``,
             ruleOne: ``,
             ruleTwo: ``,
             ruleThree: ``,
