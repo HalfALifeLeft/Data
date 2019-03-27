@@ -27,7 +27,7 @@ module.exports = (client, message) => {
     client.currency.inc(key, `points`);
     
     // Calculate the user's current level
-    const curLevel = Math.floor(0.1 * Math.sqrt(client.currency.get(key, `points`)));
+    const curLevel = Math.floor(0.02 * Math.sqrt(client.currency.get(key, `points`)));
 
     // Act upon level up by sending a message and updating the user's level in enmap.
     if (client.currency.get(key, `level`) < curLevel) {
