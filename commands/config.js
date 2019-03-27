@@ -7,15 +7,15 @@ module.exports.run = async (client, message, args) => {
     let configArgs = args.slice(1).join(` `);
     let regExTestOne = RegExp(/<#!?\d+>/);
     let regExTestTwo = RegExp(/<@!?\d+>/);
-    let arrayOfConfigs = [ `prefix`,
+    let arrayOfConfigs = [`prefix`,
         `mutedRole`,
-        `memberLogs`, 
-        `messageLogs`, 
-        `serverLogs`, 
-        `modLogs`, 
-        `welcomeChannel`, 
-        `ruleOne`, 
-        `ruleTwo`, 
+        `memberLogs`,
+        `messageLogs`,
+        `serverLogs`,
+        `modLogs`,
+        `welcomeChannel`,
+        `ruleOne`,
+        `ruleTwo`,
         `ruleThree`,
         `ruleFour`,
         `ruleFive`,
@@ -23,13 +23,14 @@ module.exports.run = async (client, message, args) => {
         `ruleSeven`,
         `ruleEight`,
         `ruleNine`,
-        `ruleTen`];
+        `ruleTen`
+    ];
 
     if (!message.member.hasPermission(`ADMINISTRATOR`, false, true, true)) {
         return message.reply(`you do not have the \`ADMINISTRATOR\` permission`);
     }
-           
-  
+
+
     if (regExTestOne.test(configArgs) === true) {
         configArgs = args[1].replace(`<#`, ``).replace(`>`, ``);
     }
@@ -38,29 +39,26 @@ module.exports.run = async (client, message, args) => {
         configArgs = args[1].replace(`<@`, ``).replace(`>`, ``);
     }
 
-    if (!client.dataConfig.get(`${message.guild.id}`)) {
-        //if guild ID is not in the enmap, add it to enmap
-        await client.dataConfig.set(`${message.guild.id}`, {
-            prefix: `d!`,
-            mutedRole: ``,
-            memberLogs: ``,
-            messageLogs: ``,
-            serverLogs: ``,
-            modLogs: ``,
-            welcomeChannel: ``,
-            suggestChannel: ``,
-            ruleOne: ``,
-            ruleTwo: ``,
-            ruleThree: ``,
-            ruleFour: ``,
-            ruleFive: ``,
-            ruleSix: ``,
-            ruleSeven: ``,
-            ruleEight: ``,
-            ruleNine: ``,
-            ruleTen: ``
-        });
-    }
+    await client.dataConfig.ensure(`${message.guild.id}`, {
+        prefix: `d!`,
+        mutedRole: ``,
+        memberLogs: ``,
+        messageLogs: ``,
+        serverLogs: ``,
+        modLogs: ``,
+        welcomeChannel: ``,
+        suggestChannel: ``,
+        ruleOne: ``,
+        ruleTwo: ``,
+        ruleThree: ``,
+        ruleFour: ``,
+        ruleFive: ``,
+        ruleSix: ``,
+        ruleSeven: ``,
+        ruleEight: ``,
+        ruleNine: ``,
+        ruleTen: ``
+    });
 
     if (!configArgs || !configName) {
         return message.channel.send(`\`\`\`Blank means it is not set
@@ -88,8 +86,8 @@ module.exports.run = async (client, message, args) => {
     if (!configName) {
         return message.reply(`You are missing a name`);
     }
-  
-    if(arrayOfConfigs.includes(configName) == false) {
+
+    if (arrayOfConfigs.includes(configName) == false) {
         return message.reply(`that isn't an option to configure!`);
     }
 
