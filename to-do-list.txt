@@ -4,7 +4,7 @@
      - USE ENMAP TO SET UP CURRENCY ON A PER-USER BASIS, USE USER.ID AS THE KEY
          - DONE balance
          - DONE daily
-         - gamble, gamble, 1-50 = loss, 51-99 = 2x points, 100 = 3x points.
+         - DONE gamble, gamble, 1-50 = loss, 51-99 = 2x points, 100 = 3x points.
  - ITEM SYSTEM - BoxBot kind of deal, items and all. Money system, 
      - USE ENMAP TO SET UP AN INVENTORY SYSTEM, POSSIBLY TYING INTO CURRENCY SYSTEM
          - fish, fishing command, have a chance to get a fish, can sell fish in market.
@@ -39,7 +39,6 @@
          - done - warn, info. take error events and clone it for warn
  - GENERAL 
          - create a command to allow me (only bot owner) to browse through the guilds the bot is in and join one if I want
-         - rewrite suggestions command
          - rewrite subreddit, kitty, and meme to use reddit API instead of randompuppy
          - use .setInterval or other function to add a duration to mutes (default duration is 24h)
          
