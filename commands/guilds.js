@@ -4,7 +4,9 @@
 module.exports.run = async (client, message, args) => {
     const guilds = client.guilds
     let allGuilds = [];
-      
+    let i = 1;      
+    const filter = m => m.author.id === message.author.id;
+  
     if (message.author.id != process.env.OWNERID) {
         return;
         }
@@ -16,13 +18,36 @@ module.exports.run = async (client, message, args) => {
       owner.then((User) => {
           ownerName = User.username;
           ownerDiscriminator = User.discriminator;
-          console.log(ownerName + `#` + ownerDiscriminator);
-        allGuilds.push(`${guild.name} - ${guild.id}\n    Member Count: ${guild.memberCount}\n    Owner: ${ownerName}#${ownerDiscriminator}`);
+        allGuilds.push(`${i} - ${guild.name}\n      Guild ID: ${guild.id}\n      Member Count: ${guild.memberCount}\n      Owner: ${ownerName}#${ownerDiscriminator}`);
+         i++;
       });
     });
-  
-    message.channel.send(`\`\`\`` + allGuilds.toString().replace(`,`, `\n`) + `\`\`\``);
-  
+    
+    message.channel.send(`\`\`\`` + allGuilds.join(`\n`).toString() + `\`\`\``);
+    
+    message.channel.awaitMessages(filter, {
+        max: 1,
+        time: 30000,
+        errors: [`time`]})
+    .then(async (msg) => {
+        let content = await msg.first().content;
+        let guild = client.guilds.find(g => g.id == content);
+        console.log(content);
+        console.log(guild);
+      
+        if (guild == null) {
+            return message.reply(`Please give me a valid Guild ID!`);
+            }
+      
+        console.log(guild);
+      
+      
+      
+      
+    })
+    .catch((e) => {
+        console.error(e);
+    });
   //^ need to make a new variable that already is the string. Then replace for that, with a .forEach
   
   
