@@ -24,6 +24,7 @@
     "kitsu": "^6.5.1",
     "libsodium-wrappers": "^0.7.4",
     "moment": "^2.24.0",
+    "node-fetch": "^2.3.0",
     "node-opus": "^0.3.1",
     "nodemon": "^1.18.10",
     "quick.db": "^7.0.0-b16",
