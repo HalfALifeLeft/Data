@@ -6,7 +6,9 @@ module.exports.run = async (client, message, args) => {
     if(!message.mentions) {
         user = message.mentions.members.first().id;
     }
+
     const key = `${user}-${message.guild.id}`;
+
     
     client.currency.ensure(key, {
         userID: user,
@@ -16,7 +18,7 @@ module.exports.run = async (client, message, args) => {
         lastSeen: new Date()
     });
 
-    message.channel.send(`<@!${user}> currently has $${Math.floor(client.currency.get(key, `points`) / 10)}, and is level ${client.currency.get(key, `level`)}!`);
+    message.channel.send(`<@!${user}> currently has $${client.currency.get(key, `points`)}, and is level ${client.currency.get(key, `level`)}!`);
 
 };
 module.exports.help = {

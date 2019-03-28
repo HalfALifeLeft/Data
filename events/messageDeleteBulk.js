@@ -2,6 +2,27 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 module.exports = async (client, messages) => {
+  
+        client.dataConfig.ensure(`${messages.first().guild.id}`, {
+        prefix: `d!`, 
+        mutedRole: ``,
+        messageLogs: ``,
+        memberLogs: ``,
+        serverLogs: ``,
+        modLogs: ``,
+        welcomeChannel: ``,
+        ruleOne: ``,
+        ruleTwo: ``,
+        ruleThree: ``,
+        ruleFour: ``,
+        ruleFive: ``,
+        ruleSix: ``,
+        ruleSeven: ``,
+        ruleEight: ``,
+        ruleNine: ``,
+        ruleTen: ``});
+
+  
     var fs = require(`fs`);
     var moment = require(`moment`);
     const channelId = client.dataConfig.get(`${messages.first().guild.id}`, `messageLogs`);

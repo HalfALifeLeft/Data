@@ -66,6 +66,18 @@ currency.defer.then(() => {
     console.log(currency.size + ` currency keys loaded`);
 });
 
+const roles = new Enmap({
+  name: `roles`,
+  autoFetch: true,
+  fetchAll: false
+});  
+
+client.roles = roles;
+
+roles.defer.then(() => {
+  console.log(roles.size + ` roles keys loaded`);
+});
+
 client.func = func;
 
 fs.readdir(`./events/`, (err, files) => {

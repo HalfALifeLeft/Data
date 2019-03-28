@@ -2,6 +2,27 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 module.exports = (client, oldGuild, newGuild) => {
+  
+        client.dataConfig.ensure(`${oldGuild.id}`, {
+        prefix: `d!`, 
+        mutedRole: ``,
+        messageLogs: ``,
+        memberLogs: ``,
+        serverLogs: ``,
+        modLogs: ``,
+        welcomeChannel: ``,
+        ruleOne: ``,
+        ruleTwo: ``,
+        ruleThree: ``,
+        ruleFour: ``,
+        ruleFive: ``,
+        ruleSix: ``,
+        ruleSeven: ``,
+        ruleEight: ``,
+        ruleNine: ``,
+        ruleTen: ``});
+
+  
     const channelId = client.dataConfig.get(`${oldGuild.id}`, `serverLogs`);
     if (newGuild.channels.has(channelId) == false) return;
 

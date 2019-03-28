@@ -2,6 +2,27 @@
 /* eslint-disable no-console */
 /* eslint-disable no-undef */
 module.exports = (client, member) => {
+  
+            client.dataConfig.ensure(`${member.guild.id}`, {
+        prefix: `d!`, 
+        mutedRole: ``,
+        messageLogs: ``,
+        memberLogs: ``,
+        serverLogs: ``,
+        modLogs: ``,
+        welcomeChannel: ``,
+        ruleOne: ``,
+        ruleTwo: ``,
+        ruleThree: ``,
+        ruleFour: ``,
+        ruleFive: ``,
+        ruleSix: ``,
+        ruleSeven: ``,
+        ruleEight: ``,
+        ruleNine: ``,
+        ruleTen: ``});
+
+  
     var role = member.guild.roles.find(role => role.name === `Members`);
     if (role == null) return;
     member.addRole(role);

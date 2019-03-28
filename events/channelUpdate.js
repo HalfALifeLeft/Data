@@ -2,6 +2,26 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
 module.exports = async (client, oldChannel, newChannel) => {
+  
+              client.dataConfig.ensure(`${oldChannel.guild.id}`, {
+        prefix: `d!`, 
+        mutedRole: ``,
+        messageLogs: ``,
+        memberLogs: ``,
+        serverLogs: ``,
+        modLogs: ``,
+        welcomeChannel: ``,
+        ruleOne: ``,
+        ruleTwo: ``,
+        ruleThree: ``,
+        ruleFour: ``,
+        ruleFive: ``,
+        ruleSix: ``,
+        ruleSeven: ``,
+        ruleEight: ``,
+        ruleNine: ``,
+        ruleTen: ``});
+  
     const channelId = client.dataConfig.get(`${oldChannel.guild.id}`, `serverLogs`);
     let topicOld = oldChannel.topic;
     let topicNew = newChannel.topic;

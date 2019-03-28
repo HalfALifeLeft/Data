@@ -2,10 +2,29 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
 module.exports = async (client, oldMember, newMember) => {
+
+          client.dataConfig.ensure(`${newMember.guild.id}`, {
+        prefix: `d!`, 
+        mutedRole: ``,
+        messageLogs: ``,
+        memberLogs: ``,
+        serverLogs: ``,
+        modLogs: ``,
+        welcomeChannel: ``,
+        ruleOne: ``,
+        ruleTwo: ``,
+        ruleThree: ``,
+        ruleFour: ``,
+        ruleFive: ``,
+        ruleSix: ``,
+        ruleSeven: ``,
+        ruleEight: ``,
+        ruleNine: ``,
+        ruleTen: ``});
+
     const channelId = client.dataConfig.get(`${newMember.guild.id}`, `memberLogs`);
     if (newMember.guild.channels.has(channelId) == false) return;
 
-    // NEVER have client.on inside of a event or command, it FUCKS it up
     const mychannel = newMember.guild.channels.find(channel => channel.id === channelId);
     if (mychannel == null) return;
 
@@ -14,10 +33,19 @@ module.exports = async (client, oldMember, newMember) => {
         RichEmbed
     } = require(`discord.js`);
 
+    let voiceChannelName = newMember.voiceChannel;
+
+    if (voiceChannelName == undefined) {
+        voiceChannelName = oldMember.voiceChannel.name;
+    } else {
+        voiceChannelName = newMember.voiceChannel.name;
+    }
+
     const embed = new RichEmbed()
         .setTimestamp()
         .setColor(process.env.GOOD)
-        .setFooter(`VC: ${newMember.voiceChannel.name}`);
+        .setFooter(`VC: ${voiceChannelName}`);
+
 
     if(oldMember.selfMute != newMember.selfMute && oldMember.selfDeaf == newMember.selfDeaf) {
         if(newMember.selfMute == true) {
@@ -37,6 +65,19 @@ module.exports = async (client, oldMember, newMember) => {
         }
     }
 
+    //console.log(newMember);
+
+    if(oldMember.voiceChannelID != newMember.voiceChannelID) {
+        if(newMember.voiceChannelID == null) {
+            embed.addField(`User left Voice Channel`, `<@!${oldMember.user.id}> (\`${oldMember.user.id}\`)`);
+        }
+        if(oldMember.voiceChannelID == null) {
+            embed.addField(`User joined Voice Channel`, `<@!${newMember.user.id}> (\`${newMember.user.id}\`)`);
+        }
+        if(oldMember.voiceChannelID != newMember.voiceChannelID && oldMember.voiceChannelID != null && newMember.voiceChannelID != null) {
+            embed.addField(`User moved Voice Channel`, `Old VC: ${oldMember.voiceChannel.name} (\`${oldMember.voiceChannel.id}\`)\nNew VC: ${newMember.voiceChannel.name} (\`${newMember.voiceChannel.id}\`)\n<@!${newMember.user.id}> (\`${newMember.user.id}\`)`);
+        }
+    }
     mychannel.send(embed);
 };
 
