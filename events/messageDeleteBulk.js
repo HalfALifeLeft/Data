@@ -48,7 +48,7 @@ module.exports = async (client, messages) => {
         if (err) console.error(err);
     });
 
-    messages.tap(msg => {
+    await messages.tap(msg => {
         fs.appendFile(`messageDeleteBulk.txt`, `${msg.author.username}#${msg.author.discriminator} (${msg.author.id}) at ${moment.utc(msg.createdTimestamp).format(`MMMM DD, YYYY, hh:mm:ss a`)} message ID: ${msg.id}\nMessage: ` + msg.content + `\r\n`, {
             'flags': `a`
         }, function (err) {
