@@ -5,12 +5,13 @@ module.exports = (client, message) => {
     if (message.author.bot || !message.guild) return;
 
     client.dataConfig.ensure(`${message.guild.id}`, {
-        prefix: `d!`, 
+        prefix: `d!`,
         messageLogs: ``,
         memberLogs: ``,
         serverLogs: ``,
         modLogs: ``,
-        welcomeChannel: ``});
+        welcomeChannel: ``
+    });
     const dataPrefix = client.dataConfig.get(`${message.guild.id}`, `prefix`);
 
     const key = `${message.author.id}-${message.guild.id}`;
@@ -25,7 +26,7 @@ module.exports = (client, message) => {
 
     // Increment the points and save them.
     client.currency.inc(key, `points`);
-    
+
     // Calculate the user's current level
     const curLevel = Math.floor(0.02 * Math.sqrt(client.currency.get(key, `points`)));
 

@@ -2,9 +2,9 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
 module.exports = (client, oldRole, newRole) => {
-  
-          client.dataConfig.ensure(`${oldRole.guild.id}`, {
-        prefix: `d!`, 
+
+    client.dataConfig.ensure(`${oldRole.guild.id}`, {
+        prefix: `d!`,
         mutedRole: ``,
         messageLogs: ``,
         memberLogs: ``,
@@ -20,7 +20,8 @@ module.exports = (client, oldRole, newRole) => {
         ruleSeven: ``,
         ruleEight: ``,
         ruleNine: ``,
-        ruleTen: ``});
+        ruleTen: ``
+    });
 
     const channelId = client.dataConfig.get(`${oldRole.guild.id}`, `serverLogs`);
     if (oldRole.guild.channels.has(channelId) == false) return;
@@ -28,19 +29,19 @@ module.exports = (client, oldRole, newRole) => {
     const mychannel = oldRole.guild.channels.find(channel => channel.id === channelId);
     if (!mychannel) return;
 
-    if(oldRole == newRole) return;
+    if (oldRole == newRole) return;
 
-    if(oldRole.color == newRole.color && oldRole.hoist == newRole.hoist && oldRole.managed == newRole.managed && oldRole.mentionable == newRole.mentionable && oldRole.name == newRole.name) return;
+    if (oldRole.color == newRole.color && oldRole.hoist == newRole.hoist && oldRole.managed == newRole.managed && oldRole.mentionable == newRole.mentionable && oldRole.name == newRole.name) return;
 
     let oldColor = ``;
-    if(oldRole.color == 0) {
+    if (oldRole.color == 0) {
         oldColor = `Clear`;
     } else {
         oldColor = oldRole.color;
     }
 
     let newColor = ``;
-    if(newRole.color == 0) {
+    if (newRole.color == 0) {
         newColor = `Clear`;
     } else {
         newColor = newRole.color;

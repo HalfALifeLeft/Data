@@ -2,9 +2,9 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 module.exports = async (client, messages) => {
-  
-        client.dataConfig.ensure(`${messages.first().guild.id}`, {
-        prefix: `d!`, 
+
+    client.dataConfig.ensure(`${messages.first().guild.id}`, {
+        prefix: `d!`,
         mutedRole: ``,
         messageLogs: ``,
         memberLogs: ``,
@@ -20,9 +20,10 @@ module.exports = async (client, messages) => {
         ruleSeven: ``,
         ruleEight: ``,
         ruleNine: ``,
-        ruleTen: ``});
+        ruleTen: ``
+    });
 
-  
+
     var fs = require(`fs`);
     var moment = require(`moment`);
     const channelId = client.dataConfig.get(`${messages.first().guild.id}`, `messageLogs`);
@@ -57,10 +58,11 @@ module.exports = async (client, messages) => {
 
     });
 
-    await mychannel.send({files: [{
-        attachment: `./messageDeleteBulk.txt`,
-        name: `messageDeleteBulk.txt`
-    }]
+    await mychannel.send({
+        files: [{
+            attachment: `./messageDeleteBulk.txt`,
+            name: `messageDeleteBulk.txt`
+        }]
     });
 
     fs.unlink(`./messageDeleteBulk.txt`, (e) => {

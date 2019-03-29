@@ -3,7 +3,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 module.exports = (client, message, oldUser) => {
-    
+
     return;
 
     let newUser = message.member.user.username;

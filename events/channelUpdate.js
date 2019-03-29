@@ -2,9 +2,9 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
 module.exports = async (client, oldChannel, newChannel) => {
-  
-              client.dataConfig.ensure(`${oldChannel.guild.id}`, {
-        prefix: `d!`, 
+
+    client.dataConfig.ensure(`${oldChannel.guild.id}`, {
+        prefix: `d!`,
         mutedRole: ``,
         messageLogs: ``,
         memberLogs: ``,
@@ -20,8 +20,9 @@ module.exports = async (client, oldChannel, newChannel) => {
         ruleSeven: ``,
         ruleEight: ``,
         ruleNine: ``,
-        ruleTen: ``});
-  
+        ruleTen: ``
+    });
+
     const channelId = client.dataConfig.get(`${oldChannel.guild.id}`, `serverLogs`);
     let topicOld = oldChannel.topic;
     let topicNew = newChannel.topic;
@@ -30,18 +31,18 @@ module.exports = async (client, oldChannel, newChannel) => {
     const mychannel = oldChannel.guild.channels.find(channel => channel.id === channelId);
     if (!mychannel) return;
 
-    if(oldChannel == newChannel) return;
+    if (oldChannel == newChannel) return;
 
-    if(oldChannel.name == newChannel.name && oldChannel.parentID == newChannel.parentID && oldChannel.permissionOverwrites == newChannel.permissionOverwrites && oldChannel.topic == newChannel.topic && oldChannel.nsfw == newChannel.nsfw) return;
+    if (oldChannel.name == newChannel.name && oldChannel.parentID == newChannel.parentID && oldChannel.permissionOverwrites == newChannel.permissionOverwrites && oldChannel.topic == newChannel.topic && oldChannel.nsfw == newChannel.nsfw) return;
 
-    if(topicOld == ``) {
+    if (topicOld == ``) {
         topicOld = `Nothing`;
     }
 
-    if(topicNew == ``) {
+    if (topicNew == ``) {
         topicNew = `Nothing`;
     }
-    
+
     const {
         Client,
         RichEmbed

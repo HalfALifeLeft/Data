@@ -2,9 +2,9 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 module.exports = (client, oldGuild, newGuild) => {
-  
-        client.dataConfig.ensure(`${oldGuild.id}`, {
-        prefix: `d!`, 
+
+    client.dataConfig.ensure(`${oldGuild.id}`, {
+        prefix: `d!`,
         mutedRole: ``,
         messageLogs: ``,
         memberLogs: ``,
@@ -20,9 +20,10 @@ module.exports = (client, oldGuild, newGuild) => {
         ruleSeven: ``,
         ruleEight: ``,
         ruleNine: ``,
-        ruleTen: ``});
+        ruleTen: ``
+    });
 
-  
+
     const channelId = client.dataConfig.get(`${oldGuild.id}`, `serverLogs`);
     if (newGuild.channels.has(channelId) == false) return;
 
@@ -34,7 +35,7 @@ module.exports = (client, oldGuild, newGuild) => {
     } = require(`discord.js`);
 
 
-    if(oldGuild.name != newGuild.name) {
+    if (oldGuild.name != newGuild.name) {
         const embed = new RichEmbed()
             .setTimestamp()
             .setColor(process.env.GOOD)
@@ -43,7 +44,7 @@ module.exports = (client, oldGuild, newGuild) => {
         return mychannel.send(embed);
     }
 
-    if(oldGuild.icon != newGuild.icon) {
+    if (oldGuild.icon != newGuild.icon) {
         if (newGuild.icon == null) {
             const embed = new RichEmbed()
                 .setTimestamp()
@@ -68,7 +69,7 @@ module.exports = (client, oldGuild, newGuild) => {
         return mychannel.send(embed);
     }
 
-    if(oldGuild.region != newGuild.region) {
+    if (oldGuild.region != newGuild.region) {
         const embed = new RichEmbed()
             .setTimestamp()
             .setColor(process.env.GOOD)
@@ -77,7 +78,7 @@ module.exports = (client, oldGuild, newGuild) => {
         return mychannel.send(embed);
     }
 
-    if(oldGuild.afkTimeout != newGuild.afkTimeout) {
+    if (oldGuild.afkTimeout != newGuild.afkTimeout) {
         const embed = new RichEmbed()
             .setTimestamp()
             .setColor(process.env.GOOD)
@@ -86,8 +87,8 @@ module.exports = (client, oldGuild, newGuild) => {
         return mychannel.send(embed);
     }
 
-    if(oldGuild.afkChannelID != newGuild.afkChannelID) {
-        if(oldGuild.afkChannelID == null) {
+    if (oldGuild.afkChannelID != newGuild.afkChannelID) {
+        if (oldGuild.afkChannelID == null) {
             const embed = new RichEmbed()
                 .setTimestamp()
                 .setColor(process.env.GOOD)
@@ -95,7 +96,7 @@ module.exports = (client, oldGuild, newGuild) => {
                 .addField(`New AFK Channel`, `${newGuild.afkChannel.name} (${oldGuild.afkChannelID})`);
             return mychannel.send(embed);
         }
-        if(newGuild.afkChannelID == null) {
+        if (newGuild.afkChannelID == null) {
             const embed = new RichEmbed()
                 .setTimestamp()
                 .setColor(process.env.GOOD)
@@ -111,40 +112,40 @@ module.exports = (client, oldGuild, newGuild) => {
         return mychannel.send(embed);
     }
 
-    if(oldGuild.verificationLevel != newGuild.verificationLevel) {
+    if (oldGuild.verificationLevel != newGuild.verificationLevel) {
         let verificationLevelNameOld = ``;
         let verificationLevelNameNew = ``;
-        if(oldGuild.verificationLevel == 0) {
+        if (oldGuild.verificationLevel == 0) {
             verificationLevelNameOld = `None`;
         }
-        if(oldGuild.verificationLevel == 1) {
+        if (oldGuild.verificationLevel == 1) {
             verificationLevelNameOld = `Low`;
         }
-        if(oldGuild.verificationLevel == 2) {
+        if (oldGuild.verificationLevel == 2) {
             verificationLevelNameOld = `Medium`;
         }
-        if(oldGuild.verificationLevel == 3) {
+        if (oldGuild.verificationLevel == 3) {
             verificationLevelNameOld = `(╯°□°）╯︵ ┻━┻`;
         }
-        if(oldGuild.verificationLevel == 4) {
+        if (oldGuild.verificationLevel == 4) {
             verificationLevelNameOld = `┻━┻彡 ヽ(ಠ益ಠ)ノ彡┻━┻`;
         }
-        if(newGuild.verificationLevel == 0) {
+        if (newGuild.verificationLevel == 0) {
             verificationLevelNameNew = `None`;
         }
-        if(newGuild.verificationLevel == 1) {
+        if (newGuild.verificationLevel == 1) {
             verificationLevelNameNew = `Low`;
         }
-        if(newGuild.verificationLevel == 2) {
+        if (newGuild.verificationLevel == 2) {
             verificationLevelNameNew = `Medium`;
         }
-        if(newGuild.verificationLevel == 3) {
+        if (newGuild.verificationLevel == 3) {
             verificationLevelNameNew = `(╯°□°）╯︵ ┻━┻`;
         }
-        if(newGuild.verificationLevel == 4) {
+        if (newGuild.verificationLevel == 4) {
             verificationLevelNameNew = `┻━┻彡 ヽ(ಠ益ಠ)ノ彡┻━┻`;
         }
-        
+
         const embed = new RichEmbed()
             .setTimestamp()
             .setColor(process.env.GOOD)
@@ -153,25 +154,25 @@ module.exports = (client, oldGuild, newGuild) => {
         return mychannel.send(embed);
     }
 
-    if(oldGuild.explicitContentFilter != newGuild.explicitContentFilter) {
+    if (oldGuild.explicitContentFilter != newGuild.explicitContentFilter) {
         let explicitContentFilterOld = ``;
         let explicitContentFilterNew = ``;
-        if(oldGuild.explicitContentFilterOld == 0) {
+        if (oldGuild.explicitContentFilterOld == 0) {
             explicitContentFilterOld = `Don't scan any messages.`;
         }
-        if(oldGuild.explicitContentFilterOld == 1) {
+        if (oldGuild.explicitContentFilterOld == 1) {
             explicitContentFilterOld = `Scan messages from members without a role.`;
         }
-        if(oldGuild.explicitContentFilterOld == 2) {
+        if (oldGuild.explicitContentFilterOld == 2) {
             explicitContentFilterOld = `Scan messages sent by all members.`;
         }
-        if(oldGuild.explicitContentFilterNew == 0) {
+        if (oldGuild.explicitContentFilterNew == 0) {
             explicitContentFilterNew = `Don't scan any messages.`;
         }
-        if(oldGuild.explicitContentFilterNew == 1) {
+        if (oldGuild.explicitContentFilterNew == 1) {
             explicitContentFilterNew = `Scan messages from members without a role.`;
         }
-        if(oldGuild.explicitContentFilterNew == 2) {
+        if (oldGuild.explicitContentFilterNew == 2) {
             explicitContentFilterNew = `Scan messages sent by all members.`;
         }
 
@@ -183,22 +184,22 @@ module.exports = (client, oldGuild, newGuild) => {
         return mychannel.send(embed);
     }
 
-    if(oldGuild.mfaLevel != newGuild.mfaLevel) {
+    if (oldGuild.mfaLevel != newGuild.mfaLevel) {
         let mfaLevelOld = ``;
         let mfaLevelNew = ``;
-        if(oldGuild.mfaLevel == 0) {
+        if (oldGuild.mfaLevel == 0) {
             mfaLevelOld = `2FA Not Required`;
         }
-        if(oldGuild.mfaLevel == 1) {
+        if (oldGuild.mfaLevel == 1) {
             mfaLevelOld = `2FA Required`;
         }
-        if(newGuild.mfaLevel == 0) {
+        if (newGuild.mfaLevel == 0) {
             mfaLevelNew = `2FA Not Required`;
         }
-        if(newGuild.mfaLevel == 1) {
+        if (newGuild.mfaLevel == 1) {
             mfaLevelNew = `2FA Required`;
         }
-        
+
         const embed = new RichEmbed()
             .setTimestamp()
             .setColor(process.env.GOOD)
@@ -207,22 +208,22 @@ module.exports = (client, oldGuild, newGuild) => {
         return mychannel.send(embed);
     }
 
-    if(oldGuild.defaultMessageNotifications != newGuild.defaultMessageNotifications) {
+    if (oldGuild.defaultMessageNotifications != newGuild.defaultMessageNotifications) {
         let defaultNotificationsOld = ``;
         let defaultNotificationsNew = ``;
-        if(oldGuild.defaultMessageNotifications == `ALL`) {
+        if (oldGuild.defaultMessageNotifications == `ALL`) {
             defaultNotificationsOld = `All Messages`;
         }
-        if(oldGuild.defaultMessageNotifications == `MENTIONS`) {
+        if (oldGuild.defaultMessageNotifications == `MENTIONS`) {
             defaultNotificationsOld = `Only @mentions`;
         }
-        if(newGuild.defaultMessageNotifications == `ALL`) {
+        if (newGuild.defaultMessageNotifications == `ALL`) {
             defaultNotificationsNew = `All Messages`;
         }
-        if(newGuild.defaultMessageNotifications == `MENTIONS`) {
+        if (newGuild.defaultMessageNotifications == `MENTIONS`) {
             defaultNotificationsNew = `Only @mentions`;
         }
-        
+
         const embed = new RichEmbed()
             .setTimestamp()
             .setColor(process.env.GOOD)
@@ -231,7 +232,7 @@ module.exports = (client, oldGuild, newGuild) => {
         return mychannel.send(embed);
     }
 
-    if(oldGuild.ownerID != newGuild.ownerID) {
+    if (oldGuild.ownerID != newGuild.ownerID) {
         const embed = new RichEmbed()
             .setTimestamp()
             .setColor(process.env.GOOD)
@@ -240,7 +241,7 @@ module.exports = (client, oldGuild, newGuild) => {
         return mychannel.send(embed);
     }
 
-    if(oldGuild.systemChannel != newGuild.systemChannel) {
+    if (oldGuild.systemChannel != newGuild.systemChannel) {
         const embed = new RichEmbed()
             .setTimestamp()
             .setColor(process.env.GOOD)

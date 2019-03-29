@@ -2,9 +2,9 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
 module.exports = async (client, oldMember, newMember) => {
-  
-        client.dataConfig.ensure(`${newMember.guild.id}`, {
-        prefix: `d!`, 
+
+    client.dataConfig.ensure(`${newMember.guild.id}`, {
+        prefix: `d!`,
         mutedRole: ``,
         messageLogs: ``,
         memberLogs: ``,
@@ -20,8 +20,9 @@ module.exports = async (client, oldMember, newMember) => {
         ruleSeven: ``,
         ruleEight: ``,
         ruleNine: ``,
-        ruleTen: ``});
-  
+        ruleTen: ``
+    });
+
     const channelId = client.dataConfig.get(`${newMember.guild.id}`, `memberLogs`);
     if (newMember.guild.channels.has(channelId) == false) return;
 
@@ -55,9 +56,9 @@ module.exports = async (client, oldMember, newMember) => {
     });
 
     //removed
-    if(oldRoles.length > newRoles.length) {
-        for(var dataOne in oldRoles) {
-            if(!newRoles.includes(oldRoles[dataOne])) {
+    if (oldRoles.length > newRoles.length) {
+        for (var dataOne in oldRoles) {
+            if (!newRoles.includes(oldRoles[dataOne])) {
                 removedRoles.push(oldRoles[dataOne]);
             }
         }
@@ -65,22 +66,22 @@ module.exports = async (client, oldMember, newMember) => {
     }
 
     //added
-    if(oldRoles.length < newRoles.length) {
-        for(var dataTwo in newRoles) {
-            if(!oldRoles.includes(newRoles[dataTwo])) {
+    if (oldRoles.length < newRoles.length) {
+        for (var dataTwo in newRoles) {
+            if (!oldRoles.includes(newRoles[dataTwo])) {
                 addedRoles.push(newRoles[dataTwo]);
             }
         }
         embed.addField(`Role Added`, `<@&${addedRoles}>`);
     }
 
-    if(newMember.nickname != oldMember.nickname) {
+    if (newMember.nickname != oldMember.nickname) {
         let nicknameNew = newMember.nickname;
         let nicknameOld = oldMember.nickname;
-        if(nicknameNew == null) {
+        if (nicknameNew == null) {
             nicknameNew = newMember.user.username;
         }
-        if(nicknameOld == null) {
+        if (nicknameOld == null) {
             nicknameOld = oldMember.user.username;
         }
         embed.addField(`Old Nickname`, `\`${nicknameOld}\``);
