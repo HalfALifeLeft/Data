@@ -41,7 +41,7 @@ module.exports = async (client, oldChannel, newChannel) => {
     if(topicNew == ``) {
         topicNew = `Nothing`;
     }
-
+    
     const {
         Client,
         RichEmbed
