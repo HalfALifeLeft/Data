@@ -33,28 +33,23 @@ module.exports.run = async (client, message, args) => {
         .then(async (msg) => {
             let content = await msg.first().content;
             let guild = client.guilds.find(g => g.id == content);
-            console.log(content);
-            console.log(guild);
 
             if (guild == null) {
                 return message.reply(`Please give me a valid Guild ID!`);
             }
 
-            console.log(guild.systemChannel);
-
-
-
-
+            guild.systemChannel.createInvite()
+                .then((Invite) => {
+                    message.member.send(Invite.url);
+                })
+                .catch((e) => {
+                    console.error(e);
+                });
         })
         .catch((e) => {
             console.error(e);
         });
-    //^ need to make a new variable that already is the string. Then replace for that, with a .forEach
-
-
-
 };
-
 module.exports.help = {
     name: `guilds`
 };
