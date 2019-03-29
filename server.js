@@ -108,6 +108,9 @@ fs.readdir(`./commands/`, (err, files) => {
 });
 
 client.on(`message`, message => {
+    
+    if (message.channel.type == `dm`) return;
+
     const prefixMention = new RegExp(`<@!?${client.user.id}>`);
     client.dataConfig.ensure(`${message.guild.id}`, {
         prefix: `d!`, 
