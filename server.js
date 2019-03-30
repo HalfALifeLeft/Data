@@ -19,15 +19,15 @@ const config = require(`./config.json`);
 const Message = new Discord.Message();
 var stringSimilarity = require(`string-similarity`);
 const Guild = new Discord.Guild();
-let userCooldown = {};
+const userCooldown = {};
 
+client.userCooldown = userCooldown;
 client.config = config;
 client.message = Message;
 client.stringSimilarity = stringSimilarity;
 client.fs = fs;
 client.guild = Guild;
 client.enmap = Enmap;
-client.userCooldown = userCooldown;
 
 // 
 // To access this do client.func.[FUNCTIONHERE]

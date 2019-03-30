@@ -45,16 +45,6 @@ module.exports = (client, message) => {
     const cmd = client.commands.get(command);
     // If that command doesn't exist, silently exit and do nothing
     if (!cmd) return;
-
-    if (client.userCooldown[message.author.id]) {
-        client.userCooldown[message.author.id] = false;
-        // run command...
-
-        // Run the command
-        cmd.run(client, message, args);
-
-        setTimeout(() => {
-            client.userCooldown[message.author.id] = true;
-        }, 30000); // 30 seconds
-    }
+    // Run the command
+    cmd.run(client, message, args);
 };
