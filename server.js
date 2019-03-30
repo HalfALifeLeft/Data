@@ -26,6 +26,7 @@ client.stringSimilarity = stringSimilarity;
 client.fs = fs;
 client.guild = Guild;
 client.enmap = Enmap;
+
 // 
 // To access this do client.func.[FUNCTIONHERE]
 // 
@@ -67,15 +68,15 @@ currency.defer.then(() => {
 });
 
 const roles = new Enmap({
-  name: `roles`,
-  autoFetch: true,
-  fetchAll: false
-});  
+    name: `roles`,
+    autoFetch: true,
+    fetchAll: false
+});
 
 client.roles = roles;
 
 roles.defer.then(() => {
-  console.log(roles.size + ` roles keys loaded`);
+    console.log(roles.size + ` roles keys loaded`);
 });
 
 client.func = func;
@@ -107,10 +108,24 @@ fs.readdir(`./commands/`, (err, files) => {
     });
 });
 
+client.guilds.forEach((guild) => {
+    guild.channels.forEach((channel) => {
+        channel.fetchMessages({
+                limit: 100
+            })
+            .then(async (msg) => {
+
+            })
+            .catch((e) => {
+                console.error(e);
+            });
+    });
+});
+
 client.on(`message`, message => {
     const prefixMention = new RegExp(`<@!?${client.user.id}>`);
     client.dataConfig.ensure(`${message.guild.id}`, {
-        prefix: `d!`, 
+        prefix: `d!`,
         mutedRole: ``,
         messageLogs: ``,
         memberLogs: ``,
@@ -126,7 +141,8 @@ client.on(`message`, message => {
         ruleSeven: ``,
         ruleEight: ``,
         ruleNine: ``,
-        ruleTen: ``});
+        ruleTen: ``
+    });
 
     const responseObject = {
         'Rule 1': client.dataConfig.get(`${message.guild.id}`, `ruleOne`),
@@ -151,12 +167,12 @@ client.on(`message`, message => {
             if (message.content.toLowerCase().indexOf(`<@`) !== 0) return;
             message.reply(`my prefix is \`` + dataPrefix + `\` now stop tagging me.`);
         }
-    
+
         let prefixLength = 3;
-        if(message.mentions.members.first().user.nickname !== null) {
+        if (message.mentions.members.first().user.nickname !== null) {
             prefixLength = 4;
         }
-        
+
         // Ignore all bots
         if (message.author.bot || !message.guild) return;
         // Ignore messages not starting with the prefix (in config.json)
