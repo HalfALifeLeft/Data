@@ -28,12 +28,14 @@ module.exports = async (client, oldChannel, newChannel) => {
     const channelId = client.dataConfig.get(`${oldChannel.guild.id}`, `serverLogs`);
     let topicOld = oldChannel.topic;
     let topicNew = newChannel.topic;
-    if (oldChannel.guild.channels.has(channelId) == false) return;
+    if (newChannel.guild.channels.has(channelId) == false) return;
 
     const mychannel = oldChannel.guild.channels.find(channel => channel.id === channelId);
     if (!mychannel) return;
 
     if (oldChannel == newChannel) return;
+
+    if (oldChannel == null) return;
 
     if (oldChannel.name == newChannel.name && oldChannel.parentID == newChannel.parentID && oldChannel.permissionOverwrites == newChannel.permissionOverwrites && oldChannel.topic == newChannel.topic && oldChannel.nsfw == newChannel.nsfw) return;
 

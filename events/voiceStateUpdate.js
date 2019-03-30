@@ -3,8 +3,8 @@
 /* eslint-disable no-console */
 module.exports = async (client, oldMember, newMember) => {
 
-          client.dataConfig.ensure(`${newMember.guild.id}`, {
-        prefix: `d!`, 
+    client.dataConfig.ensure(`${newMember.guild.id}`, {
+        prefix: `d!`,
         mutedRole: ``,
         messageLogs: ``,
         memberLogs: ``,
@@ -20,7 +20,8 @@ module.exports = async (client, oldMember, newMember) => {
         ruleSeven: ``,
         ruleEight: ``,
         ruleNine: ``,
-        ruleTen: ``});
+        ruleTen: ``
+    });
 
     const channelId = client.dataConfig.get(`${newMember.guild.id}`, `memberLogs`);
     if (newMember.guild.channels.has(channelId) == false) return;
@@ -47,34 +48,34 @@ module.exports = async (client, oldMember, newMember) => {
         .setFooter(`VC: ${voiceChannelName}`);
 
 
-    if(oldMember.selfMute != newMember.selfMute && oldMember.selfDeaf == newMember.selfDeaf) {
-        if(newMember.selfMute == true) {
+    if (oldMember.selfMute != newMember.selfMute && oldMember.selfDeaf == newMember.selfDeaf) {
+        if (newMember.selfMute == true) {
             embed.addField(`User Muted Themselves`, `<@!${newMember.user.id}> (\`${newMember.user.id}\`)`);
         }
-        if(newMember.selfMute == false) {
+        if (newMember.selfMute == false) {
             embed.addField(`User Un-Muted Themselves`, `<@!${newMember.user.id}> (\`${newMember.user.id}\`)`);
         }
     }
 
-    if(oldMember.selfDeaf != newMember.selfDeaf) {
-        if(newMember.selfDeaf == true) {
+    if (oldMember.selfDeaf != newMember.selfDeaf) {
+        if (newMember.selfDeaf == true) {
             embed.addField(`User Deafened Themselves`, `<@!${newMember.user.id}> (\`${newMember.user.id}\`)`);
         }
-        if(newMember.selfDeaf == false) {
+        if (newMember.selfDeaf == false) {
             embed.addField(`User Un-Deafened Themselves`, `<@!${newMember.user.id}> (\`${newMember.user.id}\`)`);
         }
     }
 
     //console.log(newMember);
 
-    if(oldMember.voiceChannelID != newMember.voiceChannelID) {
-        if(newMember.voiceChannelID == null) {
+    if (oldMember.voiceChannelID != newMember.voiceChannelID) {
+        if (newMember.voiceChannelID == null) {
             embed.addField(`User left Voice Channel`, `<@!${oldMember.user.id}> (\`${oldMember.user.id}\`)`);
         }
-        if(oldMember.voiceChannelID == null) {
+        if (oldMember.voiceChannelID == null) {
             embed.addField(`User joined Voice Channel`, `<@!${newMember.user.id}> (\`${newMember.user.id}\`)`);
         }
-        if(oldMember.voiceChannelID != newMember.voiceChannelID && oldMember.voiceChannelID != null && newMember.voiceChannelID != null) {
+        if (oldMember.voiceChannelID != newMember.voiceChannelID && oldMember.voiceChannelID != null && newMember.voiceChannelID != null) {
             embed.addField(`User moved Voice Channel`, `Old VC: ${oldMember.voiceChannel.name} (\`${oldMember.voiceChannel.id}\`)\nNew VC: ${newMember.voiceChannel.name} (\`${newMember.voiceChannel.id}\`)\n<@!${newMember.user.id}> (\`${newMember.user.id}\`)`);
         }
     }

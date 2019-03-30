@@ -2,9 +2,9 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
 module.exports = (client, oldEmoji, newEmoji) => {
-  
-              client.dataConfig.ensure(`${oldEmoji.guild.id}`, {
-        prefix: `d!`, 
+
+    client.dataConfig.ensure(`${oldEmoji.guild.id}`, {
+        prefix: `d!`,
         mutedRole: ``,
         messageLogs: ``,
         memberLogs: ``,
@@ -20,8 +20,9 @@ module.exports = (client, oldEmoji, newEmoji) => {
         ruleSeven: ``,
         ruleEight: ``,
         ruleNine: ``,
-        ruleTen: ``});
-  
+        ruleTen: ``
+    });
+
     const channelId = client.dataConfig.get(`${oldEmoji.guild.id}`, `serverLogs`);
     if (oldEmoji.guild.channels.has(channelId) == false) return;
 

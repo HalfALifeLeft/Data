@@ -1,9 +1,9 @@
 /* eslint-disable no-console */
 /* eslint-disable no-undef */
 module.exports = (client, guild) => {
-  
-            client.dataConfig.ensure(`${guild.id}`, {
-        prefix: `d!`, 
+
+    client.dataConfig.ensure(`${guild.id}`, {
+        prefix: `d!`,
         mutedRole: ``,
         messageLogs: ``,
         memberLogs: ``,
@@ -19,12 +19,13 @@ module.exports = (client, guild) => {
         ruleSeven: ``,
         ruleEight: ``,
         ruleNine: ``,
-        ruleTen: ``});
+        ruleTen: ``
+    });
 
-  
+
     const generalId = client.dataConfig.get(`${guild.id}`, `welcomeChannel`);
     if (guild.channels.has(generalId) == false) return;
-    
+
     const channel = guild.channels.find(ch => ch.id === generalId);
     if (!channel) return;
     channel.send(`I have joined ${guild.name}`);

@@ -1,16 +1,20 @@
 /* eslint-disable no-undef */
 module.exports = (client, message) => {
 
+    if (client.userCooldown[message.author.id]) {
+        client.userCooldown[message.author.id] = false;
+        // run command...
     // Ignore all bots
     if (message.author.bot || !message.guild) return;
 
     client.dataConfig.ensure(`${message.guild.id}`, {
-        prefix: `d!`, 
+        prefix: `d!`,
         messageLogs: ``,
         memberLogs: ``,
         serverLogs: ``,
         modLogs: ``,
-        welcomeChannel: ``});
+        welcomeChannel: ``
+    });
     const dataPrefix = client.dataConfig.get(`${message.guild.id}`, `prefix`);
 
     const key = `${message.author.id}-${message.guild.id}`;
@@ -25,7 +29,7 @@ module.exports = (client, message) => {
 
     // Increment the points and save them.
     client.currency.inc(key, `points`);
-    
+
     // Calculate the user's current level
     const curLevel = Math.floor(0.02 * Math.sqrt(client.currency.get(key, `points`)));
 
@@ -46,4 +50,9 @@ module.exports = (client, message) => {
     if (!cmd) return;
     // Run the command
     cmd.run(client, message, args);
+
+    setTimeout(() => {
+        client.userCooldown[message.author.id] = true;
+    }, 30000); // 30 seconds
+}
 };
