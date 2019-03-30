@@ -19,6 +19,7 @@ const config = require(`./config.json`);
 const Message = new Discord.Message();
 var stringSimilarity = require(`string-similarity`);
 const Guild = new Discord.Guild();
+let userCooldown = {};
 
 client.config = config;
 client.message = Message;
@@ -26,6 +27,7 @@ client.stringSimilarity = stringSimilarity;
 client.fs = fs;
 client.guild = Guild;
 client.enmap = Enmap;
+client.userCooldown = userCooldown;
 
 // 
 // To access this do client.func.[FUNCTIONHERE]
@@ -105,20 +107,6 @@ fs.readdir(`./commands/`, (err, files) => {
         let commandName = f.split(`.`)[0];
         console.log(`Attempting to load command ${commandName}`);
         client.commands.set(props.help.name, props);
-    });
-});
-
-client.guilds.forEach((guild) => {
-    guild.channels.forEach((channel) => {
-        channel.fetchMessages({
-                limit: 100
-            })
-            .then(async (msg) => {
-
-            })
-            .catch((e) => {
-                console.error(e);
-            });
     });
 });
 

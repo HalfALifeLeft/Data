@@ -1,6 +1,9 @@
 /* eslint-disable no-undef */
 module.exports = (client, message) => {
 
+    if (client.userCooldown[message.author.id]) {
+        client.userCooldown[message.author.id] = false;
+        // run command...
     // Ignore all bots
     if (message.author.bot || !message.guild) return;
 
@@ -47,4 +50,9 @@ module.exports = (client, message) => {
     if (!cmd) return;
     // Run the command
     cmd.run(client, message, args);
+
+    setTimeout(() => {
+        client.userCooldown[message.author.id] = true;
+    }, 30000); // 30 seconds
+}
 };

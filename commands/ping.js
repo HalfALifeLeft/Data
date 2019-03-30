@@ -1,7 +1,6 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
 module.exports.run = async (client, message, args) => {
-    //    console.log(client.functions.example(2, 5));
     const {
         Client,
         RichEmbed
