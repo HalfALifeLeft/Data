@@ -3,7 +3,7 @@
 /* eslint-disable no-console */
 module.exports = async (client, oldChannel, newChannel) => {
 
-    if (Channel.type == `dm`) return;
+    if (oldChannel.type == `dm`) return;
 
     client.dataConfig.ensure(`${oldChannel.guild.id}`, {
         prefix: `d!`,
@@ -37,7 +37,7 @@ module.exports = async (client, oldChannel, newChannel) => {
 
     if (oldChannel == null) return;
 
-    if (oldChannel.name == newChannel.name && oldChannel.parentID == newChannel.parentID && oldChannel.permissionOverwrites == newChannel.permissionOverwrites && oldChannel.topic == newChannel.topic && oldChannel.nsfw == newChannel.nsfw) return;
+    if (oldChannel.name == newChannel.name && oldChannel.parentID == newChannel.parentID && oldChannel.topic == newChannel.topic && oldChannel.nsfw == newChannel.nsfw && oldChannel.position != newChannel.position) return;
 
     if (topicOld == ``) {
         topicOld = `Nothing`;
@@ -59,3 +59,153 @@ module.exports = async (client, oldChannel, newChannel) => {
         .addField(`Old Channel Details`, `Name: ${newChannel.name}\nCategory: ${newChannel.parent.name}\nChannel Topic: ${topicNew}\nNSFW: ${newChannel.nsfw}`);
     mychannel.send(embed);
 };
+
+/*
+
+  ------ OLD ------
+
+TextChannel {
+  type: 'text',
+  deleted: false,
+  id: '557806629622644757',
+  name: 'message-events',
+  position: 26, - different
+  parentID: '557806629131780116',
+  permissionOverwrites:
+   Collection [Map] {
+     '553026447367995403' => PermissionOverwrites {
+       id: '553026447367995403',
+       type: 'role',
+       deny: 3148800,
+       allow: 0,
+       denied: [Permissions],
+       allowed: [Permissions] },
+     '554424972420972586' => PermissionOverwrites {
+       id: '554424972420972586',
+       type: 'role',
+       deny: 3072,
+       allow: 0,
+       denied: [Permissions],
+       allowed: [Permissions] },
+     '552025742125563915' => PermissionOverwrites {
+       id: '552025742125563915',
+       type: 'role',
+       deny: 3072,
+       allow: 0,
+       denied: [Permissions],
+       allowed: [Permissions] } },
+  topic: null,
+  nsfw: false,
+  lastMessageID: '561802371919904788',
+  guild:
+   Guild {
+     members:
+      Collection [Map] { MEMBERS },
+     channels:
+      Collection [Map] { CHANNELS },
+     roles:
+      Collection [Map] { ROLES },
+     presences:
+      Collection [Map] { PRESENCES },
+     deleted: false,
+     available: true,
+     id: '552025742125563915',
+     name: 'Bread and Butter',
+     icon: 'c7a815fb3ad48fd44e8dc885c8ec5648',
+     splash: null,
+     region: 'us-west',
+     memberCount: 31,
+     large: false,
+     features: [],
+     applicationID: null,
+     afkTimeout: 300,
+     afkChannelID: null,
+     systemChannelID: '553021131603574789',
+     embedEnabled: undefined,
+     verificationLevel: 1,
+     explicitContentFilter: 1,
+     mfaLevel: 0,
+     joinedTimestamp: 1552176953544,
+     defaultMessageNotifications: 'ALL',
+     ownerID: '444384280152637441',
+     _rawVoiceStates: Collection [Map] {},
+     emojis:
+      Collection [Map] { EMOJIS } },
+  messages: Collection [Map] {},
+  _typing: Map {} }
+
+
+  ------ NEW ------
+
+
+  TextChannel {
+  type: 'text',
+  deleted: false,
+  id: '557806629622644757',
+  name: 'message-events',
+  position: 27, - different
+  parentID: '557806629131780116',
+  permissionOverwrites:
+   Collection [Map] {
+     '553026447367995403' => PermissionOverwrites {
+       id: '553026447367995403',
+       type: 'role',
+       deny: 3148800,
+       allow: 0,
+       denied: [Permissions],
+       allowed: [Permissions] },
+     '554424972420972586' => PermissionOverwrites {
+       id: '554424972420972586',
+       type: 'role',
+       deny: 3072,
+       allow: 0,
+       denied: [Permissions],
+       allowed: [Permissions] },
+     '552025742125563915' => PermissionOverwrites {
+       id: '552025742125563915',
+       type: 'role',
+       deny: 3072,
+       allow: 0,
+       denied: [Permissions],
+       allowed: [Permissions] } },
+  topic: null,
+  nsfw: false,
+  lastMessageID: '561802371919904788',
+  guild:
+   Guild {
+     members:
+      Collection [Map] { MEMBERS },
+     channels:
+      Collection [Map] { CHANNELS },
+     roles:
+      Collection [Map] { ROLES },
+     presences:
+      Collection [Map] { PRESENCES },
+     deleted: false,
+     available: true,
+     id: '552025742125563915',
+     name: 'Bread and Butter',
+     icon: 'c7a815fb3ad48fd44e8dc885c8ec5648',
+     splash: null,
+     region: 'us-west',
+     memberCount: 31,
+     large: false,
+     features: [],
+     applicationID: null,
+     afkTimeout: 300,
+     afkChannelID: null,
+     systemChannelID: '553021131603574789',
+     embedEnabled: undefined,
+     verificationLevel: 1,
+     explicitContentFilter: 1,
+     mfaLevel: 0,
+     joinedTimestamp: 1552176953544,
+     defaultMessageNotifications: 'ALL',
+     ownerID: '444384280152637441',
+     _rawVoiceStates: Collection [Map] {},
+     emojis:
+      Collection [Map] { EMOJIS } },
+  messages: Collection [Map] {},
+  _typing: Map {} }
+
+*/
