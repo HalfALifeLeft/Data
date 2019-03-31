@@ -2,9 +2,9 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
 module.exports = (client, role) => {
-  
-          client.dataConfig.ensure(`${role.guild.id}`, {
-        prefix: `d!`, 
+
+    client.dataConfig.ensure(`${role.guild.id}`, {
+        prefix: `d!`,
         mutedRole: ``,
         messageLogs: ``,
         memberLogs: ``,
@@ -20,7 +20,8 @@ module.exports = (client, role) => {
         ruleSeven: ``,
         ruleEight: ``,
         ruleNine: ``,
-        ruleTen: ``});
+        ruleTen: ``
+    });
 
     const channelId = client.dataConfig.get(`${role.guild.id}`, `serverLogs`);
     if (role.guild.channels.has(channelId) == false) return;
@@ -29,7 +30,7 @@ module.exports = (client, role) => {
     if (!mychannel) return;
 
     let color = ``;
-    if(role.color == 0) {
+    if (role.color == 0) {
         color = `Clear`;
     } else {
         color = role.colorl;

@@ -17,7 +17,7 @@
          - useitem, use an item, if it is usable.
  - MUSIC COMMANDS
      - PLAY YOUTUBE VIDEOS/MUSIC
-         - play, play song
+         - DONE play, play song
          - pause, pause song
          - stop, stop playing songs altogether, clears queue
          - queue, show queue of songs
@@ -42,4 +42,6 @@
          - rewrite subreddit, kitty, and meme to use reddit API instead of randompuppy
          - use .setInterval or other function to add a duration to mutes (default duration is 24h)
          
-         - REWORK CONFIG COMMAND TO ALLOW FOR CONFIGURING MANY ENMAPS
+         - rework suggestion
+         http://www.speechfxinc.com/dectalk.html
+         TTS ^

@@ -2,9 +2,9 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 module.exports = async (client, messages) => {
-  
-        client.dataConfig.ensure(`${messages.first().guild.id}`, {
-        prefix: `d!`, 
+
+    client.dataConfig.ensure(`${messages.first().guild.id}`, {
+        prefix: `d!`,
         mutedRole: ``,
         messageLogs: ``,
         memberLogs: ``,
@@ -20,9 +20,10 @@ module.exports = async (client, messages) => {
         ruleSeven: ``,
         ruleEight: ``,
         ruleNine: ``,
-        ruleTen: ``});
+        ruleTen: ``
+    });
 
-  
+
     var fs = require(`fs`);
     var moment = require(`moment`);
     const channelId = client.dataConfig.get(`${messages.first().guild.id}`, `messageLogs`);
@@ -48,8 +49,8 @@ module.exports = async (client, messages) => {
         if (err) console.error(err);
     });
 
-    messages.tap(msg => {
-        fs.appendFile(`messageDeleteBulk.txt`, `${msg.author.username}#${msg.author.discriminator} (${msg.author.id}) at ${moment.utc(msg.createdTimestamp).format(`MMMM DD, YYYY, hh:mm:ss a`)} message ID: ${msg.id}: \n` + msg.content + `\r\n`, {
+    await messages.tap(msg => {
+        fs.appendFile(`messageDeleteBulk.txt`, `${msg.author.username}#${msg.author.discriminator} (${msg.author.id}) at ${moment.utc(msg.createdTimestamp).format(`MMMM DD, YYYY, hh:mm:ss a`)} message ID: ${msg.id}\nMessage: ` + msg.content + `\r\n`, {
             'flags': `a`
         }, function (err) {
             if (err) console.error(err);
@@ -57,10 +58,11 @@ module.exports = async (client, messages) => {
 
     });
 
-    await mychannel.send({files: [{
-        attachment: `./messageDeleteBulk.txt`,
-        name: `messageDeleteBulk.txt`
-    }]
+    await mychannel.send({
+        files: [{
+            attachment: `./messageDeleteBulk.txt`,
+            name: `messageDeleteBulk.txt`
+        }]
     });
 
     fs.unlink(`./messageDeleteBulk.txt`, (e) => {
