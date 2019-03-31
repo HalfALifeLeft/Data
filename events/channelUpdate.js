@@ -25,6 +25,8 @@ module.exports = async (client, oldChannel, newChannel) => {
         ruleTen: ``
     });
 
+    //console.log(oldChannel.permissionOverwrites); use permissions.toArray for old and new, then use those to check eachother, if something exists in both, remove it. https://discord.js.org/#/docs/main/stable/class/Permissions?scrollTo=toArray
+
     const channelId = client.dataConfig.get(`${oldChannel.guild.id}`, `serverLogs`);
     let topicOld = oldChannel.topic;
     let topicNew = newChannel.topic;
