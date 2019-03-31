@@ -25,8 +25,6 @@ module.exports.run = async (client, message, args) => {
     //Fetch video info
     let info = await ytdl.getInfo(args[0]);
 
-    console.log(info);
-
     //Store author's guild channel
     let connection = await message.member.voiceChannel.join();
 
