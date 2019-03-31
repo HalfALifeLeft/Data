@@ -36,7 +36,7 @@ module.exports = async (client, oldMember, newMember) => {
 
     let voiceChannelName = newMember.voiceChannel;
 
-    if (!oldMember || !newMember) return;
+    if (!oldMember.voiceChannel || !newMember.voiceChannel) return;
 
     if (voiceChannelName == undefined) {
         voiceChannelName = oldMember.voiceChannel.name;
