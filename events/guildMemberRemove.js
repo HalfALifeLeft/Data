@@ -39,4 +39,12 @@ module.exports = (client, member) => {
         .setColor(process.env.ERROR)
         .addField(`Member left`, `${member.user.username}#${member.user.discriminator} (${member.user.id})`);
     mychannel.send(embed);
+
+    const generalId = client.dataConfig.get(`${member.guild.id}`, `welcomeChannel`);
+    if (member.guild.channels.has(generalId) == false) return;
+
+    const general = member.guild.channels.find(channel => channel.id === generalId);
+
+    if (general == null) return;
+    general.send(`${member.user.tag}s dead, Jim.`);
 };
