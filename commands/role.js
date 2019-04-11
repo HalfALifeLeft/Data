@@ -46,7 +46,7 @@ module.exports.run = async (client, message, args) => {
         role20Name: ``
     });
     let roleSetName = args[1];
-    let roleSetArgs = args.slice(2).join(` `);
+    let roleSetArgs = args.slice(2).join(` `).toLowerCase();
 
     if (args[0] == `config`) {
         let i = 0;
@@ -208,7 +208,7 @@ module.exports.run = async (client, message, args) => {
 
     } else {
 
-        let userRole = args.slice(0).join(` `);
+        let userRole = args.slice(0).join(` `).toLowerCase();
 
         var obj = {};
         obj[`${client.roles.get(`${message.guild.id}`, `role1Name`)}`] = message.guild.roles.find(r => r.id === client.roles.get(`${message.guild.id}`, `role1`)); //1
@@ -245,7 +245,7 @@ module.exports.run = async (client, message, args) => {
                 const embed = new RichEmbed()
                     .setTitle(`Color Roles`)
                     .setDescription(allRoles)
-                    .setFooter(`Syntax: dd!role [role name]`)
+                    .setFooter(`Syntax: d!role [role name]`)
                     .setColor(process.env.HEXCODE);
 
                 return message.channel.send(embed);
