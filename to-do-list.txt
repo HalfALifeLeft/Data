@@ -72,18 +72,14 @@
          - tsundere
 
  - INFO
-         - avatar
          - donate
          - invite
          - ping
          - roleinfo
-         - serverinfo
          - social
-         - stats
          - status
 
  - UTILITY
-         - activatekey
          - birthday
          - choose
          - custom
