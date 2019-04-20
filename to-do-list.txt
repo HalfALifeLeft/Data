@@ -15,7 +15,7 @@
          - market, market to buy and sell
          - mine, mining command, needs user to have a pickaxe
          - useitem, use an item, if it is usable.
- - MUSIC COMMANDS
+ - MUSIC COMMANDS - https://github.com/Dev-Yukine/Music-Bot - https://www.npmjs.com/package/simple-youtube-api
      - PLAY YOUTUBE VIDEOS/MUSIC
          - DONE play, play song
          - pause, pause song
@@ -45,3 +45,51 @@
          - rework suggestion
          http://www.speechfxinc.com/dectalk.html
          TTS ^
+
+ - ACTIONS
+         - bite 
+         - bloodsuck 
+         - cuddle 
+         - facedesk 
+         - greet
+         - highfive  
+         - holdhands
+         - hug
+         - kiss
+         - lewd
+         - lick
+         - meow
+         - nom
+         - nuzzle
+         - pat
+         - poke
+         - pout
+         - slap
+         - smile
+         - stare
+         - teehee
+         - tickle
+         - tsundere
+
+ - INFO
+         - avatar
+         - donate
+         - invite
+         - ping
+         - roleinfo
+         - serverinfo
+         - social
+         - stats
+         - status
+
+ - UTILITY
+         - activatekey
+         - birthday
+         - choose
+         - custom
+         - dictionary
+         - remindme
+         - time
+         - urban
+         - weather
+         - wiki
