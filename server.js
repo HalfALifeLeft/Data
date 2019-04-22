@@ -136,20 +136,20 @@ client.on(`message`, message => {
     });
 
     const responseObject = {
-        'Rule 1': client.dataConfig.get(`${message.guild.id}`, `ruleOne`),
-        'Rule 2': client.dataConfig.get(`${message.guild.id}`, `ruleTwo`),
-        'Rule 3': client.dataConfig.get(`${message.guild.id}`, `ruleThree`),
-        'Rule 4': client.dataConfig.get(`${message.guild.id}`, `ruleFour`),
-        'Rule 5': client.dataConfig.get(`${message.guild.id}`, `ruleFive`),
-        'Rule 6': client.dataConfig.get(`${message.guild.id}`, `ruleSix`),
-        'Rule 7': client.dataConfig.get(`${message.guild.id}`, `ruleSeven`),
-        'Rule 8': client.dataConfig.get(`${message.guild.id}`, `ruleEight`),
-        'Rule 9': client.dataConfig.get(`${message.guild.id}`, `ruleNine`),
-        'Rule 10': client.dataConfig.get(`${message.guild.id}`, `ruleTen`)
+        'rule 1': client.dataConfig.get(`${message.guild.id}`, `ruleOne`),
+        'rule 2': client.dataConfig.get(`${message.guild.id}`, `ruleTwo`),
+        'rule 3': client.dataConfig.get(`${message.guild.id}`, `ruleThree`),
+        'rule 4': client.dataConfig.get(`${message.guild.id}`, `ruleFour`),
+        'rule 5': client.dataConfig.get(`${message.guild.id}`, `ruleFive`),
+        'rule 6': client.dataConfig.get(`${message.guild.id}`, `ruleSix`),
+        'rule 7': client.dataConfig.get(`${message.guild.id}`, `ruleSeven`),
+        'rule 8': client.dataConfig.get(`${message.guild.id}`, `ruleEight`),
+        'rule 9': client.dataConfig.get(`${message.guild.id}`, `ruleNine`),
+        'rule 10': client.dataConfig.get(`${message.guild.id}`, `ruleTen`)
     };
 
-    if (responseObject[message.content]) {
-        message.channel.send(responseObject[message.content]);
+    if (responseObject[message.content.toLowerCase()]) {
+        message.channel.send(responseObject[message.content.toLowerCase()]);
     }
 
     const dataPrefix = client.dataConfig.get(`${message.guild.id}`, `prefix`);
