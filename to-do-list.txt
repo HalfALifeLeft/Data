@@ -76,6 +76,6 @@
         mutedRole, 
         ADD MEMBERROLE, 
         Logs channels, 
-        welcome channel, 
-        suggest channel, 
-        rules
+        welcome channel, - DONE 
+        suggest channel, - DONE
+        rules - DONE
