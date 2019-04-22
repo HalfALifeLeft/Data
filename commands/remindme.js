@@ -12,41 +12,37 @@ module.exports.run = async (client, message, args) => {
     //Determine how long to wait before reminding
 
     if (timeRaw.toLowerCase().includes(`d`)) {
-        console.log(`Days!`);
         time = 24 * 60 * 60 * 1000 * (timeRaw.replace(`d`, ``));
         timeTrue = timeRaw.replace(`d`, ``);
+        if (timeTrue > 7) {
+            message.reply(`I can't remind you of anything in more than a week, please come back closer to the event or use a time less than 1 week!`);
+            return;
+        }
         timeUnit = `days`;
-        console.log(time + `ms`);
     } else if (timeRaw.toLowerCase().includes(`h`)) {
-        console.log(`Hours!`);
         time = 60 * 60 * 1000 * (timeRaw.replace(`h`, ``));
         timeTrue = timeRaw.replace(`h`, ``);
         timeUnit = `hours`;
-        console.log(time + `ms`);
     } else if (timeRaw.toLowerCase().includes(`m`)) {
-        console.log(`Minutes!`);
         time = 60 * 1000 * (timeRaw.replace(`m`, ``));
         timeTrue = timeRaw.replace(`m`, ``);
         timeUnit = `minutes`;
-        console.log(time + `ms`);
     } else if (timeRaw.toLowerCase().includes(`s`)) {
-        console.log(`Seconds!`);
         time = 1000 * (timeRaw.replace(`s`, ``));
         timeTrue = timeRaw.replace(`s`, ``);
         timeUnit = `seconds`;
-        console.log(time + `ms`);
     }
 
     // Make sure content will fit in the message we send
 
     if (content.length > 2000-46) {
-        console.log(`Content is greater than 1954 characters!`);
-        message.reply(`Please try and make what you need to be reminded of a bit shorter! \`TOO MANY CHARACTERS\`.`);
+        message.reply(`Please try and make what you need to be reminded of a bit shorter! \`TOO MANY CHARACTERS\`.`); //1954 characters
         return;
     }
 
+    message.reply(`I'll remind you of \`${content}\` in ${timeTrue} ${timeUnit}!`);
+
     client.setTimeout(() => {
-        console.log(`reminded!`);
         message.reply(`You asked me to remind you of: \`${content}\` ${timeTrue} ${timeUnit} ago!`); //46 chars
     }, time);
 
