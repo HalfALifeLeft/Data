@@ -15,6 +15,7 @@ module.exports.run = async (client, message, args) => {
     let usersArray = [];
     let modsArray = [];
     let adminsArray = [];
+    let configArray = [];
 
     for (var cmd in commands) {
         if (commands[cmd].group == `Users`) {
@@ -26,6 +27,9 @@ module.exports.run = async (client, message, args) => {
         if (commands[cmd].group == `Admins`) {
             adminsArray.push(` ` + commands[cmd].name);
         }
+        if (commands[cmd].group == `Config`) {
+            configArray.push(` ` + commands[cmd].name);
+        }
     }
 
     if (!args[0]) {
@@ -36,6 +40,7 @@ module.exports.run = async (client, message, args) => {
             .addField(`User Commands`, `\`${usersArray.sort().toString()}\``)
             .addField(`Mod Commands`, `\`${modsArray.sort().toString()}\``)
             .addField(`Admin Commands`, `\`${adminsArray.sort().toString()}\``)
+            .addField(`Config Commands`, `\`${configArray.sort().toString()}\``)
             .setFooter(`Created by ` + process.env.OWNERNAME, `https://i.imgur.com/NVWwp1d.png`)
             .setTimestamp();
         message.channel.send({

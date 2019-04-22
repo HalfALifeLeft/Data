@@ -155,6 +155,12 @@
         "desc":"Displays the ping of the bot.",
         "usage":"ping"
     },
+    "Prefix": {
+        "name":"Prefix",
+        "group":"Config",
+        "desc":"Set or show the prefix, call the command without text to set as the prefix to show the prefix.",
+        "usage":"prefix [prefix]"
+    },
     "Purge": {
         "name":"Purge",
         "group":"Mods",
