@@ -167,6 +167,12 @@
         "desc":"Reloads a command on the bot",
         "usage":"reload <command name>"
     },
+    "Remindme": {
+        "name":"Remindme",
+        "group":"Users",
+        "desc":"Reminds the user of whatever they want, whenever they want! D for days, H for hours, M for minutes, S for Seconds",
+        "usage":"remindme <time><d | h | m | s> <content>"
+    },
     "Role": {
         "name":"Role",
         "group":"Users",
