@@ -72,4 +72,10 @@
          - weather
          - wiki
  - CONFIG
-        REWORK CONFIG INTO SEPARATE COMMANDS AND THEIR OWN CATEGORY
+        prefix, DONE 
+        mutedRole, 
+        ADD MEMBERROLE, 
+        Logs channels, 
+        welcome channel, 
+        suggest channel, 
+        rules
