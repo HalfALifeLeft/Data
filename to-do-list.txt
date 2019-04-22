@@ -68,7 +68,7 @@
          - choose
          - custom
          - dictionary
-         - remindme
+         - remindme - done, kinda
          - time
          - urban - https://www.npmjs.com/package/urban-dictionary
          - weather
