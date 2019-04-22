@@ -73,3 +73,5 @@
          - urban - https://www.npmjs.com/package/urban-dictionary
          - weather
          - wiki
+ - CONFIG
+        REWORK CONFIG INTO SEPARATE COMMANDS AND THEIR OWN CATEGORY
