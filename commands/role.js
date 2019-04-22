@@ -3,7 +3,7 @@
 /* eslint-disable no-console */
 module.exports.run = async (client, message, args) => {
 
-    client.roles.ensure(`${message.guild.id}`, {
+    await client.roles.ensure(`${message.guild.id}`, {
         role1: ``,
         role1Name: ``,
         role2: ``,
