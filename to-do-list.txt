@@ -57,8 +57,6 @@
          - tsundere
 
  - INFO
-         - donate - include paypal donation link
-         - invite - create server invite IF USER HAS PERMS TO MAKE INVITE
          - roleinfo
          - social
          - status
