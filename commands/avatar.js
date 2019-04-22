@@ -40,8 +40,6 @@ module.exports.run = async (client, message, args) => {
     message.channel.send({
         embed
     });
-    console.log(match);
-    console.log(username);
 };
 module.exports.help = {
     name: `avatar`
