@@ -1,7 +1,9 @@
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
+/* eslint-disable no-unreachable*/
 exports.run = async (client, message, args) => {
+    return;
     const sm = require(`string-similarity`);
     let members = [];
     let indexes = [];
