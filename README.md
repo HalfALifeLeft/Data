@@ -23,7 +23,7 @@ Data Bot's default prefix is `d!` but he can also be @mentioned for commands.
 | Ban | d!ban <@User> [Reason] | Give a user the ban hammer! | @mentioning the user is necessary, you cannot type in a username. This is to avoid mis-bans |
 | Booru | d!booru <Search Term> | This searches Safe Booru for whatever you wish to search for! | **WARNING:** You *may* get NSFW content with this. |
 | Botinvite | d!botinvite | Invite Data Bot into your own server! | N/A |
-| Channel | d!channel <Channel Name> <Channel Type> | Create a channel, voice channel, or category easily! | This command is going to be reworked into something else soon, expect this to change unless people tell me they want this feature to stay! |
+| Channel | d!channel <What To Set> <#channel> | Configure a channel easily! | You can configure the suggestions and welcome channel with this using `suggestions` and `welcome` respectively as the first argument, and a channel as the second! |
 | Config | d!config [configName] [configArgs] | This is how you can make configuration to Data Bot's functionality. | Check the **Config** guide down below for more information! This is going to be streamlined in a coming update to Data Bot! |
 | Cuddle | d!cuddle @user | Cuddle a user. | N/A |
 | Donate | d!donate | How to donate to the developer of Data Bot! | This is in no way necessary for the use of Data Bot, but it would make my day <3 |
@@ -46,8 +46,9 @@ Data Bot's default prefix is `d!` but he can also be @mentioned for commands.
 | Ping | d!ping | Pong! | N/A |
 | Prefix | d!prefix [prefix] | Configure the prefix! | N/A |
 | Purge | d!purge <#> | Purge up to 100 messages at a time! | N/A |
-| Remind Me | d!remindme <#><D | H | M | S> <Message> | Have something important to do later? Have Data remind you of it! | Max time is 7 days, examples of the time are 24h, 45m, 30s. |
+| Remind Me | d!remindme <#><D \| H \| M \| S> \<Message> | Have something important to do later? Have Data remind you of it! | Max time is 7 days, examples of the time are 24h, 45m, 30s. |
 | Roles | d!roles | take a look at all the roles in the server and their IDs! | N/A |
+| Rule | d!rule <1 => 10> <Rule> | Easily configure the rules of the server! | 1 => 10 correspond to Rule 1, Rule 2, etc. |
 | Server Stats | d!serverstats | Get some statistics about the server! | N/A |
 | Suggestion | d!suggestion | Want to make a suggestion for the server? Use this! | **1.** Use the command and then follow the instruction! **2.** Requires server admins/owner to have set up a suggestions channel |
 | Unmute | d!unmute <@user> | Unmute a muted user. | N/A |
@@ -60,21 +61,54 @@ The possible items to configure are: `prefix`, `mutedRole`, `memberLogs`, `messa
 
 **ALL ITEMS HERE ARE SUBJECT TO CHANGE IN THE NEAR FUTURE**
 
-prefix,
-mutedRole, 
-memberLogs, 
-messageLogs, 
-serverLogs, 
-modLogs, 
-welcomeChannel, 
-suggestChannel, 
-ruleOne, 
-ruleTwo, 
-ruleThree, 
-ruleFour, 
-ruleFive, 
-ruleSix, 
-ruleSeven, 
-ruleEight, 
-ruleNine, 
-ruleTen
+## prefix:
+
+>d!config prefix **{PREFIX}**
+
+This command will allow you to set a **Custom Prefix** for Data Bot.
+
+## mutedRole:
+    
+>d!config mutedRole **{ROLE ID}**
+
+This command will allow you to set the **Muted Role** to enable the mute and unmute commands.
+
+## memberLogs:
+
+>d!config memberLogs **{#CHANNEL}**
+
+This command will allow you to set the **Member Event** logging channel.
+
+## messageLogs:
+
+>d!config messageLogs **{#CHANNEL}**
+
+This command will allow you to set the **Message Event** logging channel.
+
+## serverLogs:
+
+>d!config serverLogs **{#CHANNEL}**
+
+This command will allow you to set the **Server Event** logging channel.
+
+## modLogs:
+
+>d!config modLogs **{#CHANNEL}**
+
+This command will allow you to set the **Mod Events** logging channel.
+
+## welcomeChannel:
+
+>d!config welcomeChannel **{#CHANNEL}**
+
+This command will allow you to set the **Welcome Channel**.
+
+## suggestChannel:
+
+>d!config suggestChannel **{#CHANNEL}**
+
+## ruleOne <=> ruleTen:
+
+>d!config ruleOne **{RULE TEXT}**
+
+This command will allow you to set **Ten Rules**. These can be called by type `Rule #` in a channel the bot can see where # is a number 1 through 10.
