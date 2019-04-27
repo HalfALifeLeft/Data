@@ -14,6 +14,29 @@ exports.example = (a, b) => {
     }
     return undefined;
 }; 
+
+exports.ensure = async (client, guildID) => {
+    await client.dataConfig.ensure(`${guildID}`, {
+        prefix: `d!`,
+        mutedRole: ``,
+        memberLogs: ``,
+        messageLogs: ``,
+        serverLogs: ``,
+        modLogs: ``,
+        welcomeChannel: ``,
+        suggestChannel: ``,
+        ruleOne: ``,
+        ruleTwo: ``,
+        ruleThree: ``,
+        ruleFour: ``,
+        ruleFive: ``,
+        ruleSix: ``,
+        ruleSeven: ``,
+        ruleEight: ``,
+        ruleNine: ``,
+        ruleTen: ``
+    });
+};
 /*
 function hexcode() {
 	return 0xf2c300;

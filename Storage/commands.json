@@ -37,9 +37,9 @@
     },
     "Channel": {
         "name":"Channel",
-        "group":"Admins",
-        "desc":"Creates a channel.",
-        "usage":"channel <channel name> <channel type>"
+        "group":"Config",
+        "desc":"Set welcome and suggestions channels for welcoming in users and the suggestions command.",
+        "usage":"channel <suggestions | welcome> <#channel>"
     },
     "Config": {
         "name":"Config",
@@ -184,6 +184,12 @@
         "group":"Users",
         "desc":"Give yourself a role.",
         "usage":"role [role name]"
+    },
+    "Rule": {
+        "name":"Rule",
+        "group":"Config",
+        "desc":"Set the rules of the server",
+        "usage":"rule <1 - > 10> <rule>"
     },
     "Serverstats": {
         "name":"Serverstats",

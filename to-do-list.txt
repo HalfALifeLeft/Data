@@ -24,7 +24,7 @@
          - shuffle, shuffle queue
  - GENERAL 
          - create a command to allow me (only bot owner) to browse through the guilds the bot is in and join one if I want
-         - rewrite subreddit, kitty, and meme to use reddit API instead of randompuppy
+         - rewrite subreddit, kitty, and meme to use reddit API instead of randompuppy - https://www.npmjs.com/package/reddit-wrapper-v2
          - use .setInterval or other function to add a duration to mutes (default duration is 24h)
          
          - rework suggestion
@@ -76,6 +76,6 @@
         mutedRole, 
         ADD MEMBERROLE, 
         Logs channels, 
-        welcome channel, 
-        suggest channel, 
-        rules
+        welcome channel, - DONE 
+        suggest channel, - DONE
+        rules - DONE
