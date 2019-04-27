@@ -10,6 +10,11 @@ Data Bot can:
 3. ~~Fulfill your Star Trek dreams of having Data on your bridge crew~~
 4. **BROKEN AS OF 4/26/2019** Be your music bot and let you listen to the Star Trek OST all day long.
 
+Dev Messages:
+------
+### 4/26/2019: 
+>ALL MONEY/POINTS COMMANDS WILL BE REWORKED. I am working on making a new and exciting system for them, and they will be wiped/redone eventually.
+
 Commands
 ------
 Data Bot's default prefix is `d!` but he can also be @mentioned for commands.
