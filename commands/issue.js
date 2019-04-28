@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 module.exports.run = async (client, message, args) => {
-    message.channel.send(`Please create an issue on my github page! https://github.com/HalfALifeLeft/Data/issues/new`);
+    message.channel.send(`Please create an issue on my github page or join my support server! https://discord.gg/gDrPFX2 https://github.com/HalfALifeLeft/Data/issues/new`);
 };
 module.exports.help = {
     name: `issue`
