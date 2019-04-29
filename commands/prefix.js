@@ -33,7 +33,7 @@ module.exports.run = async (client, message, args) => {
     let prefix = client.dataConfig.get(`${message.guild.id}`, `prefix`);
 
     if (prefix == ``) {
-        prefix = `This was set to nothing! @mention me and set this to something using the @mention as the prefix!`;
+        prefix = `Captain, this was set to nothing! @mention me and set this to something using the @mention as the prefix! (\`ERR_BLANK_PREFIX\`)`;
     }
 
     if (!setPrefix) {

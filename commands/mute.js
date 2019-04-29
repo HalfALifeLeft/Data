@@ -9,7 +9,7 @@ module.exports.run = async (client, message, args) => {
     }
 
     if(message.guild.roles.has(mutedRoleID) == false) {
-        return message.reply(`the muted role has not been set up yet! Use \`dd!config mutedRole <roleID>\` to set it up!`);
+        return message.reply(`Captain, the muted role has not been set up yet! Use \`d!config mutedRole <roleID>\` to set it up! (\`NO_MUTED_ROLE\`)`);
     }
 
     let mutedRole = message.guild.roles.find(r => r.id === mutedRoleID);
