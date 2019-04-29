@@ -11,7 +11,7 @@ module.exports.run = async (client, message, args) => {
 
     const kickMember = message.mentions.members.first();
 
-            message.reply(`${kickMember.user.username} was escorted off the bridge.`);
+    message.reply(`${kickMember.user.username} was escorted off the bridge.`);
 };
 module.exports.help = {
     name: `keeck`
