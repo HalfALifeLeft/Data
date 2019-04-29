@@ -19,19 +19,19 @@ module.exports.run = async (client, message, args) => {
     await client.func.ensure(client, guildID);
 
     if (!setChannel) {
-        return message.reply(`Please tell me what to configure!`);
+        return message.reply(`Captain, what should I set? (\`MISSING_SETCHANNEL_ARG\`)`);
     }
 
     if (!arrayOfItems.includes(setChannel)) {
-        return message.reply(`Thats not a valid item to configure!`);
+        return message.reply(`Captain that doesn't work! (\`INVALID_SETCHANNEL_ARG\`)`);
     }
 
     if (!setChannelID) {
-        return message.reply(`Please tell me what channel to configure!`);
+        return message.reply(`Captain, what channel should I set ${setChannel} to? (\`MISSING_SETCHANNELID_ARG\`)`);
     }
 
     if (!message.guild.channels.find(c => c.id === setChannelID)) {
-        return message.reply(`Thats not a valid channel, please give me a valid channel!`);
+        return message.reply(`Captain that isn't a channel! (\`INVALID_SETCHANNELID_ARG\`)`);
     }
 
     if (setChannel == `suggestions`) {
@@ -41,7 +41,7 @@ module.exports.run = async (client, message, args) => {
     }
 
     client.dataConfig.set(`${message.guild.id}`, `${setChannelID}`, `${setChannelTwo}`);
-    message.channel.send(`${setChannel} channel changed to <#${setChannelID}>.`);
+    message.channel.send(`Captain, I have set ${setChannel} channel to <#${setChannelID}>.`);
 
 };
 module.exports.help = {

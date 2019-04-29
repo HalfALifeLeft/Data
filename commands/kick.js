@@ -16,7 +16,7 @@ module.exports.run = async (client, message, args) => {
 
     kickMember.kick(args.slice(1).join(` `))
         .then(member => {
-            message.reply(`${member.user.username} was succesfully kicked.`);
+            message.reply(`${member.user.username} was escorted off the bridge.`);
         })
         .catch( e => {
             console.error(e);
