@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
 require(`dotenv`).config();
 //process.env.[THING TO CALL]
 

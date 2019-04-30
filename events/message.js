@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-console */
-module.exports = (client, message) => {
+module.exports = async (client, message) => {
 
     // Ignore all bots
     if (message.author.bot || !message.guild) return;
