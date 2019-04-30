@@ -36,5 +36,8 @@ module.exports = (client, emoji) => {
         .setTimestamp()
         .setColor(process.env.ERROR)
         .addField(`Emoji Deleted`, `\`${emoji.name}\` (\`${emoji.id}\`)`);
-    mychannel.send(embed);
+    mychannel.send(embed)
+    .catch(e => {
+        console.error(e);
+    });
 };

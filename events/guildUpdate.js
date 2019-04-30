@@ -1,6 +1,7 @@
 /* eslint-disable no-unreachable */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
+/* eslint-disable no-console */
 module.exports = (client, oldGuild, newGuild) => {
 
     client.dataConfig.ensure(`${oldGuild.id}`, {
@@ -41,7 +42,10 @@ module.exports = (client, oldGuild, newGuild) => {
             .setColor(process.env.GOOD)
             .addField(`Old Server Name`, `${oldGuild.name}`, true)
             .addField(`New Server Name`, `${newGuild.name}`, true);
-        return mychannel.send(embed);
+        return mychannel.send(embed)
+        .catch(e => {
+            console.error(e);
+        });
     }
 
     if (oldGuild.icon != newGuild.icon) {
@@ -51,7 +55,10 @@ module.exports = (client, oldGuild, newGuild) => {
                 .setColor(process.env.GOOD)
                 .addField(`Old Server Icon`, `${oldGuild.iconURL}`)
                 .addField(`New Server Icon`, `**No Icon**`);
-            return mychannel.send(embed);
+            return mychannel.send(embed)
+            .catch(e => {
+                console.error(e);
+            });
         }
         if (oldGuild.icon == null) {
             const embed = new RichEmbed()
@@ -59,14 +66,20 @@ module.exports = (client, oldGuild, newGuild) => {
                 .setColor(process.env.GOOD)
                 .addField(`Old Server Icon`, `**No Icon**`)
                 .addField(`New Server Icon`, `${newGuild.iconURL}`);
-            return mychannel.send(embed);
+            return mychannel.send(embed)
+            .catch(e => {
+                console.error(e);
+            });
         }
         const embed = new RichEmbed()
             .setTimestamp()
             .setColor(process.env.GOOD)
             .addField(`Old Server Icon`, `${oldGuild.iconURL}`)
             .addField(`New Server Icon`, `${newGuild.iconURL}`);
-        return mychannel.send(embed);
+        return mychannel.send(embed)
+        .catch(e => {
+            console.error(e);
+        });
     }
 
     if (oldGuild.region != newGuild.region) {
@@ -75,7 +88,10 @@ module.exports = (client, oldGuild, newGuild) => {
             .setColor(process.env.GOOD)
             .addField(`Old Server Region`, `**${oldGuild.region}**`)
             .addField(`New Server Region`, `**${newGuild.region}**`);
-        return mychannel.send(embed);
+        return mychannel.send(embed)
+        .catch(e => {
+            console.error(e);
+        });
     }
 
     if (oldGuild.afkTimeout != newGuild.afkTimeout) {
@@ -84,7 +100,10 @@ module.exports = (client, oldGuild, newGuild) => {
             .setColor(process.env.GOOD)
             .addField(`Old AFK Timeout`, `**${parseInt(oldGuild.afkTimeout / 60)} minutes**`)
             .addField(`New AFK Timeout`, `**${parseInt(newGuild.afkTimeout / 60)} minutes**`);
-        return mychannel.send(embed);
+        return mychannel.send(embed)
+        .catch(e => {
+            console.error(e);
+        });
     }
 
     if (oldGuild.afkChannelID != newGuild.afkChannelID) {
@@ -94,7 +113,10 @@ module.exports = (client, oldGuild, newGuild) => {
                 .setColor(process.env.GOOD)
                 .addField(`Old AFK Channel`, `**No AFK Channel**`)
                 .addField(`New AFK Channel`, `${newGuild.afkChannel.name} (${oldGuild.afkChannelID})`);
-            return mychannel.send(embed);
+            return mychannel.send(embed)
+            .catch(e => {
+                console.error(e);
+            });
         }
         if (newGuild.afkChannelID == null) {
             const embed = new RichEmbed()
@@ -102,14 +124,20 @@ module.exports = (client, oldGuild, newGuild) => {
                 .setColor(process.env.GOOD)
                 .addField(`Old Server Icon`, `${oldGuild.afkChannel.name} (${oldGuild.afkChannelID})`)
                 .addField(`New Server Icon`, `No AFK Channel`);
-            return mychannel.send(embed);
+            return mychannel.send(embed)
+            .catch(e => {
+                console.error(e);
+            });
         }
         const embed = new RichEmbed()
             .setTimestamp()
             .setColor(process.env.GOOD)
             .addField(`Old AFK Channel`, `${oldGuild.afkChannel.name} (${oldGuild.afkChannelID})`)
             .addField(`New AFK Channel`, `${newGuild.afkChannel.name} (${oldGuild.afkChannelID})`);
-        return mychannel.send(embed);
+        return mychannel.send(embed)
+        .catch(e => {
+            console.error(e);
+        });
     }
 
     if (oldGuild.verificationLevel != newGuild.verificationLevel) {
@@ -151,7 +179,10 @@ module.exports = (client, oldGuild, newGuild) => {
             .setColor(process.env.GOOD)
             .addField(`Old Verification Level`, `${verificationLevelNameOld}`)
             .addField(`New Verification Level`, `${verificationLevelNameNew}`);
-        return mychannel.send(embed);
+        return mychannel.send(embed)
+        .catch(e => {
+            console.error(e);
+        });
     }
 
     if (oldGuild.explicitContentFilter != newGuild.explicitContentFilter) {
@@ -181,7 +212,10 @@ module.exports = (client, oldGuild, newGuild) => {
             .setColor(process.env.GOOD)
             .addField(`Old Explicit Content Filter`, `${explicitContentFilterOld}`)
             .addField(`New Explicit Content Filter`, `${explicitContentFilterNew}`);
-        return mychannel.send(embed);
+        return mychannel.send(embed)
+        .catch(e => {
+            console.error(e);
+        });
     }
 
     if (oldGuild.mfaLevel != newGuild.mfaLevel) {
@@ -205,7 +239,10 @@ module.exports = (client, oldGuild, newGuild) => {
             .setColor(process.env.GOOD)
             .addField(`Old 2FA Requirement`, `${mfaLevelOld}`)
             .addField(`New 2FA Requirement`, `${mfaLevelNew}`);
-        return mychannel.send(embed);
+        return mychannel.send(embed)
+        .catch(e => {
+            console.error(e);
+        });
     }
 
     if (oldGuild.defaultMessageNotifications != newGuild.defaultMessageNotifications) {
@@ -229,7 +266,10 @@ module.exports = (client, oldGuild, newGuild) => {
             .setColor(process.env.GOOD)
             .addField(`Old Default Notification Settings`, `${defaultNotificationsOld}`)
             .addField(`New Default Notification Settings`, `${defaultNotificationsNew}`);
-        return mychannel.send(embed);
+        return mychannel.send(embed)
+        .catch(e => {
+            console.error(e);
+        });
     }
 
     if (oldGuild.ownerID != newGuild.ownerID) {
@@ -238,7 +278,10 @@ module.exports = (client, oldGuild, newGuild) => {
             .setColor(process.env.GOOD)
             .addField(`Old Server Owner`, `<@${oldGuild.ownerID}>`)
             .addField(`New Server Owner`, `<@${newGuild.ownerID}>`);
-        return mychannel.send(embed);
+        return mychannel.send(embed)
+        .catch(e => {
+            console.error(e);
+        });
     }
 
     if (oldGuild.systemChannel != newGuild.systemChannel) {
@@ -247,6 +290,9 @@ module.exports = (client, oldGuild, newGuild) => {
             .setColor(process.env.GOOD)
             .addField(`Old System Channel`, `<#${oldGuild.systemChannel.id}>`)
             .addField(`New System Channel`, `<#${newGuild.systemChannel.id}>`);
-        return mychannel.send(embed);
+        return mychannel.send(embed)
+        .catch(e => {
+            console.error(e);
+        });
     }
 };

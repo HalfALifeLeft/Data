@@ -81,7 +81,10 @@ module.exports = async (client, oldMember, newMember) => {
             embed.addField(`User moved Voice Channel`, `Old VC: ${oldMember.voiceChannel.name} (\`${oldMember.voiceChannel.id}\`)\nNew VC: ${newMember.voiceChannel.name} (\`${newMember.voiceChannel.id}\`)\n<@!${newMember.user.id}> (\`${newMember.user.id}\`)`);
         }
     }
-    mychannel.send(embed);
+    mychannel.send(embed)
+    .catch(e => {
+        console.error(e);
+    });
 };
 
 /*

@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 /* eslint-disable no-undef */
+/* eslint-disable no-console */
 module.exports = (client, guild) => {
 
     client.dataConfig.ensure(`${guild.id}`, {
@@ -28,6 +29,9 @@ module.exports = (client, guild) => {
 
     const channel = guild.channels.find(ch => ch.id === generalId);
     if (!channel) return;
-    channel.send(`I have joined ${guild.name}`);
+    channel.send(`I have joined ${guild.name}`)
+    .catch(e => {
+        console.error(e);
+    });
     console.log(`I have joined ${guild.name} at ${new Date()}`);
 };

@@ -27,7 +27,10 @@ module.exports = async (client, oldMember, newMember) => {
     if (newMember.guild.channels.has(channelId) == false) return;
 
     // NEVER have client.on inside of a event or command, it FUCKS it up
-    const mychannel = newMember.guild.channels.find(channel => channel.id === channelId);
+    const mychannel = newMember.guild.channels.find(channel => channel.id === channelId)
+    .catch(e => {
+        console.error(e);
+    });
     if (mychannel == null) return;
 
     let oldRolesArray = oldMember.roles;
@@ -88,5 +91,8 @@ module.exports = async (client, oldMember, newMember) => {
         embed.addField(`New Nickname`, `\`${nicknameNew}\``);
     }
 
-    mychannel.send(embed);
+    mychannel.send(embed)
+    .catch(e => {
+        console.error(e);
+    });
 };

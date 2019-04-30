@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
+/* eslint-disable no-console */
 module.exports = (client, guild, user) => {
 
     client.dataConfig.ensure(`${guild.id}`, {
@@ -36,5 +37,8 @@ module.exports = (client, guild, user) => {
         .setTimestamp()
         .setColor(process.env.ERROR)
         .addField(`Member was banned`, `${user.username}#${user.discriminator} (${user.id})`);
-    mychannel.send(embed);
+    mychannel.send(embed)
+    .catch(e => {
+        console.error(e);
+    });
 };

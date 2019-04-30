@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
+/* eslint-disable no-console */
 module.exports = (client, message, oldMessage) => {
 
     client.dataConfig.ensure(`${message.guild.id}`, {
@@ -45,5 +46,8 @@ module.exports = (client, message, oldMessage) => {
         .addField(`Old Message`, `\`\`\`${newMessage}\`\`\``)
         .addField(`New Message`, `\`\`\`${oldMessage}\`\`\``)
         .setFooter(`#${message.channel.name}`);
-    mychannel.send(embed);
+    mychannel.send(embed)
+    .catch(e => {
+        console.error(e);
+    });
 };

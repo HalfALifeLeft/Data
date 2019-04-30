@@ -1,4 +1,5 @@
 /* eslint-disable no-undef */
+/* eslint-disable no-console */
 module.exports = (client, message) => {
 
     // Ignore all bots
@@ -32,7 +33,10 @@ module.exports = (client, message) => {
 
     // Act upon level up by sending a message and updating the user's level in enmap.
     if (client.currency.get(key, `level`) < curLevel) {
-        message.reply(`You've leveled up to level **${curLevel}**!`);
+        message.reply(`You've leveled up to level **${curLevel}**!`)
+        .catch(e => {
+            console.error(e);
+        });
         client.currency.set(key, curLevel, `level`);
     }
 

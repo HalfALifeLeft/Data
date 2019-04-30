@@ -41,7 +41,10 @@ module.exports = async (client, messages) => {
         .setColor(process.env.ERROR)
         .addField(`Messages Deleted`, `${messages.array().length} messages deleted!`)
         .setFooter(`#${messages.first().channel.name}`);
-    mychannel.send(embed);
+    mychannel.send(embed)
+    .catch(e => {
+        console.error(e);
+    });
 
     await fs.writeFile(`messageDeleteBulk.txt`, `Messages deleted on ${moment.utc(Date.now()).format(`MMMM DD, YYYY, hh:mm:ss a`)}` + `\r\n`, {
         'flags': `a`
@@ -63,6 +66,9 @@ module.exports = async (client, messages) => {
             attachment: `./messageDeleteBulk.txt`,
             name: `messageDeleteBulk.txt`
         }]
+    })
+    .catch(e => {
+        console.error(e);
     });
 
     fs.unlink(`./messageDeleteBulk.txt`, (e) => {

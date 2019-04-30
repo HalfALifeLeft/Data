@@ -37,5 +37,8 @@ module.exports = (client, oldEmoji, newEmoji) => {
         .setColor(process.env.GOOD)
         .addField(`Old Emoji`, `\`${oldEmoji.name}\` <:${oldEmoji.name}:${oldEmoji.id}> (\`${oldEmoji.id}\`)`)
         .addField(`New Emoji`, `\`${newEmoji.name}\` <:${newEmoji.name}:${newEmoji.id}> (\`${newEmoji.id}\`)`);
-    mychannel.send(embed);
+    mychannel.send(embed)
+    .catch(e => {
+        console.error(e);
+    });
 };

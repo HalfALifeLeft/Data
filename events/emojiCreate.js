@@ -36,5 +36,8 @@ module.exports = (client, emoji) => {
         .setTimestamp()
         .setColor(process.env.GOOD)
         .addField(`Emoji Created`, `\`${emoji.name}\` <:${emoji.name}:${emoji.id}> (\`${emoji.id}\`)`);
-    mychannel.send(embed);
+    mychannel.send(embed)
+    .catch(e => {
+        console.error(e);
+    });
 };

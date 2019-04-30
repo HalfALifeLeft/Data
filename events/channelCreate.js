@@ -39,5 +39,8 @@ module.exports = (client, Channel) => {
         .setTimestamp()
         .setColor(process.env.GOOD)
         .addField(`Channel Created`, `#${Channel.name} (\`${Channel.id}\`)`);
-    mychannel.send(embed);
+    mychannel.send(embed)
+    .catch(e => {
+        console.error(e);
+    });
 };

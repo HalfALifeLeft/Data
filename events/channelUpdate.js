@@ -59,7 +59,10 @@ module.exports = async (client, oldChannel, newChannel) => {
         .addField(`Channel Updated`, `<#${oldChannel.id}> (\`${oldChannel.id}\`)`)
         .addField(`Old Channel Details`, `Name: ${oldChannel.name}\nCategory: ${oldChannel.parent.name}\nChannel Topic: ${topicOld}\nNSFW: ${oldChannel.nsfw}`)
         .addField(`Old Channel Details`, `Name: ${newChannel.name}\nCategory: ${newChannel.parent.name}\nChannel Topic: ${topicNew}\nNSFW: ${newChannel.nsfw}`);
-    mychannel.send(embed);
+    mychannel.send(embed)
+    .catch(e => {
+      console.error(e);
+  });
 };
 
 /*

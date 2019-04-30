@@ -37,5 +37,8 @@ module.exports = (client, Channel) => {
         .setTimestamp()
         .setColor(process.env.ERROR)
         .addField(`Channel deleted`, `#${Channel.name} (\`${Channel.id}\`)`);
-    mychannel.send(embed);
+    mychannel.send(embed)
+    .catch(e => {
+        console.error(e);
+    });
 };

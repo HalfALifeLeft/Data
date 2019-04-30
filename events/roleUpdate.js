@@ -57,7 +57,10 @@ module.exports = (client, oldRole, newRole) => {
         .addField(`Role Updated`, `<@&${oldRole.id}> (\`${oldRole.id}\`)`)
         .addField(`Old Role Details`, `Name: ${oldRole.name}\nColor: ${oldColor}\nHoisted Role: ${oldRole.hoist}\nManaged By Outside Service: ${oldRole.managed}\nMentionable: ${oldRole.mentionable}`)
         .addField(`New Role Details`, `Name: ${newRole.name}\nColor: ${newColor}\nHoisted Role: ${newRole.hoist}\nManaged By Outside Service: ${newRole.managed}\nMentionable: ${newRole.mentionable}`);
-    mychannel.send(embed);
+    mychannel.send(embed)
+    .catch(e => {
+        console.error(e);
+    });
 };
 
 /*

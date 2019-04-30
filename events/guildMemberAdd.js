@@ -26,7 +26,10 @@ module.exports = (client, member) => {
 
     var role = member.guild.roles.find(role => role.name === `Members`);
     if (role == null) return;
-    member.addRole(role);
+    member.addRole(role)
+    .catch(e => {
+        console.error(e);
+    });
 
     const channelId = client.dataConfig.get(`${member.guild.id}`, `memberLogs`);
     if (member.guild.channels.has(channelId) == false) return;
@@ -42,7 +45,10 @@ module.exports = (client, member) => {
         .setTimestamp()
         .setColor(process.env.GOOD)
         .addField(`Member joined`, `${member.user.username}#${member.user.discriminator} (${member.user.id})`);
-    mychannel.send(embed);
+    mychannel.send(embed)
+    .catch(e => {
+        console.error(e);
+    });
 
     const generalId = client.dataConfig.get(`${member.guild.id}`, `welcomeChannel`);
     if (member.guild.channels.has(generalId) == false) return;
@@ -50,5 +56,8 @@ module.exports = (client, member) => {
     const general = member.guild.channels.find(channel => channel.id === generalId);
 
     if (general == null) return;
-    general.send(`<@${member.id}> has joined the server!`);
+    general.send(`<@${member.id}> has joined the server!`)
+    .catch(e => {
+        console.error(e);
+    });
 };

@@ -39,5 +39,8 @@ module.exports = async (client, message) => {
         .setColor(process.env.ERROR)
         .addField(`Reactions Cleared From Message`, `${message.reactions.length} reactions\nMessage ID:(\`${message.id}\`)`)
         .setFooter(`#${message.channel.name}`);
-    mychannel.send(embed);
+    mychannel.send(embed)
+    .catch(e => {
+        console.error(e);
+    });
 };

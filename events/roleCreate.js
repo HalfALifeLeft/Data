@@ -45,5 +45,8 @@ module.exports = (client, role) => {
         .setColor(process.env.GOOD)
         .addField(`Role Created`, `<@&${role.id}> (\`${role.id}\`)`)
         .addField(`Role Details`, `Color: ${color}\nHoisted Role: ${role.hoist}\nManaged By Outside Service: ${role.managed}\nMentionable: ${role.mentionable}`);
-    mychannel.send(embed);
+    mychannel.send(embed)
+    .catch(e => {
+        console.error(e);
+    });
 };

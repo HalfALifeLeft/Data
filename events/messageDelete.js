@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
+/*  eslint-disable no-console*/
 module.exports = (client, message) => {
 
     client.dataConfig.ensure(`${message.guild.id}`, {
@@ -42,5 +43,8 @@ module.exports = (client, message) => {
         .setColor(process.env.ERROR)
         .addField(`Message`, `\`\`\`${message.content}\`\`\``)
         .setFooter(`#${message.channel.name}`);
-    mychannel.send(embed);
+    mychannel.send(embed)
+    .catch(e => {
+        console.error(e);
+    });
 };

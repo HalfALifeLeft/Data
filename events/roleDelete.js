@@ -37,7 +37,10 @@ module.exports = (client, role) => {
     .setTimestamp()
     .setColor(process.env.ERROR)
     .addField(`Role Deleted`, `@${role.name} (\`${role.id}\`)`);
-  mychannel.send(embed);
+  mychannel.send(embed)
+  .catch(e => {
+    console.error(e);
+});
 };
 
 /*
