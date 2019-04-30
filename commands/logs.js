@@ -15,8 +15,12 @@ module.exports.run = async (client, message, args) => {
         const channelLoggingFour = message.guild.channels.find(channel => channel.name === modChannel && channel.type == `text`);
         const category = message.guild.channels.find(channel => channel.name === `Data Logging Test` && channel.type == `category`);
 
-        if (channelLoggingOne || channelLoggingTwo || channelLoggingThree || channelLoggingFour || category) return message.reply(`At least one logging channel/category I need to create already exists! Please delete any channels by the name of \`
-        ${memberChannel}, ${messageChannel}, ${serverChannel}, or ${modChannel}\` or categories called \`Data Logging Test\` so that I can properly set up logging on this server!`);
+        if (channelLoggingOne || channelLoggingTwo || channelLoggingThree || channelLoggingFour || category) {
+            return message.reply(`At least one logging channel/category I need to create already exists! Please delete any channels by the name of \`${memberChannel}, ${messageChannel}, ${serverChannel}, or ${modChannel}\` or categories called \`Data Logging Test\` so that I can properly set up logging on this server!`)
+            .catch((e) => {
+                console.error(e);
+            });
+        }
 
         message.guild.createChannel(`Data Logging`, `category`) //make category
             .then(CategoryChannel => {
