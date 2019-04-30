@@ -4,7 +4,10 @@
 exports.run = async (client, message, args) => {
     let allowedRole = message.guild.roles.find(r => r.name === `Admins`);
     if (!message.member.roles.has(allowedRole.id)) {
-        return message.reply(`Only Admins can do this!`);
+        return message.reply(`Only Admins can do this!`)
+        .catch(e => {
+            console.error(e);
+        });
     }
     client.generateInvite([2146958591])
         .then(link => {

@@ -18,7 +18,10 @@ module.exports.run = async (client, message, args) => {
         lastSeen: new Date()
     });
 
-    message.channel.send(`<@!${user}> currently has $${client.currency.get(key, `points`)}, and is level ${client.currency.get(key, `level`)}!`);
+    message.channel.send(`<@!${user}> currently has $${client.currency.get(key, `points`)}, and is level ${client.currency.get(key, `level`)}!`)
+    .catch(e => {
+        console.error(e);
+    });
 
 };
 module.exports.help = {

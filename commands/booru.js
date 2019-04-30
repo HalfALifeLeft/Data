@@ -19,6 +19,9 @@ module.exports.run = async (client, message, args) => {
                     .setImage(image.common.file_url);
                 message.channel.send({
                     embed
+                })
+                .catch(e => {
+                    console.error(e);
                 });
             }
         })

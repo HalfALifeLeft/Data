@@ -28,7 +28,10 @@ module.exports.run = async (client, message, args) => {
     ];
 
     if (!message.member.hasPermission(`ADMINISTRATOR`, false, true, true)) {
-        return message.reply(`you do not have the \`ADMINISTRATOR\` permission`);
+        return message.reply(`you do not have the \`ADMINISTRATOR\` permission`)
+        .catch(e => {
+            console.error(e);
+        });
     }
 
 
@@ -83,18 +86,30 @@ module.exports.run = async (client, message, args) => {
         ruleTen => ${client.dataConfig.get(`${message.guild.id}`, `ruleTen`)}\`\`\``);
     }
     if (!configName) {
-        return message.reply(`Captain, what should I configure? (\`MISSING_CONFIGNAME_ARG\`)`);
+        return message.reply(`Captain, what should I configure? (\`MISSING_CONFIGNAME_ARG\`)`)
+        .catch(e => {
+            console.error(e);
+        });
     }
     if (!configArgs) {
-        return message.reply(`Captain, what should I configure ${configName} to? (\`MISSING_CONFIGARGS_ARG\`)`);
+        return message.reply(`Captain, what should I configure ${configName} to? (\`MISSING_CONFIGARGS_ARG\`)`)
+        .catch(e => {
+            console.error(e);
+        });
     }
 
     if (arrayOfConfigs.includes(configName) == false) {
-        return message.reply(`Captain, that isn't something I can configure! (\`INVALID_CONFIGNAME\`)`);
+        return message.reply(`Captain, that isn't something I can configure! (\`INVALID_CONFIGNAME\`)`)
+        .catch(e => {
+            console.error(e);
+        });
     }
 
     client.dataConfig.set(`${message.guild.id}`, `${configArgs}`, `${configName}`);
-    message.channel.send(`Captain, I have changed the value of \`${configName}\` to \`${configArgs}\``);
+    message.channel.send(`Captain, I have changed the value of \`${configName}\` to \`${configArgs}\``)
+    .catch(e => {
+        console.error(e);
+    });
 
 };
 module.exports.help = {

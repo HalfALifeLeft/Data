@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
+/* eslint-disable no-console */
 module.exports.run = async (client, message, args) => {
     if (!args[0]) return message.reply(`you need to ask a question for the 8ball to answer!`);
     const eightball = require(`8ball`)();
@@ -12,6 +13,9 @@ module.exports.run = async (client, message, args) => {
         .setTitle(`${eightball}`);
     message.channel.send({
         embed
+    })
+    .catch(e => {
+        console.error(e);
     });
 };
 

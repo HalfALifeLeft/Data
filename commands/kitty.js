@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
+/* eslint-disable no-console */
 module.exports.run = async (client, message, args) => {
     const {
         Client,
@@ -15,6 +16,9 @@ module.exports.run = async (client, message, args) => {
                 .setColor(process.env.HEXCODE);
             return message.channel.send({
                 embed
+            })
+            .catch(e => {
+                console.error(e);
             });
         });
 };

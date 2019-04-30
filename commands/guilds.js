@@ -23,7 +23,10 @@ module.exports.run = async (client, message, args) => {
         });
     });
 
-    message.channel.send(`\`\`\`` + allGuilds.join(`\n`).toString() + `\`\`\``);
+    message.channel.send(`\`\`\`` + allGuilds.join(`\n`).toString() + `\`\`\``)
+    .catch(e => {
+        console.error(e);
+    });
 
     message.channel.awaitMessages(filter, {
             max: 1,

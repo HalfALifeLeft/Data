@@ -8,12 +8,18 @@ module.exports.run = async (client, message, args) => {
     let mychannel = message.guild.channels.find(channel => channel.id === modLogs);
 
     if(!message.member.hasPermission(`KICK_MEMBERS`, false, true, true)) {
-        return message.reply(`you are missing the \`KICK_MEMBERS\` permission`);
+        return message.reply(`you are missing the \`KICK_MEMBERS\` permission`)
+        .catch(e => {
+            console.error(e);
+        });
     }
 
     if(message.mentions.members.first().roles.has(mutedRoleID)) {
         message.mentions.members.first().removeRole(mutedRole);
-        message.reply(`${message.mentions.members.first().user.username}#${message.mentions.members.first().user.discriminator} has been unmuted.`);
+        message.reply(`${message.mentions.members.first().user.username}#${message.mentions.members.first().user.discriminator} has been unmuted.`)
+        .catch(e => {
+            console.error(e);
+        });
         const {
             Client,
             RichEmbed
@@ -22,9 +28,15 @@ module.exports.run = async (client, message, args) => {
             .setTimestamp()
             .setColor(process.env.GOOD)
             .addField(`Member Unmuted`, `${message.mentions.members.first().user.username}#${message.mentions.members.first().user.discriminator} (${message.mentions.members.first().user.id})`);
-        mychannel.send(embed);
+        mychannel.send(embed)
+        .catch(e => {
+            console.error(e);
+        });
     } else {
-        message.reply(`${message.mentions.members.first().user.username}#${message.mentions.members.first().user.discriminator} is not muted.`);
+        message.reply(`${message.mentions.members.first().user.username}#${message.mentions.members.first().user.discriminator} is not muted.`)
+        .catch(e => {
+            console.error(e);
+        });
     }
 };
 module.exports.help = {

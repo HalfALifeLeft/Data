@@ -8,10 +8,16 @@ module.exports.run = async (client, message, args) => {
     const findSuggestionsChannel = message.guild.channels.find(channel => channel.id === client.dataConfig.get(`${message.guild.id}`, `suggestChannel`) && channel.type == `text`);
 
     if (!findSuggestionsChannel) {
-        return message.reply(`Please tell an admin of the server to create the channel #suggestions so I can make suggestions for you all!`);
+        return message.reply(`Please tell an admin of the server to create the channel #suggestions so I can make suggestions for you all!`)
+        .catch(e => {
+            console.error(e);
+        });
     }
 
-    message.channel.send(`Send \`Cancel\` at any point to cancel your suggestion!\nBriefly, what is your suggestion?`);
+    message.channel.send(`Send \`Cancel\` at any point to cancel your suggestion!\nBriefly, what is your suggestion?`)
+    .catch(e => {
+        console.error(e);
+    });
     message.channel.awaitMessages(filter, {
         max: 1,
         time: 30000,
@@ -19,12 +25,18 @@ module.exports.run = async (client, message, args) => {
     }).then((collectedOne) => {
 
         if (collectedOne.first().content.toLowerCase() === `cancel`) {
-            return message.channel.send(`You have canceled your suggestion`);
+            return message.channel.send(`You have canceled your suggestion`)
+            .catch(e => {
+                console.error(e);
+            });
         }
 
         title = collectedOne.first().content;
 
-        message.channel.send(`Please further explain your suggestion, you have 300 seconds`);
+        message.channel.send(`Please further explain your suggestion, you have 300 seconds`)
+        .catch(e => {
+            console.error(e);
+        });
         message.channel.awaitMessages(filter, {
             max: 1,
             time: 300000,

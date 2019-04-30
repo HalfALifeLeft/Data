@@ -7,7 +7,10 @@ module.exports.run = async (client, message, args) => {
     let setRule = args.slice(1).join(` `);
 
     if (!message.member.hasPermission(`ADMINISTRATOR`, false, true, true)) {
-        return message.reply(`you do not have the \`ADMINISTRATOR\` permission`);
+        return message.reply(`you do not have the \`ADMINISTRATOR\` permission`)
+        .catch(e => {
+            console.error(e);
+        });
     }
 
     await client.dataConfig.ensure(`${message.guild.id}`, {
@@ -32,11 +35,17 @@ module.exports.run = async (client, message, args) => {
     });
 
     if (isNaN(setRuleNumber) == true) {
-        return message.reply(`Filler text 1`);
+        return message.reply(`Filler text 1`)
+        .catch(e => {
+            console.error(e);
+        });
     }
 
     if (1 > setRuleNumber || setRuleNumber > 10) {
-        return message.reply(`Filler text 2`);
+        return message.reply(`Filler text 2`)
+        .catch(e => {
+            console.error(e);
+        });
     }
 
     if (setRuleNumber == 1) {
@@ -80,11 +89,17 @@ module.exports.run = async (client, message, args) => {
     }
 
     if (!setRule) {
-        return message.reply(`You can't make a blank rule!`);
+        return message.reply(`You can't make a blank rule!`)
+        .catch(e => {
+            console.error(e);
+        });
     }
 
     client.dataConfig.set(`${message.guild.id}`, `${setRule}`, `rule${setRuleNumber}`);
-    message.channel.send(`Rule ${setRuleNumber} changed to \`${setRule}\`.`);
+    message.channel.send(`Rule ${setRuleNumber} changed to \`${setRule}\`.`)
+    .catch(e => {
+        console.error(e);
+    });
 
 };
 module.exports.help = {

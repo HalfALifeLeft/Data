@@ -44,16 +44,25 @@ module.exports.run = async (client, message, args) => {
             .setImage(imageArray[randomNumber]);
         message.channel.send({
             embed
+        })
+        .catch(e => {
+            console.error(e);
         });
         return;
     }
 
     if (usersMentioned.length === 0) {
-        message.channel.send(`You can't cuddle the air! Tag someone to cuddle them!`);
+        message.channel.send(`You can't cuddle the air! Tag someone to cuddle them!`)
+        .catch(e => {
+            console.error(e);
+        });
         return;
     }
 
-    message.channel.send(`${message.author} cuddles ${message.mentions.users.array().toString().replace(`,`, `, `)} ${content}`);
+    message.channel.send(`${message.author} cuddles ${message.mentions.users.array().toString().replace(`,`, `, `)} ${content}`)
+    .catch(e => {
+        console.error(e);
+    });
     const {
         Client,
         RichEmbed
@@ -63,6 +72,9 @@ module.exports.run = async (client, message, args) => {
         .setImage(imageArray[randomNumber]);
     message.channel.send({
         embed
+    })
+    .catch(e => {
+        console.error(e);
     });
 };
 module.exports.help = {

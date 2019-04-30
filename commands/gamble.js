@@ -23,12 +23,18 @@ module.exports.run = async (client, message, args) => {
 
     if (gambleResult <= 50) {
         client.currency.math(key, `-`, gambleAmount, `points`);
-        return message.reply(`Rolled a ${gambleResult}, You lost $${gambleAmount}!`);
+        return message.reply(`Rolled a ${gambleResult}, You lost $${gambleAmount}!`)
+        .catch(e => {
+            console.error(e);
+        });
     }
 
     if (50 < gambleResult < 99) {
         client.currency.math(key, `+`, gambleAmount, `points`);
-        return message.reply(`Rolled a ${gambleResult}, You gained $${gambleAmount}!`);
+        return message.reply(`Rolled a ${gambleResult}, You gained $${gambleAmount}!`)
+        .catch(e => {
+            console.error(e);
+        });
     }
 
     if (gambleResult == 100) {
@@ -36,7 +42,10 @@ module.exports.run = async (client, message, args) => {
         gambleAmount = gambleAmount * 2;
 
         client.currency.math(key, `+`, gambleAmount, `points`);
-        return message.reply(`Rolled a ${gambleResult}, You hit a jackpot! You gained double the reward!`);
+        return message.reply(`Rolled a ${gambleResult}, You hit a jackpot! You gained double the reward!`)
+        .catch(e => {
+            console.error(e);
+        });
     }
 };
 module.exports.help = {

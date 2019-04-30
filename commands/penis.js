@@ -9,7 +9,10 @@ module.exports.run = async (client, message, args) => {
     if (message.mentions.everyone) return message.reply(`You cannot tag everyone with this command!`);
 
     if (mentionsUsers.length == 0) {
-        message.reply(`You need to tell me who's penis to measure!`);
+        message.reply(`You need to tell me who's penis to measure!`)
+        .catch(e => {
+            console.error(e);
+        });
     } else {
         mentionsUsers.forEach(function (m) {
             //check if user ID is in the enmap
@@ -22,7 +25,10 @@ module.exports.run = async (client, message, args) => {
             arrayUsers.push(`<@${m.id}>'s penis:\n **${penisSize}**`);
         });
         //send message to channel
-        message.channel.send(`Here are the User's penis lengths, 100% accurate!\n\n${arrayUsers.toString().replace(`,`,`\n`)}`);
+        message.channel.send(`Here are the User's penis lengths, 100% accurate!\n\n${arrayUsers.toString().replace(`,`,`\n`)}`)
+        .catch(e => {
+            console.error(e);
+        });
     }
 };
 module.exports.help = {

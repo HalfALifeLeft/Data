@@ -248,23 +248,38 @@ module.exports.run = async (client, message, args) => {
                     .setFooter(`Syntax: d!role [role name]`)
                     .setColor(process.env.HEXCODE);
 
-                return message.channel.send(embed);
+                return message.channel.send(embed)
+                .catch(e => {
+                    console.error(e);
+                });
             }
             return;
         }
 
         //if obj[userRole] == undefined -> respond saying that it isn't a role
         if (obj[userRole] == undefined) {
-            message.delete();
+            message.delete()
+            .catch(e => {
+                console.error(e);
+            });
             return message.reply(`that is not a role!`).then((msg) => {
                 msg.delete(5000);
+            })
+            .catch(e => {
+                console.error(e);
             });
         }
 
         //if obj[userRole] != undefined -> add role to message.author with r.id obj[userRole]
         var role = message.guild.roles.find(r => r.id === obj[userRole].id);
-        message.member.addRole(role, `User used role command to obtain role.`);
-        message.delete();
+        message.member.addRole(role, `User used role command to obtain role.`)
+        .catch(e => {
+            console.error(e);
+        });
+        message.delete()
+        .catch(e => {
+            console.error(e);
+        });
     }
 };
 module.exports.help = {

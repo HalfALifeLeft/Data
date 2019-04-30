@@ -36,7 +36,10 @@ module.exports.run = async (client, message, args) => {
         embed.addField(`${i} - ` + client.users.get(data.user).tag, `$${Math.floor(data.points / 10)} (level ${data.level})`);
         i++;
     }
-    return message.channel.send({embed});
+    return message.channel.send({embed})
+    .catch(e => {
+        console.error(e);
+    });
 };
 module.exports.help = {
     name: `leaderboard`

@@ -39,6 +39,9 @@ module.exports.run = async (client, message, args) => {
         .setImage(user.avatarURL);
     message.channel.send({
         embed
+    })
+    .catch(e => {
+        console.error(e);
     });
 };
 module.exports.help = {

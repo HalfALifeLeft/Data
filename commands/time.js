@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
-
+/* eslint-disable no-console */
 var { DateTime } = require(`luxon`);
 
 module.exports.run = async (client, message, args) => {
@@ -13,7 +13,10 @@ module.exports.run = async (client, message, args) => {
         return message.reply(`That isn't a valid timezone!`);
     }
 
-message.channel.send(dt.toString());
+message.channel.send(dt.toString())
+.catch(e => {
+    console.error(e);
+});
 
 };
 module.exports.help = {

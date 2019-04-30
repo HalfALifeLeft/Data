@@ -11,6 +11,9 @@ module.exports.run = async (client, message, args) => {
         .setImage(`https://i.imgur.com/fe4EWHL.png`);
     message.channel.send({
         embed
+    })
+    .catch(e => {
+        console.error(e);
     });
 };
 module.exports.help = {

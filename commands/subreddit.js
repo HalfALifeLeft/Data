@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
+/* eslint-disable no-console */
 module.exports.run = async (client, message, args) => {
     const {
         Client,
@@ -7,7 +8,12 @@ module.exports.run = async (client, message, args) => {
     } = require(`discord.js`);
     const randomPuppy = require(`random-puppy`);
     var subreddit = args[0];
-    if (!subreddit) return message.reply(`Captain, that does not compute!`); //shorter plus you had the return on the wrong place
+    if (!subreddit) {
+        return message.reply(`Captain, that does not compute!`)
+        .catch(e => {
+            console.error(e);
+        }); //shorter plus you had the return on the wrong place
+    }
     randomPuppy(`${subreddit}`)
         .then(url => {
             const embed = new RichEmbed()
@@ -16,6 +22,9 @@ module.exports.run = async (client, message, args) => {
                 .setColor(process.env.HEXCODE);
             return message.channel.send({
                 embed
+            })
+            .catch(e => {
+                console.error(e);
             });
         });
 };

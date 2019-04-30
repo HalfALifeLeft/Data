@@ -54,9 +54,15 @@ module.exports.run = async (client, message, args) => {
                         console.error(e);
                     });
             });
-        message.channel.send(`I have completed setting up the logging channels and have added them to the configurations!`);
+        message.channel.send(`I have completed setting up the logging channels and have added them to the configurations!`)
+        .catch(e => {
+            console.error(e);
+        });
     } else {
-        return message.reply(`you do not have permission to do this!`);
+        return message.reply(`you do not have permission to do this!`)
+        .catch(e => {
+            console.error(e);
+        });
     }
 };
 module.exports.help = {

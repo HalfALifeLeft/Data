@@ -4,12 +4,18 @@
 module.exports.run = async (client, message, args) => {
 
     if (!message.member.hasPermission(`CREATE_INSTANT_INVITE`, false, true, true)) {
-        return message.reply(`You don't have the \`CREATE_INSTANT_INVITE\` permission!`);
+        return message.reply(`You don't have the \`CREATE_INSTANT_INVITE\` permission!`)
+        .catch(e => {
+            console.error(e);
+        });
     }
 
     message.channel.createInvite()
         .then(invite => {
-            message.author.send(invite.url);
+            message.author.send(invite.url)
+            .catch(e => {
+                console.error(e);
+            });
         })
         .catch(e => {
             console.error(e);

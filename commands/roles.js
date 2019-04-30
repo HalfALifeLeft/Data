@@ -35,7 +35,10 @@ module.exports.run = async (client, message, args) => {
                 reaction.emoji.name === `➡`, {
                     time: 300000
                 }
-            );
+            )
+            .catch(e => {
+                console.error(e);
+            });
 
             collector.on(`collect`, reaction => {
                 const react = reaction.emoji.name;
@@ -50,9 +53,15 @@ module.exports.run = async (client, message, args) => {
                         o = 1;
                     }
                     tenRoles = allRoles.slice(i * 20, o * 20);
-                    msg.edit(`\`\`\`**Page (${o}/${Math.ceil(allRoles.length / 20)})**\n` + tenRoles.join(`\n`).toString() + `\`\`\``);
+                    msg.edit(`\`\`\`**Page (${o}/${Math.ceil(allRoles.length / 20)})**\n` + tenRoles.join(`\n`).toString() + `\`\`\``)
+                    .catch(e => {
+                        console.error(e);
+                    });
                     setTimeout(function () {
-                        reaction.remove(message.author.id);
+                        reaction.remove(message.author.id)
+                        .catch(e => {
+                            console.error(e);
+                        });
                     }, 250);
                 } else if (react === `⬅`) {
                     i--;
@@ -64,9 +73,15 @@ module.exports.run = async (client, message, args) => {
                         o = Math.ceil(allRoles.length / 20);
                     }
                     tenRoles = allRoles.slice(i * 20, o * 20);
-                    msg.edit(`\`\`\`**Page (${o}/${Math.ceil(allRoles.length / 20)})**\n` + tenRoles.join(`\n`).toString() + `\`\`\``);
+                    msg.edit(`\`\`\`**Page (${o}/${Math.ceil(allRoles.length / 20)})**\n` + tenRoles.join(`\n`).toString() + `\`\`\``)
+                    .catch(e => {
+                        console.error(e);
+                    });
                     setTimeout(function () {
-                        reaction.remove(message.author.id);
+                        reaction.remove(message.author.id)
+                        .catch(e => {
+                            console.error(e);
+                        });
                     }, 250);
                 }
 

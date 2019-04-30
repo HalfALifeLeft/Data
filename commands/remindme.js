@@ -15,7 +15,10 @@ module.exports.run = async (client, message, args) => {
         time = 24 * 60 * 60 * 1000 * (timeRaw.replace(`d`, ``));
         timeTrue = timeRaw.replace(`d`, ``);
         if (timeTrue > 7) {
-            message.reply(`I can't remind you of anything in more than a week, please come back closer to the event or use a time less than 1 week!`);
+            message.reply(`I can't remind you of anything in more than a week, please come back closer to the event or use a time less than 1 week!`)
+            .catch(e => {
+                console.error(e);
+            });
             return;
         }
         timeUnit = `days`;
@@ -36,14 +39,23 @@ module.exports.run = async (client, message, args) => {
     // Make sure content will fit in the message we send
 
     if (content.length > 2000-46) {
-        message.reply(`Please try and make what you need to be reminded of a bit shorter! \`TOO MANY CHARACTERS\`.`); //1954 characters
+        message.reply(`Please try and make what you need to be reminded of a bit shorter! \`TOO MANY CHARACTERS\`.`)
+        .catch(e => {
+            console.error(e);
+        }); //1954 characters
         return;
     }
 
-    message.reply(`I'll remind you of \`${content}\` in ${timeTrue} ${timeUnit}!`);
+    message.reply(`I'll remind you of \`${content}\` in ${timeTrue} ${timeUnit}!`)
+    .catch(e => {
+        console.error(e);
+    });
 
     client.setTimeout(() => {
-        message.reply(`You asked me to remind you of: \`${content}\` ${timeTrue} ${timeUnit} ago!`); //46 chars
+        message.reply(`You asked me to remind you of: \`${content}\` ${timeTrue} ${timeUnit} ago!`)
+        .catch(e => {
+            console.error(e);
+        }); //46 chars
     }, time);
 
 };

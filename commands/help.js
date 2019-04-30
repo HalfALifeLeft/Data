@@ -45,6 +45,9 @@ module.exports.run = async (client, message, args) => {
             .setTimestamp();
         message.channel.send({
             embed
+        })
+        .catch(e => {
+            console.error(e);
         });
         return;
     } else {
@@ -76,9 +79,18 @@ module.exports.run = async (client, message, args) => {
                     embedThree.addField(`${commands[cmd].name}`, `${commands[cmd].desc}\nUsage: ${prefix + commands[cmd].usage}`);
                 }
             }
-            message.author.send(embedOne);
-            message.author.send(embedTwo);
-            message.author.send(embedThree);
+            message.author.send(embedOne)
+            .catch(e => {
+                console.error(e);
+            });
+            message.author.send(embedTwo)
+            .catch(e => {
+                console.error(e);
+            });
+            message.author.send(embedThree)
+            .catch(e => {
+                console.error(e);
+            });
             return;
         }
         if (args[0].toLowerCase() === `owner`) {
@@ -87,7 +99,10 @@ module.exports.run = async (client, message, args) => {
                     embedOne.addField(`${commands[cmd].name}`, `${commands[cmd].desc}\nUsage: ${prefix + commands[cmd].usage}`);
                 }
             }
-            message.author.send(embedFour);
+            message.author.send(embedFour)
+            .catch(e => {
+                console.error(e);
+            });
             return;
         }
     }
@@ -109,6 +124,9 @@ module.exports.run = async (client, message, args) => {
             .setTimestamp();
         message.channel.send({
             embed
+        })
+        .catch(e => {
+            console.error(e);
         });
     } else {
         const embed = new Discord.RichEmbed()
@@ -116,6 +134,9 @@ module.exports.run = async (client, message, args) => {
             .setColor(process.env.HEXCODE);
         message.channel.send({
             embed
+        })
+        .catch(e => {
+            console.error(e);
         });
     }
 };

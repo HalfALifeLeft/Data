@@ -1,8 +1,12 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
+/* eslint-disable no-console */
 module.exports.run = async (client, message, args) => {
     if (!message.member.hasPermission(`ADMINISTRATOR`, false, true, true)) {
-        return message.reply(`you do not have the \`ADMINISTRATOR\` permission`);
+        return message.reply(`you do not have the \`ADMINISTRATOR\` permission`)
+        .catch(e => {
+            console.error(e);
+        });
     }
     let color = args[0];
     let content = args.slice(1).join(` `);
@@ -16,6 +20,9 @@ module.exports.run = async (client, message, args) => {
         .setDescription(`${content}`);
     return message.channel.send({
         embed
+    })
+    .catch(e => {
+        console.error(e);
     });
 };
 module.exports.help = {

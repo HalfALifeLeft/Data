@@ -6,7 +6,10 @@ module.exports.run = async (client, message, args) => {
         return message.reply(`you are missing the \`KICK_MEMBERS\` permission`);
     }
 
-    message.reply(`${message.mentions.members.first().user.username}#${message.mentions.members.first().user.discriminator} has been mooted.`);
+    message.reply(`${message.mentions.members.first().user.username}#${message.mentions.members.first().user.discriminator} has been mooted.`)
+    .catch(e => {
+        console.error(e);
+    });
 };
 module.exports.help = {
     name: `moote`

@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
+/* eslint-disable no-console */
 module.exports.run = async (client, message, args) => {
     var moment = require(`moment`);
     const {
@@ -20,6 +21,9 @@ module.exports.run = async (client, message, args) => {
         .setFooter(`Server ID: ${message.guild.id}`);
     message.channel.send({
         embed
+    })
+    .catch(e => {
+        console.error(e);
     });
 };
 module.exports.help = {

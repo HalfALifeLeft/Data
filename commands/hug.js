@@ -63,7 +63,10 @@ module.exports.run = async (client, message, args) => {
     let usersMentioned = message.mentions.users.array();
 
     if (message.mentions.users.find(val => val.username === message.author.username)) {
-        message.channel.send(`Awww don't be lonely! Take a hug from me!`);
+        message.channel.send(`Awww don't be lonely! Take a hug from me!`)
+        .catch(e => {
+            console.error(e);
+        });
         const {
             Client,
             RichEmbed
@@ -73,6 +76,9 @@ module.exports.run = async (client, message, args) => {
             .setImage(`https://i.pinimg.com/originals/56/7b/0d/567b0d7c708f70bb27bc9c1532d1a779.gif`);
         message.channel.send({
             embed
+        })
+        .catch(e => {
+            console.error(e);
         });
         return;
     }
@@ -92,6 +98,9 @@ module.exports.run = async (client, message, args) => {
         .setImage(imageArray[randomNumber]);
     message.channel.send({
         embed
+    })
+    .catch(e => {
+        console.error(e);
     });
 };
 module.exports.help = {

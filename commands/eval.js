@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
+/* eslint-disable no-console */
 module.exports.run = async (client, message, args) => {
     const configPrefix = client.dataConfig.get(`${message.guild.id}`, `prefix`);
     const {
@@ -27,7 +28,10 @@ module.exports.run = async (client, message, args) => {
                 .setColor(process.env.HEXCODE)
                 .addField(`Input 📥 `, `\`\`\`${evaled}\`\`\``)
                 .addField(`Output 📤 `, `\`\`\`${evaledCode}\`\`\``);
-            message.channel.send(embed);
+            message.channel.send(embed)
+            .catch(e => {
+                console.error(e);
+            });
         } catch (err) {
             //        message.delete();
             let evaled = message.content.slice(configPrefix.length + 4).trim();
@@ -37,7 +41,10 @@ module.exports.run = async (client, message, args) => {
                 .setColor(process.env.ERROR)
                 .addField(`Evaled Command 📥 `, `\`\`\`${evaled}\`\`\``)
                 .addField(`Error ❌ `, `\`\`\`${err}\`\`\``);
-            message.channel.send(embed);
+            message.channel.send(embed)
+            .catch(e => {
+                console.error(e);
+            });
         }
     }
 };

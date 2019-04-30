@@ -1,5 +1,6 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
+/* eslint-disable no-console */
 module.exports.run = async (client, message, args) => {
     
     let cooldownLength = 30000;
@@ -18,6 +19,9 @@ module.exports.run = async (client, message, args) => {
             .setDescription(`Ready captain! ${client.func.ping(client)} ms`);
         message.channel.send({
             embed
+        })
+        .catch(e => {
+            console.error(e);
         });
 
         setTimeout(() => {
@@ -32,7 +36,10 @@ module.exports.run = async (client, message, args) => {
         var timeLeft = parseFloat(fixed) / 1000;
         var timeLeftRounded = timeLeft.toFixed(1);
 
-        message.reply(`Please wait **${cooldownLengthS - timeLeftRounded} seconds** to use this command again!`);
+        message.reply(`Please wait **${cooldownLengthS - timeLeftRounded} seconds** to use this command again!`)
+        .catch(e => {
+            console.error(e);
+        });
     }
 };
 module.exports.help = {

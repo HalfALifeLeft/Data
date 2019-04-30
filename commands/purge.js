@@ -19,17 +19,26 @@ module.exports.run = async (client, message, args, tools) => {
         //now we can delete messages
         message.channel.bulkDelete(number)
             .then(messages => {
-                message.reply(`**Successfully cleared the bridge of \`${parseInt(args[0])}\` messages**`);
+                message.reply(`**Successfully cleared the bridge of \`${parseInt(args[0])}\` messages**`)
+                .catch(e => {
+                    console.error(e);
+                });
             })
             //sends how many messages were deleted to chat
             .catch(error => {
-                message.reply(`**ERROR:** ${error.message}`);
+                message.reply(`**ERROR:** ${error.message}`)
+                .catch(e => {
+                    console.error(e);
+                });
                 console.error(error);
             });
         //checks for errors and puts them in the channel
     } else {
         // not allowed access
-        message.reply(`you lack the \`MANAGE_MESSAGES\` permission`);
+        message.reply(`you lack the \`MANAGE_MESSAGES\` permission`)
+        .catch(e => {
+            console.error(e);
+        });
     }
 };
 module.exports.help = {

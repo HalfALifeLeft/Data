@@ -67,6 +67,9 @@ module.exports.run = async (client, message, args) => {
         .setFooter(`User ID: ${user.id}`);
     message.channel.send({
         embed
+    })
+    .catch(e => {
+        console.error(e);
     });
 };
 module.exports.help = {

@@ -37,11 +37,17 @@ module.exports.run = async (client, message, args) => {
     }
 
     if (!setPrefix) {
-        return message.channel.send(`The prefix is \`${prefix}\``);
+        return message.channel.send(`The prefix is \`${prefix}\``)
+        .catch(e => {
+            console.error(e);
+        });
     }
 
     client.dataConfig.set(`${message.guild.id}`, `${setPrefix}`, `prefix`);
-    message.channel.send(`Prefix changed to \`${setPrefix}\`.`);
+    message.channel.send(`Prefix changed to \`${setPrefix}\`.`)
+    .catch(e => {
+        console.error(e);
+    });
 
 };
 module.exports.help = {

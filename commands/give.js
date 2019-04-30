@@ -6,7 +6,10 @@ module.exports.run = async (client, message, args) => {
     if(message.author.id !== message.guild.owner.id) return message.reply(`You're not the boss of me, you can't do that!`);
 
     const user = message.mentions.users.first() || client.users.get(args[0]);
-    if(!user) return message.reply(`You must mention someone or give their ID!`);
+    if(!user) return message.reply(`You must mention someone or give their ID!`)
+    .catch(e => {
+        console.error(e);
+    });
 
     const pointsToAdd = parseInt(args[1], 10);
     if(!pointsToAdd) return message.reply(`You didn't tell me how many points to give...`);
@@ -26,7 +29,10 @@ module.exports.run = async (client, message, args) => {
     // Add the points to the enmap for this user.
     client.currency.math(key, `+`, pointsToAdd, `points`);
     
-    message.channel.send(`<@${user.id}> has received ${pointsToAdd} points and now stands at ${client.currency.get(key, `points`)} points.`);
+    message.channel.send(`<@${user.id}> has received ${pointsToAdd} points and now stands at ${client.currency.get(key, `points`)} points.`)
+    .catch(e => {
+        console.error(e);
+    });
 };
 module.exports.help = {
     name: `give`
