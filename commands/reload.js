@@ -2,7 +2,7 @@
 module.exports.run = async (client, message, args) => {
 
     //Check if the bot owner is the author
-    if (client.id !== client.ownerID) return message.channel.send(`**You lack the required permissions to use this command.**`);
+    if (message.member.id !== process.env.OWNERID) return message.channel.send(`**You lack the required permissions to use this command.**`);
     //if owner isnt the one sending the message it replies with no perms
 
     //Delete from cache
@@ -16,7 +16,6 @@ module.exports.run = async (client, message, args) => {
 
     //Finally, send an output if it hasn't returned yet
     message.reply(`The command ${args[0]} has been reloaded.`);
-
 };
 module.exports.help = {
     name: `reload`
