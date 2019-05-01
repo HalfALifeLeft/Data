@@ -34,7 +34,7 @@
          http://www.speechfxinc.com/dectalk.html
          TTS ^
 
- - ACTIONS
+ - ACTIONS - https://www.npmjs.com/package/nekos.life
          - bite 
          - bloodsuck 
          - cuddle 
