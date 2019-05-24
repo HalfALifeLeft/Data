@@ -1,7 +1,8 @@
 import discord
 import os
 import logging
-from discord.ext import commands
+from discord.ext import commands, tasks
+from itertools import cycle
 
 client = commands.Bot(command_prefix = '!')
 
