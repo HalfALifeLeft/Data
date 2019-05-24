@@ -16,7 +16,7 @@ class Events(commands.Cog):
         self.change_status.start()
         print('Bot is ready!')
     
-    @tasks.loop(seconds=10)
+    @tasks.loop(hours=1)
     async def change_status(self):
         print('Guess I started the loop!')
         #await self.client.change_presence(activity=discord.Game(next(status)))

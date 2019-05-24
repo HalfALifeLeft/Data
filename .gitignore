@@ -7,3 +7,5 @@ data/
 dataImages/welcomeBanner.png
 dataImages/rulesBanner.png
 dataImages/rolesBanner.png
+discord.log
+cogs/__pychache__/
