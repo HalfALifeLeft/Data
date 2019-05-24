@@ -1,5 +1,5 @@
 .env
 .DS_Store
 .vs/
-discord.log
 cogs/__pychache__/
+discord.log
