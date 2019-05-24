@@ -1,11 +1,5 @@
-node_modules
-REFERENCE/
-data/
 .env
 .DS_Store
 .vs/
-dataImages/welcomeBanner.png
-dataImages/rulesBanner.png
-dataImages/rolesBanner.png
 discord.log
 cogs/__pychache__/
