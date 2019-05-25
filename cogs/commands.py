@@ -37,20 +37,21 @@ class Commands(commands.Cog):
         await ctx.send(f'question: {question}\nAnswer: {random.choice(responses)}')
 
     @commands.command(aliases=['purge'])
-    async def clear(ctx, amount=5): 
+    async def clear(self, ctx, amount=5): 
+        print(ctx)
         await ctx.channel.purge(limit=amount + 1)
     
     @commands.command()
-    async def kick(ctx, member : discord.Member, *, reason=None):
+    async def kick(self, ctx, member : discord.Member, *, reason=None):
         await member.kick(reason=reason)
     
     @commands.command()
-    async def ban(ctx, member : discord.Member, *, reason=None):
+    async def ban(self, ctx, member : discord.Member, *, reason=None):
         await member.ban(reason=reason)
         await ctx.send('Banned {member.mention}')
 
     @commands.command()
-    async def unban(ctx, *, member):
+    async def unban(self, ctx, *, member):
         banned_users = await ctx.guild.bans()
         member_name, member_discriminator = member.split('#')
     
