@@ -1,8 +1,10 @@
 import discord
 import os
 import logging
+from dotenv import load_dotenv
 from discord.ext import commands, tasks
 from itertools import cycle
+load_dotenv()
 
 client = commands.Bot(command_prefix = '!')
 
@@ -29,6 +31,6 @@ handler = logging.FileHandler(filename='discord.log', encoding='utf-8', mode='w'
 handler.setFormatter(logging.Formatter('%(asctime)s:%(levelname)s:%(name)s: %(message)s'))
 logger.addHandler(handler)
     
-client.run('NTQzMzQ0OTQwMTYwMTIyODgx.XK1SQQ.NjTsCOGy_sIsBd968330JCPTf70')
+client.run(os.getenv("TOKEN"))
 
 #nodemon --exec py -3 server.py
