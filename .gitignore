@@ -3,3 +3,4 @@
 .vs/
 discord.log
 __pycache__/
+.vscode/settings.json
