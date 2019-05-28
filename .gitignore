@@ -1,0 +1,6 @@
+.env
+.DS_Store
+.vs/
+discord.log
+__pycache__/
+.vscode/settings.json
