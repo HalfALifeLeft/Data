@@ -1,6 +1,0 @@
-DATA PYTHON
-
-REWRITE ALL EXISTING STUFF WITH PYTHON
-
- * organize events
- * add logging
