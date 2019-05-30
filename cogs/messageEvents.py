@@ -16,9 +16,10 @@ class messageEvents(commands.Cog):
         color = int(os.getenv("COLOR"))
         channel = self.client.get_channel(557019452680437763)
         embed = discord.Embed(color = color)
-        embed.set_author(name=before.author.name, icon_url=before.author.avatar_url)
-        embed.add_field(name='Old', value=f'```{before.content}```', inline=False)
-        embed.add_field(name='New', value=f'```{after.content}```', inline=False)
+        embed.set_author(name=f'{before.author.name}#{before.author.discriminator}', icon_url=before.author.avatar_url)
+        embed.add_field(name='Old Message', value=f'```{before.content}```', inline=False)
+        embed.add_field(name='New Message', value=f'```{after.content}```', inline=False)
+        embed.set_footer(text=f'#{before.channel} - {embed.timestamp}')
         
         await channel.send(embed=embed)
     
