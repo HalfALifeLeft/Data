@@ -1,5 +1,7 @@
 import discord
 import os
+import pytz
+from datetime import datetime
 from discord.ext import commands, tasks
 from itertools import cycle
 
@@ -13,14 +15,21 @@ class messageEvents(commands.Cog):
         if (before.author.bot == True):
             return
         
+        now = after.edited_at
+
+        utc_now = pytz.utc.localize(now)
+        pst_now = utc_now.astimezone(pytz.timezone("America/Los_Angeles"))
+
+        pst = pst_now.strftime("%-I:%M %p")
+
         color = int(os.getenv("COLOR"))
         channel = self.client.get_channel(557019452680437763)
         embed = discord.Embed(color = color)
         embed.set_author(name=f'{before.author.name}#{before.author.discriminator}', icon_url=before.author.avatar_url)
         embed.add_field(name='Old Message', value=f'```{before.content}```', inline=False)
         embed.add_field(name='New Message', value=f'```{after.content}```', inline=False)
-        embed.set_footer(text=f'#{before.channel} - {embed.timestamp}')
-        
+        embed.set_footer(text=f'#{before.channel} • Today at {pst}')
+
         await channel.send(embed=embed)
     
     @commands.Cog.listener()
