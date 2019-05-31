@@ -4,3 +4,11 @@ REWRITE ALL EXISTING STUFF WITH PYTHON
 
  * organize events
  * add logging
+
+ * MySQL database
+     * function is to serve as highly customizeable storage
+     * will not be uploaded to github
+     * necessary for customization of channels such as the one in the JS version of Data Bot
+
+ * port all Data Bot commands to this Python version
+     * create new structure format to allow for a possible dashboard for the bot
