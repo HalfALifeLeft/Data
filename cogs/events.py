@@ -13,7 +13,7 @@ class Events(commands.Cog):
     
     @commands.Cog.listener()
     async def on_ready(self):
-        self.change_status.start()
+        self.change_status.start() #pylint: disable=no-member
         print('Bot is ready!')
     
     @tasks.loop(hours=1)
@@ -30,6 +30,12 @@ class Events(commands.Cog):
     @commands.Cog.listener()
     async def on_member_remove(self, member):
         print(f'{member} has been removed from a server.')
-        
+
+    @commands.Cog.listener()
+    async def on_command_error(self, ctx, error):
+        if isinstance(error, commands.CommandNotFound):
+            await ctx.send('thats not a command! Please refer to !help for a full list of commands!')    
+        pass
+
 def setup(client):
     client.add_cog(Events(client))

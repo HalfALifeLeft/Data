@@ -37,8 +37,7 @@ class Commands(commands.Cog):
         await ctx.send(f'question: {question}\nAnswer: {random.choice(responses)}')
 
     @commands.command(aliases=['purge'])
-    async def clear(self, ctx, amount=5): 
-        print(ctx)
+    async def clear(self, ctx, amount : int): 
         await ctx.channel.purge(limit=amount + 1)
     
     @commands.command()
@@ -63,5 +62,10 @@ class Commands(commands.Cog):
                 await ctx.send('Unbanned {user.mention}')
                 return
             
+    @clear.error
+    async def clear_error(self, ctx, error):
+        if isinstance(error, commands.MissingRequiredArgument):
+            await ctx.send('Please specify an amount of messages to delete!')
+
 def setup(client):
     client.add_cog(Commands(client))
