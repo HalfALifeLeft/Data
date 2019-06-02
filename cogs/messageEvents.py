@@ -20,7 +20,10 @@ class messageEvents(commands.Cog):
         utc_now = pytz.utc.localize(now)
         pst_now = utc_now.astimezone(pytz.timezone("America/Los_Angeles"))
 
-        pst = pst_now.strftime("%-I:%M %p")
+        #WINDOWS
+        pst = pst_now.strftime("%#I:%M %p")
+        #MACOS
+        #pst = pst_now.strftime("%-I:%M %p")
 
         color = int(os.getenv("COLOR"))
         channel = self.client.get_channel(557019452680437763)
