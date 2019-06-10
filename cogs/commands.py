@@ -1,5 +1,7 @@
 import discord
 import random
+import os
+import mysql.connector
 from discord.ext import commands
 
 class Commands(commands.Cog):
@@ -8,6 +10,63 @@ class Commands(commands.Cog):
         self.client = client
   
     #commands
+    @commands.command()
+    async def logging(self, ctx):
+        print("it ran!")
+
+        print("Setting up the Connector")
+        #DATABASE SETUP STUFFSSSS
+        mydb = mysql.connector.connect(
+          host="localhost",
+          user="halfalifeleft",
+          passwd=f"{os.getenv('PWD')}",
+          database="data"
+        )
+        
+        mycursor = mydb.cursor()
+
+        print("Show tables by the name of Guilds")
+
+        mycursor.execute("SHOW TABLES LIKE 'guilds'")
+        resultGuilds = mycursor.fetchone()
+
+        print("Check if the guilds table exists")
+
+        if resultGuilds:
+            print("guilds exists")
+        else:
+            mycursor.execute("CREATE TABLE guilds (id BIGINT(255), prefix VARCHAR(255), events_channel BIGINT(255))")
+
+        print("select \"id\" from \"guilds\" table where id = the guild ID")
+
+        mycursor.execute(f"SELECT * FROM guilds WHERE id = {ctx.guild.id}")
+        
+        print("define resultID")
+        
+        resultID = mycursor.fetchone()
+
+        print("check if the guild ID exists")
+
+        if resultID:
+            print("ID exists")
+        else:
+            sql = "INSERT INTO guilds (id, prefix, events_channel) VALUES (%s, %s, %s)"
+            val = (f'{ctx.guild.id}', "d!", "584864708159340563")
+            mycursor.execute(sql, val)
+
+            mydb.commit()
+
+            print(mycursor.rowcount, "record inserted.")
+
+        print("show all the stuff")
+            
+        mycursor.execute("SELECT * FROM guilds")
+
+        myresult = mycursor.fetchall()
+
+        for x in myresult:
+            print(x)
+        
     @commands.command()
     async def ping(self, ctx):
         await ctx.send('Pong!')

@@ -2,40 +2,43 @@ import discord
 import os
 import logging
 import mysql.connector
+from Client import Prefix
 from dotenv import load_dotenv
 from discord.ext import commands, tasks
 from itertools import cycle
 load_dotenv()
 
-client = commands.Bot(command_prefix = '!')
+def prefix(client, message):
+    return Prefix.Prefix(client, message)
+
+print(prefix)
 
 
+client = commands.Bot(command_prefix = prefix)
 
-#DATABASE SETUP STUFFSSSS
-mydb = mysql.connector.connect(
-  host="localhost",
-  user="halfalifeleft",
-  passwd=f"{os.getenv('PWD')}",
-  database="mydatabase"
-)
+#mycursor.execute("ALTER TABLE guilds ADD COLUMN id INT AUTO_INCREMENT PRIMARY KEY")
 
-mycursor = mydb.cursor()
+#mycursor.execute("SHOW TABLES")
 
+#for x in mycursor:
+#  print(x)
 
-sql = "INSERT INFO guilds (prefix, events_channel) VALUES (%s, %s)"
-val = ("d!", "584864708159340563")
+#sql = "INSERT INTO guilds (prefix, events_channel) VALUES (%s, %s)"
+#val = ("d!", "584864708159340563")
+#mycursor.execute(sql, val)
 
-mycursor.execute(sql, val)
+#mydb.commit()
 
-mydb.commit()
+#print(mycursor.rowcount, "record inserted.")
 
-print(mycursor.rowcount, "record inserted.")
+#
 
+#mycursor.execute("SHOW DATABASES")
 
+#for x in mycursor:
+#  print(x)
 
-
-
-
+#mycursor.execute("CREATE DATABASE data")
 
 @client.command()
 async def load(ctx, extension):
