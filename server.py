@@ -1,12 +1,41 @@
 import discord
 import os
 import logging
+import mysql.connector
 from dotenv import load_dotenv
 from discord.ext import commands, tasks
 from itertools import cycle
 load_dotenv()
 
 client = commands.Bot(command_prefix = '!')
+
+
+
+#DATABASE SETUP STUFFSSSS
+mydb = mysql.connector.connect(
+  host="localhost",
+  user="halfalifeleft",
+  passwd=f"{os.getenv('PWD')}",
+  database="mydatabase"
+)
+
+mycursor = mydb.cursor()
+
+
+sql = "INSERT INFO guilds (prefix, events_channel) VALUES (%s, %s)"
+val = ("d!", "584864708159340563")
+
+mycursor.execute(sql, val)
+
+mydb.commit()
+
+print(mycursor.rowcount, "record inserted.")
+
+
+
+
+
+
 
 @client.command()
 async def load(ctx, extension):
