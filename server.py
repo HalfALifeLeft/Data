@@ -13,30 +13,6 @@ def prefix(client, message):
 
 client = commands.Bot(command_prefix = prefix)
 
-#mycursor.execute("ALTER TABLE guilds ADD COLUMN id INT AUTO_INCREMENT PRIMARY KEY")
-
-#mycursor.execute("SHOW TABLES")
-
-#for x in mycursor:
-#  print(x)
-
-#sql = "INSERT INTO guilds (prefix, events_channel) VALUES (%s, %s)"
-#val = ("d!", "584864708159340563")
-#mycursor.execute(sql, val)
-
-#mydb.commit()
-
-#print(mycursor.rowcount, "record inserted.")
-
-#
-
-#mycursor.execute("SHOW DATABASES")
-
-#for x in mycursor:
-#  print(x)
-
-#mycursor.execute("CREATE DATABASE data")
-
 @client.command()
 async def load(ctx, extension):
     client.load_extension(f'cogs.{extension}')
