@@ -3,4 +3,6 @@
 .vs/
 discord.log
 __pycache__/
+node_modules/
 .vscode/settings.json
+package-lock.json
