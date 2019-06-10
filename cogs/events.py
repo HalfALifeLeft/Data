@@ -14,12 +14,9 @@ class Events(commands.Cog):
     @commands.Cog.listener()
     async def on_ready(self):
         self.change_status.start() #pylint: disable=no-member
-        print('Bot is ready!')
     
     @tasks.loop(hours=1)
     async def change_status(self):
-        print('Guess I started the loop!')
-        #await self.client.change_presence(activity=discord.Game(next(status)))
         await self.client.change_presence(activity=discord.Game(f'in {len(self.client.guilds)} Servers for {len(self.client.users)} Users!'))
         print(f'Working in {len(self.client.guilds)} Servers for {len(self.client.users)} Users!')
     

@@ -11,9 +11,6 @@ load_dotenv()
 def prefix(client, message):
     return Prefix.Prefix(client, message)
 
-print(prefix)
-
-
 client = commands.Bot(command_prefix = prefix)
 
 #mycursor.execute("ALTER TABLE guilds ADD COLUMN id INT AUTO_INCREMENT PRIMARY KEY")

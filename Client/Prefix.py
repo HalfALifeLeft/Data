@@ -4,8 +4,6 @@ import os
 import sys
 
 def Prefix(client, message):
-    
-
     prefix = "!"
 
     mydb = mysql.connector.connect(
@@ -28,4 +26,3 @@ def Prefix(client, message):
         prefix = "!"
         
     return prefix
-
