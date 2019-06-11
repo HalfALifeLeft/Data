@@ -21,7 +21,11 @@ def Prefix(client, message):
     if resultGuilds:
         mycursor.execute(f"SELECT prefix FROM guilds WHERE id = {message.guild.id}")
         resultID = mycursor.fetchone()
-        prefix = resultID
+        if resultID:    
+            prefix = resultID
+        else:
+            mycursor.execute(f"INSERT INTO guilds (id, prefix) VALUES ('{message.guild.id}', 'd!')")
+            mydb.commit()
     else:
         prefix = "!"
         

@@ -11,7 +11,7 @@ class Config(commands.Cog):
         
     #commands
     @commands.command()
-    async def logging(self, ctx):
+    async def prefix(self, ctx, prefix):
 
         #DATABASE SETUP STUFFSSSS
         mydb = mysql.connector.connect(
@@ -35,11 +35,32 @@ class Config(commands.Cog):
 
         #Check if the guild exists in the table
         if resultID == None:
-            sql = "INSERT INTO guilds (id, prefix, events_channel) VALUES (%s, %s, %s)"
-            val = (f'{ctx.guild.id}', "d!", "584864708159340563")
+            sql = "INSERT INTO guilds (id) VALUES (%s)"
+            val = (ctx.guild.id)
             mycursor.execute(sql, val)
 
             mydb.commit()
+            
+        sql = f"UPDATE guilds SET prefix = '{prefix}' WHERE id = '{ctx.guild.id}'"
+
+        mycursor.execute(sql)
+        
+        mydb.commit()
+        
+        mycursor.execute(f"SELECT prefix FROM guilds WHERE id = {ctx.guild.id}")        
+        pfix = mycursor.fetchone()
+        
+        print(pfix)        
+        
+        ppfix = f"{pfix}".replace("('", "")
+        
+        print(ppfix)
+        
+        pppfix = ppfix.replace("',)", "")
+        
+        print(pppfix)
+        
+        await ctx.send(f"Prefix changed to `{pppfix}`")
             
 def setup(client):
     client.add_cog(Config(client))
