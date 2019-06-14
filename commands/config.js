@@ -14,6 +14,7 @@ module.exports.run = async (client, message, args) => {
         `serverLogs`,
         `modLogs`,
         `welcomeChannel`,
+        `welcomeRole`,
         `suggestChannel`,
         `ruleOne`,
         `ruleTwo`,
@@ -51,6 +52,7 @@ module.exports.run = async (client, message, args) => {
         serverLogs: ``,
         modLogs: ``,
         welcomeChannel: ``,
+        welcomeRole: ``,
         suggestChannel: ``,
         ruleOne: ``,
         ruleTwo: ``,
@@ -73,6 +75,7 @@ module.exports.run = async (client, message, args) => {
         serverLogs => ${client.dataConfig.get(`${message.guild.id}`, `serverLogs`)}
         modLogs => ${client.dataConfig.get(`${message.guild.id}`, `modLogs`)}
         welcomeChannel => ${client.dataConfig.get(`${message.guild.id}`, `welcomeChannel`)}
+        welcomeRole => ${client.dataConfig.get(`${message.guild.id}`, `welcomeRole`)}
         suggestChannel => ${client.dataConfig.get(`${message.guild.id}`, `suggestChannel`)}
         ruleOne => ${client.dataConfig.get(`${message.guild.id}`, `ruleOne`)}
         ruleTwo => ${client.dataConfig.get(`${message.guild.id}`, `ruleTwo`)}

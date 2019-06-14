@@ -1,16 +1,18 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-console */
 /* eslint-disable no-undef */
-module.exports = (client, member) => {
+module.exports = async (client, member) => {
 
-    client.dataConfig.ensure(`${member.guild.id}`, {
+    await client.dataConfig.ensure(`${message.guild.id}`, {
         prefix: `d!`,
         mutedRole: ``,
-        messageLogs: ``,
         memberLogs: ``,
+        messageLogs: ``,
         serverLogs: ``,
         modLogs: ``,
         welcomeChannel: ``,
+        welcomeRole: ``,
+        suggestChannel: ``,
         ruleOne: ``,
         ruleTwo: ``,
         ruleThree: ``,
@@ -24,7 +26,7 @@ module.exports = (client, member) => {
     });
 
 
-    var role = member.guild.roles.find(role => role.name === `Members`);
+    var role = member.guild.roles.find(role => role.id === `${client.dataConfig.get(`${member.guild.id}`, `welcomeRole`)}`);
     if (role == null) return;
     member.addRole(role)
     .catch(e => {
