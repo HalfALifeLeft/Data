@@ -12,6 +12,3 @@ REWRITE ALL EXISTING STUFF WITH PYTHON
 
  * port all Data Bot commands to this Python version
      * create new structure format to allow for a possible dashboard for the bot
-
-https://glitch.com/edit/#!/flask-hello-world?path=views/index.html:1:0
-host bot on glitch using this method
