@@ -1,5 +1,7 @@
 import discord
 import random
+import pytz
+from datetime import datetime
 import os
 import mysql.connector
 from discord.ext import commands
@@ -12,7 +14,15 @@ class Commands(commands.Cog):
     #commands        
     @commands.command()
     async def ping(self, ctx):
-        await ctx.send('Pong!')
+        message = await ctx.send('Pong!')
+        latency = round(self.client.latency*1000, 2)
+        now = datetime.now()
+        timestamp_now = datetime.timestamp(now)
+        await message.edit(content=f'Pong! Editing A Message!')
+        after_send = datetime.now()
+        timestamp_send = datetime.timestamp(after_send)
+        time_to_edit = round(((timestamp_send - timestamp_now) * 100), 1)
+        await message.edit(content=f'Pong! Editing a message took: {time_to_edit} ms, Discord is reporting a WebSocket latency of: {latency} ms')
         
     @commands.command(aliases=['8ball', 'eightball'])
     async def _8ball(self, ctx, *, question):
