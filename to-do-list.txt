@@ -82,3 +82,15 @@
         welcome channel, - DONE 
         suggest channel, - DONE
         rules - DONE
+
+
+        IDEAS:
+
+        I been addicted to the aspect of the WaifuBot. Claiming pictures of anime characters by their name. Interacting with them, having them work, getting in-game currency known as WeebPoints, adding them to my favorites, trading them for more desirable ones or for ones that friends of mine want. The only drawback is the amount of WeebPoints we get is hardly anything. The amount of currency we get from stuff we do is like chump change. And there is no way to get a lot more. Takes grinding and patience. But to me, it’s like banging my head against a wall.
+If you made a gamebot with this concept or a similar concept, but fixing the flaws, i think your gamebot would be very desirable.
+
+        I really like the powerfull and readable log that 42 supplies me with, modularity and readability of of yagpdb, also built in rolemenu features of yag are preety cool
+
+        moderation nsfw (depends on the server) fun commands like money making image editing etc auto responder for things like a question channel
+
+        Try implementing a minigame or something in it. Maybe Chess with reactions?
