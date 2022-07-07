@@ -24,7 +24,7 @@
     "kitsu": "^7.0.1",
     "libsodium-wrappers": "^0.7.4",
     "luxon": "^1.13.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "moment-timezone": "^0.5.25",
     "node-fetch": "^2.5.0",
     "node-opus": "^0.3.1",
